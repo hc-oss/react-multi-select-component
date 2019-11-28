@@ -1,0 +1,32 @@
+name: NodeJS
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["10"]
+    name: Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Setup Yarn
+        run: npm install -g yarn
+
+      - name: Install
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Publish
+        if: startsWith(github.ref, 'refs/tags/')
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc && npm publish --access public
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
