@@ -25,7 +25,7 @@ export const toStorybook = () => {
       <MultiSelect
         options={options}
         hasSelectAll={boolean("hasSelectAll", true)}
-        isLoading={boolean("isLoading", true)}
+        isLoading={boolean("isLoading", false)}
         shouldToggleOnHover={boolean("shouldToggleOnHover", false)}
         disableSearch={boolean("disableSearch", false)}
         selected={selected}
