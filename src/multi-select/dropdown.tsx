@@ -131,7 +131,7 @@ const Dropdown = ({
     >
       <DropdownHeading className="dropdown-heading" onClick={toggleExpanded}>
         <div className="dropdown-heading-value">{children}</div>
-        <Loading isLoading={isLoading} />
+        {isLoading && <Loading />}
         <Arrow expanded={expanded} />
       </DropdownHeading>
       {expanded && (

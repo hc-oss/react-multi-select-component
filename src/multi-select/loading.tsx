@@ -1,45 +1,59 @@
 import React from "react";
+import styled from "@emotion/styled";
 
-function Loading({ size = 26, color = "#666", isLoading }) {
-  return isLoading ? (
+const Spinner = styled.svg`
+  animation: rotate 2s linear infinite;
+
+  & .path {
+    stroke: ${(props: any) => props.theme.border};
+    stroke-width: 4px;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+`;
+
+function Loading({ size = 26 }) {
+  return (
     <div
       style={{
         cursor: "pointer",
         display: "table-cell",
         verticalAlign: "middle",
-        width: size
+        width: size,
+        marginRight: "0.2rem"
       }}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
+      <Spinner
         width={size}
         height={size}
-        stroke={color}
-        viewBox="0 0 46 46"
+        className="spinner"
+        viewBox="0 0 50 50"
         style={{ display: "inline-block", verticalAlign: "middle" }}
       >
-        <g
-          fill="none"
-          fillRule="evenodd"
-          strokeWidth="5"
-          transform="translate(4 4)"
-        >
-          <circle cx="18" cy="18" r="18" strokeOpacity="0.4"></circle>
-          <path d="M36 18c0-9.94-8.06-18-18-18">
-            <animateTransform
-              attributeName="transform"
-              dur="1s"
-              from="0 18 18"
-              repeatCount="indefinite"
-              to="360 18 18"
-              type="rotate"
-            ></animateTransform>
-          </path>
-        </g>
-      </svg>
+        <circle cx="25" cy="25" r="20" fill="none" className="path"></circle>
+      </Spinner>
     </div>
-  ) : (
-    <></>
   );
 }
 
