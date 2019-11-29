@@ -1,6 +1,6 @@
 {
   "name": "react-multi-select-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple multiple selection dropdown component with checkboxes, search and select-al`",
   "author": "harshzalavadiya",
   "license": "MIT",
@@ -14,7 +14,9 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "start": "rollup -c -w"
+    "start": "rollup -c -w",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
@@ -27,9 +29,16 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-knobs": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-runtime": "^6.26.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
