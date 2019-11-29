@@ -2,11 +2,12 @@
 
 Simple multiple selection dropdown component with `checkboxes`, `search` and `select-all`
 
-[![Edit react-multi-select-component-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/muddy-brook-322qc?fontsize=14&hidenavigation=1&theme=dark)
-
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://react-multi-select-component.netlify.com)
 [![GitHub Actions Status](https://github.com/harshzalavadiya/react-multi-select-component/workflows/NodeJS/badge.svg)](https://github.com/harshzalavadiya/react-multi-select-component/actions)
 [![NPM](https://img.shields.io/npm/v/react-multi-select-component.svg)](https://npm.im/react-multi-select-component)
 [![gzip](https://badgen.net/bundlephobia/minzip/react-multi-select-component)](https://bundlephobia.com/result?p=react-multi-select-component)
+
+[![Edit react-multi-select-component-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/muddy-brook-322qc?fontsize=14&hidenavigation=1&theme=dark)
 
 ## ✨ Features
 
