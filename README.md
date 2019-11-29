@@ -7,8 +7,6 @@ Simple multiple selection dropdown component with `checkboxes`, `search` and `se
 [![NPM](https://img.shields.io/npm/v/react-multi-select-component.svg)](https://npm.im/react-multi-select-component)
 [![gzip](https://badgen.net/bundlephobia/minzip/react-multi-select-component)](https://bundlephobia.com/result?p=react-multi-select-component)
 
-[![Edit react-multi-select-component-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/muddy-brook-322qc?fontsize=14&hidenavigation=1&theme=dark)
-
 ## ✨ Features
 
 - 🍃 Lightweight (~14KB)
