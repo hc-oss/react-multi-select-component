@@ -10,9 +10,9 @@ import SelectItem from "./select-item";
 interface ISelectListProps {
   focusIndex: number;
   ItemRenderer?: Function;
-  options: object[];
-  selected: object[];
-  onChange: (selected: any) => void;
+  options: Option[];
+  selected: Option[];
+  onChange: (selected: Option[]) => void;
   onClick: Function;
   disabled?: boolean;
 }
@@ -38,16 +38,11 @@ const SelectList = ({
     if (disabled) {
       return;
     }
-    if (checked) {
-      onChange([...selected, option.value]);
-    } else {
-      const index = selected.indexOf(option.value);
-      const removed = [
-        ...selected.slice(0, index),
-        ...selected.slice(index + 1)
-      ];
-      onChange(removed);
-    }
+    onChange(
+      checked
+        ? [...selected, option]
+        : selected.filter((o: any) => o.value !== option.value)
+    );
   };
 
   return (
@@ -58,7 +53,7 @@ const SelectList = ({
             focused={focusIndex === i}
             option={o}
             onSelectionChanged={c => handleSelectionChanged(o, c)}
-            checked={selected.includes(o.value)}
+            checked={selected.find(s => s.value === o.value) ? true : false}
             onClick={e => onClick(e, i)}
             itemRenderer={ItemRenderer}
             disabled={o.disabled || disabled}

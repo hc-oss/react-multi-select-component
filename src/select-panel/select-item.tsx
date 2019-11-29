@@ -56,7 +56,6 @@ const SelectItem = ({
 
   const updateFocus = () => {
     if (focused && itemRef) {
-      console.log(itemRef);
       itemRef.current.focus();
     }
   };

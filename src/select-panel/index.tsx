@@ -15,9 +15,9 @@ import SelectList from "./select-list";
 interface ISelectPanelProps {
   ItemRenderer?: Function;
   options: Option[];
-  selected: any[];
+  selected: Option[];
   selectAllLabel?: string;
-  onChange: (selected: Array<any>) => void;
+  onChange: (selected: Option[]) => void;
   disabled?: boolean;
   disableSearch?: boolean;
   hasSelectAll: boolean;
@@ -58,7 +58,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     value: ""
   };
 
-  const selectAll = () => onChange(options.map(o => o.value));
+  const selectAll = () => onChange(options);
 
   const selectNone = () => onChange([]);
 

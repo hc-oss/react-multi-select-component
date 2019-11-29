@@ -62,7 +62,7 @@ export default App;
 | --------------------- | --------------------------------- | ------------------ | ------- |
 | `labelledBy`          | value for `aria-labelledby`       | `string`           |         |
 | `options`             | options for dropdown              | `[{label, value}]` |         |
-| `selected`            | pre-selected rows                 | `[value]`          | `[]`    |
+| `selected`            | pre-selected rows                 | `[{label, value}]` | `[]`    |
 | `hasSelectAll`        | toggle 'Select All' option        | `boolean`          | `true`  |
 | `isLoading`           | show spinner on select            | `boolean`          | `false` |
 | `shouldToggleOnHover` | toggle dropdown on hover option   | `boolean`          | `false` |

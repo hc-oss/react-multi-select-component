@@ -12,12 +12,7 @@ const DropdownHeader = ({
   const allSelected = selected.length === options.length;
   const customText = valueRenderer && valueRenderer(selected, options);
 
-  const getSelectedText = () => {
-    const selectedOptions = selected.map(s =>
-      options.find((o: any) => o.value === s)
-    );
-    return selectedOptions.map((s: any) => (s ? s.label : "")).join(", ");
-  };
+  const getSelectedText = () => selected.map(s => s.label).join(", ");
 
   if (noneSelected) {
     return (

@@ -17,9 +17,9 @@ export interface IStyledProps {
 
 export interface ISelectProps {
   options: Option[];
-  selected: any[];
+  selected: Option[];
   onChange?;
-  valueRenderer?: (selected: any[], options: Option[]) => string;
+  valueRenderer?: (selected: Option[], options: Option[]) => string;
   ItemRenderer?: Function;
   selectAllLabel?: string;
   isLoading?: boolean;
