@@ -18,7 +18,7 @@ const MultiSelect = ({
   hasSelectAll = true,
   shouldToggleOnHover = false,
   options,
-  value = [],
+  value,
   valueRenderer,
   overrideStrings,
   onChange,
@@ -30,37 +30,40 @@ const MultiSelect = ({
   filterOptions,
   labelledBy,
   theme
-}: ISelectProps) => (
-  <DropdownThemeProvider theme={theme}>
-    <MultiSelectBox className="multi-select">
-      <Dropdown
-        isLoading={isLoading}
-        contentComponent={SelectPanel}
-        shouldToggleOnHover={shouldToggleOnHover}
-        contentProps={{
-          ItemRenderer,
-          options,
-          value,
-          hasSelectAll,
-          selectAllLabel,
-          onChange,
-          disabled,
-          disableSearch,
-          filterOptions,
-          overrideStrings
-        }}
-        disabled={disabled}
-        labelledBy={labelledBy}
-      >
-        <DropdownHeader
-          value={value}
-          options={options}
-          valueRenderer={valueRenderer}
-          overrideStrings={overrideStrings}
-        />
-      </Dropdown>
-    </MultiSelectBox>
-  </DropdownThemeProvider>
-);
+}: ISelectProps) => {
+  const nvalue = value || [];
+  return (
+    <DropdownThemeProvider theme={theme}>
+      <MultiSelectBox className="multi-select">
+        <Dropdown
+          isLoading={isLoading}
+          contentComponent={SelectPanel}
+          shouldToggleOnHover={shouldToggleOnHover}
+          contentProps={{
+            ItemRenderer,
+            options,
+            value: nvalue,
+            hasSelectAll,
+            selectAllLabel,
+            onChange,
+            disabled,
+            disableSearch,
+            filterOptions,
+            overrideStrings
+          }}
+          disabled={disabled}
+          labelledBy={labelledBy}
+        >
+          <DropdownHeader
+            value={nvalue}
+            options={options}
+            valueRenderer={valueRenderer}
+            overrideStrings={overrideStrings}
+          />
+        </Dropdown>
+      </MultiSelectBox>
+    </DropdownThemeProvider>
+  );
+};
 
 export default MultiSelect;
