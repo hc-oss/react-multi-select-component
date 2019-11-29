@@ -11,7 +11,7 @@ interface ISelectListProps {
   focusIndex: number;
   ItemRenderer?: Function;
   options: Option[];
-  selected: Option[];
+  value: Option[];
   onChange: (selected: Option[]) => void;
   onClick: Function;
   disabled?: boolean;
@@ -26,7 +26,7 @@ const SelectListUl = styled.ul`
 `;
 
 const SelectList = ({
-  selected,
+  value,
   onChange,
   disabled,
   ItemRenderer,
@@ -40,8 +40,8 @@ const SelectList = ({
     }
     onChange(
       checked
-        ? [...selected, option]
-        : selected.filter((o: any) => o.value !== option.value)
+        ? [...value, option]
+        : value.filter((o: any) => o.value !== option.value)
     );
   };
 
@@ -53,7 +53,7 @@ const SelectList = ({
             focused={focusIndex === i}
             option={o}
             onSelectionChanged={c => handleSelectionChanged(o, c)}
-            checked={selected.find(s => s.value === o.value) ? true : false}
+            checked={value.find(s => s.value === o.value) ? true : false}
             onClick={e => onClick(e, i)}
             itemRenderer={ItemRenderer}
             disabled={o.disabled || disabled}

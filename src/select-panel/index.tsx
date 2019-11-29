@@ -15,7 +15,7 @@ import SelectList from "./select-list";
 interface ISelectPanelProps {
   ItemRenderer?: Function;
   options: Option[];
-  selected: Option[];
+  value: Option[];
   selectAllLabel?: string;
   onChange: (selected: Option[]) => void;
   disabled?: boolean;
@@ -41,7 +41,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   const {
     onChange,
     options,
-    selected,
+    value,
     filterOptions: customFilterOptions,
     selectAllLabel,
     ItemRenderer,
@@ -97,7 +97,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(-1);
   };
 
-  const allAreSelected = () => options.length === selected.length;
+  const allAreSelected = () => options.length === value.length;
 
   const filteredOptions = () =>
     customFilterOptions

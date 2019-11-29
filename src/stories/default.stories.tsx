@@ -28,7 +28,7 @@ export const toStorybook = () => {
         isLoading={boolean("isLoading", false)}
         shouldToggleOnHover={boolean("shouldToggleOnHover", false)}
         disableSearch={boolean("disableSearch", false)}
-        selected={selected}
+        value={selected}
         disabled={boolean("disabled", false)}
         onChange={setSelected}
         labelledBy={text("labelledBy", "Select Fruits")}

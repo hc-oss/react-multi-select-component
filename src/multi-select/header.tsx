@@ -3,16 +3,16 @@ import React from "react";
 import getString from "../lib/get-string";
 
 const DropdownHeader = ({
-  selected,
+  value,
   options,
   valueRenderer,
   overrideStrings
 }) => {
-  const noneSelected = selected.length === 0;
-  const allSelected = selected.length === options.length;
-  const customText = valueRenderer && valueRenderer(selected, options);
+  const noneSelected = value.length === 0;
+  const allSelected = value.length === options.length;
+  const customText = valueRenderer && valueRenderer(value, options);
 
-  const getSelectedText = () => selected.map(s => s.label).join(", ");
+  const getSelectedText = () => value.map(s => s.label).join(", ");
 
   if (noneSelected) {
     return (

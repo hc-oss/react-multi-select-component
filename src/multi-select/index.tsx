@@ -18,7 +18,7 @@ const MultiSelect = ({
   hasSelectAll = true,
   shouldToggleOnHover = false,
   options,
-  selected,
+  value = [],
   valueRenderer,
   overrideStrings,
   onChange,
@@ -40,7 +40,7 @@ const MultiSelect = ({
         contentProps={{
           ItemRenderer,
           options,
-          selected,
+          value,
           hasSelectAll,
           selectAllLabel,
           onChange,
@@ -53,7 +53,7 @@ const MultiSelect = ({
         labelledBy={labelledBy}
       >
         <DropdownHeader
-          selected={selected}
+          value={value}
           options={options}
           valueRenderer={valueRenderer}
           overrideStrings={overrideStrings}

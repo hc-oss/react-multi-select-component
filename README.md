@@ -43,7 +43,7 @@ const Example: React.FC = () => {
       <pre>{JSON.stringify(selected)}</pre>
       <MultiSelect
         options={options}
-        selected={selected}
+        value={selected}
         onChange={setSelected}
         labelledBy={"Select"}
       />
@@ -60,7 +60,7 @@ export default App;
 | --------------------- | --------------------------------- | ------------------ | ------- |
 | `labelledBy`          | value for `aria-labelledby`       | `string`           |         |
 | `options`             | options for dropdown              | `[{label, value}]` |         |
-| `selected`            | pre-selected rows                 | `[{label, value}]` | `[]`    |
+| `value`               | pre-selected rows                 | `[{label, value}]` | `[]`    |
 | `hasSelectAll`        | toggle 'Select All' option        | `boolean`          | `true`  |
 | `isLoading`           | show spinner on select            | `boolean`          | `false` |
 | `shouldToggleOnHover` | toggle dropdown on hover option   | `boolean`          | `false` |
