@@ -1,7 +1,11 @@
 export interface ITheme {
   primary: string;
+  hover: string;
   border: string;
-  [key: string]: any;
+  gray: string;
+  background: string;
+  borderRadius: string;
+  height: string;
 }
 
 export interface Option {
@@ -30,5 +34,5 @@ export interface ISelectProps {
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
   labelledBy: string;
-  theme?: ITheme;
+  theme?: Partial<ITheme>;
 }
