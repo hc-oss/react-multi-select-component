@@ -16,6 +16,7 @@ interface ISelectPanelProps {
   ItemRenderer?: Function;
   options: Option[];
   value: Option[];
+  focusSearchOnOpen: boolean;
   selectAllLabel?: string;
   onChange: (selected: Option[]) => void;
   disabled?: boolean;
@@ -23,6 +24,11 @@ interface ISelectPanelProps {
   hasSelectAll: boolean;
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
+}
+
+enum FocusType {
+  SEARCH = -1,
+  NONE,
 }
 
 const SelectSearchContainer = styled.div`
@@ -47,11 +53,12 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     ItemRenderer,
     disabled,
     disableSearch,
+    focusSearchOnOpen,
     hasSelectAll,
     overrideStrings
   } = props;
   const [searchText, setSearchText] = useState("");
-  const [focusIndex, setFocusIndex] = useState(0);
+  const [focusIndex, setFocusIndex] = useState(focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE);
 
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
@@ -67,7 +74,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
 
   const handleSearchChange = e => {
     setSearchText(e.target.value);
-    setFocusIndex(-1);
+    setFocusIndex(FocusType.SEARCH);
   };
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
@@ -78,7 +85,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
         if (e.altKey) {
           return;
         }
-        updateFocus(-1);
+        updateFocus(FocusType.SEARCH);
         break;
       case 40: // Down Arrow
         if (e.altKey) {
@@ -94,7 +101,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   };
 
   const handleSearchFocus = () => {
-    setFocusIndex(-1);
+    setFocusIndex(FocusType.SEARCH);
   };
 
   const allAreSelected = () => options.length === value.length;
@@ -116,6 +123,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       {!disableSearch && (
         <SelectSearchContainer>
           <input
+            autoFocus={focusSearchOnOpen}
             placeholder={getString("search", overrideStrings)}
             type="text"
             aria-describedby={getString("search", overrideStrings)}

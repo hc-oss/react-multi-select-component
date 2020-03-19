@@ -15,6 +15,7 @@ const MultiSelectBox = styled.div`
 `;
 
 const MultiSelect = ({
+  focusSearchOnOpen = true,
   hasSelectAll = true,
   shouldToggleOnHover = false,
   options,
@@ -48,6 +49,7 @@ const MultiSelect = ({
             onChange,
             disabled,
             disableSearch,
+            focusSearchOnOpen,
             filterOptions,
             overrideStrings
           }}
