@@ -24,6 +24,7 @@ export const toStorybook = () => {
       <pre>{JSON.stringify(selected)}</pre>
       <MultiSelect
         options={options}
+        focusSearchOnOpen={boolean("focusSearchOnOpen", true)}
         hasSelectAll={boolean("hasSelectAll", true)}
         isLoading={boolean("isLoading", false)}
         shouldToggleOnHover={boolean("shouldToggleOnHover", false)}
