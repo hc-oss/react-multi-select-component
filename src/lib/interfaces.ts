@@ -22,7 +22,7 @@ export interface IStyledProps {
 export interface ISelectProps {
   options: Option[];
   value: Option[];
-  focusSearchOnStart?: boolean;
+  focusSearchOnOpen?: boolean;
   onChange?;
   valueRenderer?: (selected: Option[], options: Option[]) => string;
   ItemRenderer?: Function;

@@ -16,7 +16,7 @@ interface ISelectPanelProps {
   ItemRenderer?: Function;
   options: Option[];
   value: Option[];
-  focusSearchOnStart: boolean;
+  focusSearchOnOpen: boolean;
   selectAllLabel?: string;
   onChange: (selected: Option[]) => void;
   disabled?: boolean;
@@ -53,12 +53,12 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     ItemRenderer,
     disabled,
     disableSearch,
-    focusSearchOnStart,
+    focusSearchOnOpen,
     hasSelectAll,
     overrideStrings
   } = props;
   const [searchText, setSearchText] = useState("");
-  const [focusIndex, setFocusIndex] = useState(focusSearchOnStart ? FocusType.SEARCH : FocusType.NONE);
+  const [focusIndex, setFocusIndex] = useState(focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE);
 
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
@@ -123,7 +123,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       {!disableSearch && (
         <SelectSearchContainer>
           <input
-            autoFocus={focusSearchOnStart}
+            autoFocus={focusSearchOnOpen}
             placeholder={getString("search", overrideStrings)}
             type="text"
             aria-describedby={getString("search", overrideStrings)}
