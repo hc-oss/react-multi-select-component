@@ -15,10 +15,6 @@ export interface Option {
   disabled?: boolean;
 }
 
-export interface IStyledProps {
-  theme?: ITheme;
-}
-
 export interface ISelectProps {
   options: Option[];
   value: Option[];
@@ -35,5 +31,4 @@ export interface ISelectProps {
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
   labelledBy: string;
-  theme?: Partial<ITheme>;
 }

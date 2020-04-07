@@ -1,59 +1,67 @@
 {
   "name": "react-multi-select-component",
-  "version": "1.3.3",
-  "description": "Simple multiple selection dropdown component with checkboxes, search and select-al`",
-  "author": "harshzalavadiya",
+  "version": "2.0.0",
+  "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
+  "author": "Harsh Zalavadiya",
   "license": "MIT",
   "repository": "harshzalavadiya/react-multi-select-component",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "module": "dist/react-multi-select-component.esm.js",
+  "typings": "dist/index.d.ts",
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=10"
   },
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
-    "@rooks/use-outside-click": "^3.4.1",
-    "emotion-theming": "^10.0.27"
-  },
   "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": ">=16"
+  },
+  "dependencies": {
+    "@rooks/use-outside-click": "^3.6.0",
+    "goober": "^1.7.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.6",
-    "@storybook/addon-knobs": "^5.2.6",
-    "@storybook/addon-links": "^5.2.6",
-    "@storybook/addons": "^5.2.6",
-    "@storybook/react": "^5.2.6",
-    "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-runtime": "^6.26.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts-ts": "^4.0.8",
-    "rollup": "^1.27.5",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.2",
-    "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-typescript2": "^0.25.2",
-    "rollup-plugin-url": "^3.0.1",
-    "typescript": "^3.7.2"
+    "@babel/core": "^7.9.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-info": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "babel-loader": "^8.1.0",
+    "husky": "^4.2.3",
+    "react": "^16.13.1",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "react-dom": "^16.13.1",
+    "react-is": "^16.13.1",
+    "ts-loader": "^6.2.2",
+    "tsdx": "^0.13.1",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "src"
+  ],
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  }
 }

@@ -1,11 +1,11 @@
+import { css } from "goober";
 import React from "react";
-import styled from "@emotion/styled";
 
-const Spinner = styled.svg`
+const Spinner = css`
   animation: rotate 2s linear infinite;
 
   & .path {
-    stroke: ${(props: any) => props.theme.border};
+    stroke: var(--rmsc-border);
     stroke-width: 4px;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
@@ -41,18 +41,18 @@ function Loading({ size = 26 }) {
         display: "table-cell",
         verticalAlign: "middle",
         width: size,
-        marginRight: "0.2rem"
+        marginRight: "0.2rem",
       }}
     >
-      <Spinner
+      <svg
         width={size}
         height={size}
-        className="spinner"
+        className={Spinner}
         viewBox="0 0 50 50"
         style={{ display: "inline-block", verticalAlign: "middle" }}
       >
         <circle cx="25" cy="25" r="20" fill="none" className="path"></circle>
-      </Spinner>
+      </svg>
     </div>
   );
 }

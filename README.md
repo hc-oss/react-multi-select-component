@@ -1,6 +1,6 @@
 # react-multi-select-component
 
-Simple multiple selection dropdown component with `checkboxes`, `search` and `select-all`
+Simple and lightweight multiple selection dropdown component with `checkboxes`, `search` and `select-all`
 
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://react-multi-select-component.netlify.com)
 [![GitHub Actions Status](https://github.com/harshzalavadiya/react-multi-select-component/workflows/NodeJS/badge.svg)](https://github.com/harshzalavadiya/react-multi-select-component/actions)
@@ -9,7 +9,7 @@ Simple multiple selection dropdown component with `checkboxes`, `search` and `se
 
 ## ✨ Features
 
-- 🍃 Lightweight (~14KB)
+- 🍃 Lightweight (~4.5KB)
 - 💅 Themeable
 - ✌ Written w/ TypeScript
 
@@ -32,7 +32,7 @@ const Example: React.FC = () => {
   const options = [
     { label: "Grapes 🍇", value: "grapes" },
     { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry" }
+    { label: "Strawberry 🍓", value: "strawberry" },
   ];
 
   const [selected, setSelected] = useState([]);
@@ -71,7 +71,6 @@ export default App;
 | `selectAllLabel`      | _select all_ label                 | `string`           |         |
 | `disableSearch`       | hide search textbox                | `boolean`          | `false` |
 | `filterOptions`       | custom filter options              | `function`         |         |
-| `theme`               | theme variables                    | `object`           |         |
 
 ## 🌐 Internationalization
 
@@ -88,17 +87,17 @@ You can override the strings to be whatever you want, including translations for
 
 ## 💅 Themeing
 
-You can override theme variables to change colors
+You can override css variables to customize appearance
 
-```json
-{
-  "primary": "#4285F4",
-  "hover": "#f1f3f5",
-  "border": "#ccc",
-  "gray": "#aaa",
-  "background": "#fff",
-  "borderRadius": "4px",
-  "height": "38px"
+```css
+.multi-select {
+  --rmsc-primary: #4285f4;
+  --rmsc-hover: #f1f3f5;
+  --rmsc-border: #ccc;
+  --rmsc-gray: #aaa;
+  --rmsc-background: #fff;
+  --rmsc-border-radius: 4px;
+  --rmsc-height: 38px;
 }
 ```
 
@@ -106,8 +105,8 @@ You can override theme variables to change colors
 
 - This project gets inspiration and several pieces of logical code from [react-multiple-select](https://github.com/Khan/react-multi-select/)
 - [TypeScript](https://github.com/microsoft/typescript)
-- [Rollup](https://github.com/rollup/rollup)
-- [Emotion](https://github.com/emotion-js/emotion)
+- [TSDX](https://github.com/jaredpalmer/tsdx)
+- [Goober](https://github.com/cristianbote/goober)
 
 ## 📜 License
 

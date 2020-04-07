@@ -2,7 +2,7 @@ const strings = {
   selectSomeItems: "Select...",
   allItemsAreSelected: "All items are selected.",
   selectAll: "Select All",
-  search: "Search"
+  search: "Search",
 };
 
 function getString(key: string, overrideStrings?): string {

@@ -1,7 +1,7 @@
 /**
  * This component represents an unadorned list of SelectItem (s).
  */
-import styled from "@emotion/styled";
+import { css } from "goober";
 import React from "react";
 
 import { Option } from "../lib/interfaces";
@@ -17,7 +17,7 @@ interface ISelectListProps {
   disabled?: boolean;
 }
 
-const SelectListUl = styled.ul`
+const SelectListUl = css`
   margin: 0;
   padding-left: 0;
   li {
@@ -32,7 +32,7 @@ const SelectList = ({
   ItemRenderer,
   options,
   focusIndex,
-  onClick
+  onClick,
 }: ISelectListProps) => {
   const handleSelectionChanged = (option: Option, checked: boolean) => {
     if (disabled) {
@@ -46,7 +46,7 @@ const SelectList = ({
   };
 
   return (
-    <SelectListUl>
+    <ul className={SelectListUl}>
       {options.map((o: any, i) => (
         <li key={o.hasOwnProperty("key") ? o.key : i}>
           <SelectItem
@@ -60,7 +60,7 @@ const SelectList = ({
           />
         </li>
       ))}
-    </SelectListUl>
+    </ul>
   );
 };
 

@@ -2,12 +2,7 @@ import React from "react";
 
 import getString from "../lib/get-string";
 
-const DropdownHeader = ({
-  value,
-  options,
-  valueRenderer,
-  overrideStrings
-}) => {
+const DropdownHeader = ({ value, options, valueRenderer, overrideStrings }) => {
   const noneSelected = value.length === 0;
   const allSelected = value.length === options.length;
   const customText = valueRenderer && valueRenderer(value, options);

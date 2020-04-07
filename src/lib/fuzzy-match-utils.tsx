@@ -42,7 +42,7 @@ export function filterOptions(
         score: typeaheadSimilarity(
           cleanUpText(option.label, substitutions),
           cleanFilter
-        )
+        ),
       }))
       // Only include matches of the entire substring, with a slight
       // affordance for transposition or extra characters.

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { css } from "goober";
 import React from "react";
 
 import { Option } from "../lib/interfaces";
@@ -10,7 +10,7 @@ interface IDefaultItemRendererProps {
   onClick;
 }
 
-const DefaultRenderer = styled.span`
+const DefaultRenderer = css`
   cursor: default;
 
   input,
@@ -31,10 +31,12 @@ const DefaultItemRenderer = ({
   checked,
   option,
   onClick,
-  disabled
+  disabled,
 }: IDefaultItemRendererProps) => {
   return (
-    <DefaultRenderer className={`item-renderer ${disabled && "disabled"}`}>
+    <div
+      className={`${DefaultRenderer} item-renderer ${disabled && "disabled"}`}
+    >
       <input
         type="checkbox"
         onChange={onClick}
@@ -43,7 +45,7 @@ const DefaultItemRenderer = ({
         disabled={disabled}
       />
       <span>{option.label}</span>
-    </DefaultRenderer>
+    </div>
   );
 };
 

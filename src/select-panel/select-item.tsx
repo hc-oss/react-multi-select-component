@@ -1,7 +1,7 @@
 /**
  * This component represents an individual item in the multi-select drop-down
  */
-import styled from "@emotion/styled";
+import { css } from "goober";
 import React, { useEffect, useRef } from "react";
 
 import { Option } from "../lib/interfaces";
@@ -17,7 +17,7 @@ interface ISelectItemProps {
   onClick;
 }
 
-const ItemContainer = styled.label`
+const ItemContainer = css`
   box-sizing: border-box;
   cursor: pointer;
   display: block;
@@ -25,7 +25,7 @@ const ItemContainer = styled.label`
   outline: 0;
   &:hover,
   &.selected {
-    background: ${(props: any) => props.theme.hover};
+    background: var(--rmsc-hover);
   }
 `;
 
@@ -36,7 +36,7 @@ const SelectItem = ({
   focused,
   disabled,
   onSelectionChanged,
-  onClick
+  onClick,
 }: ISelectItemProps) => {
   const itemRef: any = useRef();
 
@@ -73,8 +73,8 @@ const SelectItem = ({
   };
 
   return (
-    <ItemContainer
-      className={`select-item ${checked && "selected"}`}
+    <label
+      className={`${ItemContainer} select-item ${checked && "selected"}`}
       role="option"
       aria-selected={checked}
       tabIndex={-1}
@@ -87,7 +87,7 @@ const SelectItem = ({
         onClick={handleClick}
         disabled={disabled}
       />
-    </ItemContainer>
+    </label>
   );
 };
 

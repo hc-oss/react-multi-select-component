@@ -1,20 +1,18 @@
-import "./style.css";
-
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 
-import MultiSelect from "../multi-select";
+import MultiSelect from "../src/multi-select";
 
 export default {
   title: "Multiselect",
-  decorators: [withKnobs]
+  decorators: [withKnobs],
 };
 
 export const toStorybook = () => {
   const options = [
     { label: "Grapes 🍇", value: "grapes" },
     { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry" }
+    { label: "Strawberry 🍓", value: "strawberry" },
   ];
 
   const [selected, setSelected] = useState([]);
@@ -39,5 +37,5 @@ export const toStorybook = () => {
 };
 
 toStorybook.story = {
-  name: "default"
+  name: "default",
 };

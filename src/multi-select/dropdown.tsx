@@ -3,8 +3,8 @@
  * and hosts it in the component.  When the component is selected, it
  * drops-down the contentComponent and applies the contentProps.
  */
-import styled from "@emotion/styled";
 import useOutsideClick from "@rooks/use-outside-click";
+import { css } from "goober";
 import React, { useRef, useState } from "react";
 
 import Arrow from "./arrow";
@@ -20,7 +20,7 @@ interface IDropdownProps {
   labelledBy?: string;
 }
 
-const PanelContainer = styled.div`
+const PanelContainer = css`
   position: absolute;
   z-index: 1;
   top: 100%;
@@ -29,30 +29,25 @@ const PanelContainer = styled.div`
   .panel-content {
     max-height: 300px;
     overflow-y: auto;
-    border-radius: ${(props: any) => props.theme.borderRadius};
-    background-color: ${(props: any) => props.theme.background};
+    border-radius: var(--rmsc-border-radius);
+    background-color: var(--rmsc-background);
     box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1);
   }
 `;
 
-const DropdownContainer = styled.div`
+const DropdownContainer = css`
   position: relative;
   outline: none;
-  background: ${(props: any) => props.theme.background};
-  border: 1px solid ${(props: any) => props.theme.border};
-  border-radius: ${(props: any) => props.theme.borderRadius};
-  box-sizing: border-box;
+  background-color: var(--rmsc-background);
+  border: 1px solid var(--rmsc-border);
+  border-radius: var(--rmsc-border-radius);
   &:focus-within {
-    box-shadow: ${(props: any) => props.theme.primary} 0px 0px 0px 1px;
-    border-color: ${(props: any) => props.theme.primary};
-  }
-  * {
-    box-sizing: border-box;
-    transition: all 0.2s ease;
+    box-shadow: var(--rmsc-primary) 0px 0px 0px 1px;
+    border-color: var(--rmsc-primary);
   }
 `;
 
-const DropdownHeading = styled.div`
+const DropdownHeading = css`
   position: relative;
   padding: 0 10px;
   display: flex;
@@ -60,7 +55,7 @@ const DropdownHeading = styled.div`
   justify-content: flex-end;
   overflow: hidden;
   width: 100%;
-  height: ${(props: any) => props.theme.height};
+  height: var(--rmsc-height);
   cursor: default;
   outline: none;
   .dropdown-heading-value {
@@ -78,7 +73,7 @@ const Dropdown = ({
   isLoading,
   disabled,
   shouldToggleOnHover,
-  labelledBy
+  labelledBy,
 }: IDropdownProps) => {
   const [expanded, setExpanded] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
@@ -114,10 +109,9 @@ const Dropdown = ({
   const toggleExpanded = () => setExpanded(isLoading ? false : !expanded);
 
   return (
-    <DropdownContainer
-      className="dropdown"
+    <div
       tabIndex={0}
-      role="combobox"
+      className={`${DropdownContainer} dropdown-container`}
       aria-labelledby={labelledBy}
       aria-expanded={expanded}
       aria-readonly="true"
@@ -129,19 +123,22 @@ const Dropdown = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <DropdownHeading className="dropdown-heading" onClick={toggleExpanded}>
+      <div
+        className={`${DropdownHeading} dropdown-heading`}
+        onClick={toggleExpanded}
+      >
         <div className="dropdown-heading-value">{children}</div>
         {isLoading && <Loading />}
         <Arrow expanded={expanded} />
-      </DropdownHeading>
+      </div>
       {expanded && (
-        <PanelContainer className="dropdown-content">
+        <div className={`${PanelContainer} dropdown-content`}>
           <div className="panel-content">
             <ContentComponent {...contentProps} />
           </div>
-        </PanelContainer>
+        </div>
       )}
-    </DropdownContainer>
+    </div>
   );
 };
 

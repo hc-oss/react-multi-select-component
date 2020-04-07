@@ -3,7 +3,7 @@
  * user selects the component.  It encapsulates the search filter, the
  * Select-all item, and the list of options.
  */
-import styled from "@emotion/styled";
+import { css } from "goober";
 import React, { useState } from "react";
 
 import { filterOptions } from "../lib/fuzzy-match-utils";
@@ -31,11 +31,11 @@ enum FocusType {
   NONE,
 }
 
-const SelectSearchContainer = styled.div`
+const SelectSearchContainer = css`
   width: 100%;
-  border-bottom: 1px solid ${(props: any) => props.theme.border};
+  border-bottom: 1px solid var(--rmsc-border);
   input {
-    height: ${(props: any) => props.theme.height};
+    height: var(--rmsc-height);
     padding: 0 10px;
     width: 100%;
     outline: none;
@@ -55,14 +55,16 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     disableSearch,
     focusSearchOnOpen,
     hasSelectAll,
-    overrideStrings
+    overrideStrings,
   } = props;
   const [searchText, setSearchText] = useState("");
-  const [focusIndex, setFocusIndex] = useState(focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE);
+  const [focusIndex, setFocusIndex] = useState(
+    focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE
+  );
 
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
-    value: ""
+    value: "",
   };
 
   const selectAll = () => onChange(options);
@@ -121,7 +123,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   return (
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
       {!disableSearch && (
-        <SelectSearchContainer>
+        <div className={SelectSearchContainer}>
           <input
             autoFocus={focusSearchOnOpen}
             placeholder={getString("search", overrideStrings)}
@@ -131,7 +133,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
             onFocus={handleSearchFocus}
             onBlur={handleSearchFocus}
           />
-        </SelectSearchContainer>
+        </div>
       )}
 
       {hasSelectAll && (

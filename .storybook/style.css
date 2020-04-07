@@ -1,5 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
-body {
+body,
+#root {
+  height: 100%;
   font-family: sans-serif;
 }
 
