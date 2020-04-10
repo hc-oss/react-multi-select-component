@@ -23,11 +23,11 @@
     "react": ">=16"
   },
   "dependencies": {
-    "@ampproject/filesize": "^3.2.1",
     "@rooks/use-outside-click": "^3.6.0",
     "goober": "^1.7.1"
   },
   "devDependencies": {
+    "@ampproject/filesize": "^3.2.1",
     "@babel/core": "^7.9.0",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
