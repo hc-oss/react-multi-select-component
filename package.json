@@ -1,6 +1,6 @@
 {
   "name": "react-multi-select-component",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "Harsh Zalavadiya",
   "license": "MIT",
@@ -13,9 +13,9 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build && filesize",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "tsdx build && filesize",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
