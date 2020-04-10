@@ -17,13 +17,13 @@ interface ISelectListProps {
   disabled?: boolean;
 }
 
-const SelectListUl = css`
-  margin: 0;
-  padding-left: 0;
-  li {
-    list-style: none;
-  }
-`;
+const SelectListUl = css({
+  margin: 0,
+  paddingLeft: 0,
+  li: {
+    listStyle: "none",
+  },
+});
 
 const SelectList = ({
   value,

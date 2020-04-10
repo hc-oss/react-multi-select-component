@@ -31,17 +31,17 @@ enum FocusType {
   NONE,
 }
 
-const SelectSearchContainer = css`
-  width: 100%;
-  border-bottom: 1px solid var(--rmsc-border);
-  input {
-    height: var(--rmsc-height);
-    padding: 0 10px;
-    width: 100%;
-    outline: none;
-    border: 0;
-  }
-`;
+const SelectSearchContainer = css({
+  width: "100%",
+  borderBottom: "1px solid var(--rmsc-border)",
+  input: {
+    height: "var(--rmsc-height)",
+    padding: "0 10px",
+    width: "100%",
+    outline: "none",
+    border: "0",
+  },
+});
 
 export const SelectPanel = (props: ISelectPanelProps) => {
   const {

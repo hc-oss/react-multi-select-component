@@ -1,37 +1,37 @@
 import { css } from "goober";
 import React from "react";
 
-const Spinner = css`
-  animation: rotate 2s linear infinite;
+const Spinner = css({
+  animation: "rotate 2s linear infinite",
 
-  & .path {
-    stroke: var(--rmsc-border);
-    stroke-width: 4px;
-    stroke-linecap: round;
-    animation: dash 1.5s ease-in-out infinite;
-  }
+  "& .path": {
+    stroke: "var(--rmsc-border)",
+    strokeWidth: "4px",
+    strokeLinecap: "round",
+    animation: "dash 1.5s ease-in-out infinite",
+  },
 
-  @keyframes rotate {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+  "@keyframes rotate": {
+    "100%": {
+      transform: "rotate(360deg)",
+    },
+  },
 
-  @keyframes dash {
-    0% {
-      stroke-dasharray: 1, 150;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      stroke-dasharray: 90, 150;
-      stroke-dashoffset: -35;
-    }
-    100% {
-      stroke-dasharray: 90, 150;
-      stroke-dashoffset: -124;
-    }
-  }
-`;
+  "@keyframes dash": {
+    "0%": {
+      strokeDasharray: "1, 150",
+      strokeDashoffset: "0",
+    },
+    "50%": {
+      strokeDasharray: "90, 150",
+      strokeDashoffset: "-35",
+    },
+    "100%": {
+      strokeDasharray: "90, 150",
+      strokeDashoffset: "-124",
+    },
+  },
+});
 
 function Loading({ size = 26 }) {
   return (

@@ -20,51 +20,52 @@ interface IDropdownProps {
   labelledBy?: string;
 }
 
-const PanelContainer = css`
-  position: absolute;
-  z-index: 1;
-  top: 100%;
-  width: 100%;
-  padding-top: 8px;
-  .panel-content {
-    max-height: 300px;
-    overflow-y: auto;
-    border-radius: var(--rmsc-border-radius);
-    background-color: var(--rmsc-background);
-    box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1);
-  }
-`;
+const PanelContainer = css({
+  position: "absolute",
+  zIndex: 1,
+  top: "100%",
+  width: "100%",
+  paddingTop: "8px",
+  ".panel-content": {
+    maxHeight: "300px",
+    overflowY: "auto",
+    borderRadius: "var(--rmsc-border-radius)",
+    backgroundColor: "var(--rmsc-background)",
+    boxShadow:
+      "0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1)",
+  },
+});
 
-const DropdownContainer = css`
-  position: relative;
-  outline: none;
-  background-color: var(--rmsc-background);
-  border: 1px solid var(--rmsc-border);
-  border-radius: var(--rmsc-border-radius);
-  &:focus-within {
-    box-shadow: var(--rmsc-primary) 0px 0px 0px 1px;
-    border-color: var(--rmsc-primary);
-  }
-`;
+const DropdownContainer = css({
+  position: "relative",
+  outline: "none",
+  backgroundColor: "var(--rmsc-background)",
+  border: "1px solid var(--rmsc-border)",
+  borderRadius: "var(--rmsc-border-radius)",
+  "&:focus-within": {
+    boxShadow: "var(--rmsc-primary) 0px 0px 0px 1px",
+    borderColor: "var(--rmsc-primary)",
+  },
+});
 
-const DropdownHeading = css`
-  position: relative;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  overflow: hidden;
-  width: 100%;
-  height: var(--rmsc-height);
-  cursor: default;
-  outline: none;
-  .dropdown-heading-value {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex: 1;
-  }
-`;
+const DropdownHeading = css({
+  position: "relative",
+  padding: "0 10px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  overflow: "hidden",
+  width: "100%",
+  height: "var(--rmsc-height)",
+  cursor: "default",
+  outline: "none",
+  ".dropdown-heading-value": {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    flex: "1",
+  },
+});
 
 const Dropdown = ({
   children,
