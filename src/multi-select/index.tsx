@@ -6,23 +6,23 @@ import SelectPanel from "../select-panel";
 import Dropdown from "./dropdown";
 import DropdownHeader from "./header";
 
-const MultiSelectBox = css`
-  --rmsc-primary: #4285f4;
-  --rmsc-hover: #f1f3f5;
-  --rmsc-border: #ccc;
-  --rmsc-gray: #aaa;
-  --rmsc-background: #fff;
-  --rmsc-border-radius: 4px;
-  --rmsc-height: 38px;
+const MultiSelectBox = css({
+  "--rmscPrimary": "#4285f4",
+  "--rmscHover": "#f1f3f5",
+  "--rmscBorder": "#ccc",
+  "--rmscGray": "#aaa",
+  "--rmscBackground": "#fff",
+  "--rmscBorderRadius": "4px",
+  "--rmscHeight": "38px",
 
-  * {
-    box-sizing: border-box;
-    transition: all 0.2s ease;
-  }
-  .gray {
-    color: var(--rmsc-gray);
-  }
-`;
+  "*": {
+    boxSizing: "border-box",
+    transition: "all 0.2s ease",
+  },
+  ".gray": {
+    color: "var(--rmsc-gray)",
+  },
+});
 
 const MultiSelect = ({
   focusSearchOnOpen = true,

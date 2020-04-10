@@ -10,22 +10,21 @@ interface IDefaultItemRendererProps {
   onClick;
 }
 
-const DefaultRenderer = css`
-  cursor: default;
+const DefaultRenderer = css({
+  cursor: "default",
 
-  input,
-  span {
-    vertical-align: middle;
-    margin: 0;
-  }
-  span {
-    display: inline-block;
-    padding-left: 5px;
-  }
-  &.disabled {
-    opacity: 0.5;
-  }
-`;
+  "input,span": {
+    verticalAalign: "middle",
+    margin: 0,
+  },
+  span: {
+    display: "inline-block",
+    paddingLeft: "5px",
+  },
+  "&.disabled": {
+    opacity: 0.5,
+  },
+});
 
 const DefaultItemRenderer = ({
   checked,

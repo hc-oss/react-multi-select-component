@@ -17,17 +17,16 @@ interface ISelectItemProps {
   onClick;
 }
 
-const ItemContainer = css`
-  box-sizing: border-box;
-  cursor: pointer;
-  display: block;
-  padding: 10px;
-  outline: 0;
-  &:hover,
-  &.selected {
-    background: var(--rmsc-hover);
-  }
-`;
+const ItemContainer = css({
+  boxSizing: "border-box",
+  cursor: "pointer",
+  display: "block",
+  padding: "10px",
+  outline: "0",
+  "&:hover,&.selected": {
+    background: "var(--rmsc-hover)",
+  },
+});
 
 const SelectItem = ({
   itemRenderer: ItemRenderer = DefaultItemRenderer,

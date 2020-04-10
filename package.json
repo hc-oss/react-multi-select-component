@@ -23,6 +23,7 @@
     "react": ">=16"
   },
   "dependencies": {
+    "@ampproject/filesize": "^3.2.1",
     "@rooks/use-outside-click": "^3.6.0",
     "goober": "^1.7.1"
   },
@@ -63,5 +64,10 @@
     "semi": true,
     "singleQuote": false,
     "trailingComma": "es5"
+  },
+  "filesize": {
+    "track": [
+      "./dist/*.production.min.js"
+    ]
   }
 }
