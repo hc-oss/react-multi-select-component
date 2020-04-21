@@ -36,7 +36,7 @@ const SelectSearchContainer = css({
   borderBottom: "1px solid var(--rmsc-border)",
   input: {
     height: "var(--rmsc-height)",
-    padding: "0 10px",
+    padding: "0 var(--rmsc-spacing)",
     width: "100%",
     outline: "none",
     border: "0",
@@ -127,7 +127,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
           <input
             autoFocus={focusSearchOnOpen}
             placeholder={getString("search", overrideStrings)}
-            type="text"
+            type="search"
             aria-describedby={getString("search", overrideStrings)}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}

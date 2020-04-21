@@ -50,7 +50,7 @@ const DropdownContainer = css({
 
 const DropdownHeading = css({
   position: "relative",
-  padding: "0 10px",
+  padding: "0 var(--rmsc-spacing)",
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",

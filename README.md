@@ -51,7 +51,7 @@ const Example: React.FC = () => {
   );
 };
 
-export default App;
+export default Example;
 ```
 
 ## 👀 Props
@@ -93,9 +93,11 @@ You can override css variables to customize appearance
 .multi-select {
   --rmsc-primary: #4285f4;
   --rmsc-hover: #f1f3f5;
+  --rmsc-selected: #e2e6ea;
   --rmsc-border: #ccc;
   --rmsc-gray: #aaa;
   --rmsc-background: #fff;
+  --rmsc-spacing: 10px;
   --rmsc-border-radius: 4px;
   --rmsc-height: 38px;
 }

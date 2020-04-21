@@ -21,10 +21,13 @@ const ItemContainer = css({
   boxSizing: "border-box",
   cursor: "pointer",
   display: "block",
-  padding: "10px",
+  padding: "var(--rmsc-spacing)",
   outline: "0",
-  "&:hover,&.selected": {
+  "&:hover": {
     background: "var(--rmsc-hover)",
+  },
+  "&.selected": {
+    background: "var(--rmsc-selected)",
   },
 });
 
