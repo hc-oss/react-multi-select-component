@@ -9,9 +9,11 @@ import DropdownHeader from "./header";
 const MultiSelectBox = css({
   "--rmscPrimary": "#4285f4",
   "--rmscHover": "#f1f3f5",
+  "--rmscSelected": "#e2e6ea",
   "--rmscBorder": "#ccc",
   "--rmscGray": "#aaa",
   "--rmscBackground": "#fff",
+  "--rmscSpacing": "10px",
   "--rmscBorderRadius": "4px",
   "--rmscHeight": "38px",
 

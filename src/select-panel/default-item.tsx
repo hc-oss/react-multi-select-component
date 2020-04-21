@@ -11,8 +11,6 @@ interface IDefaultItemRendererProps {
 }
 
 const DefaultRenderer = css({
-  cursor: "default",
-
   "input,span": {
     verticalAalign: "middle",
     margin: 0,
