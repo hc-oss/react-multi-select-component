@@ -22,6 +22,7 @@ const SelectListUl = css({
   paddingLeft: 0,
   li: {
     listStyle: "none",
+    margin: 0,
   },
 });
 
