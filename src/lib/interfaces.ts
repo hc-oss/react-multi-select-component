@@ -31,4 +31,5 @@ export interface ISelectProps {
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
   labelledBy: string;
+  className?: string;
 }

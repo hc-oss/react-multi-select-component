@@ -56,21 +56,22 @@ export default Example;
 
 ## 👀 Props
 
-| Prop                  | Description                        | Type               | Default |
-| --------------------- | ---------------------------------- | ------------------ | ------- |
-| `labelledBy`          | value for `aria-labelledby`        | `string`           |         |
-| `options`             | options for dropdown               | `[{label, value}]` |         |
-| `value`               | pre-selected rows                  | `[{label, value}]` | `[]`    |
-| `focusSearchOnOpen`   | focus on search input when opening | `boolean`          | `true`  |
-| `hasSelectAll`        | toggle 'Select All' option         | `boolean`          | `true`  |
-| `isLoading`           | show spinner on select             | `boolean`          | `false` |
-| `shouldToggleOnHover` | toggle dropdown on hover option    | `boolean`          | `false` |
-| `overrideStrings`     | Override default strings for i18n  | `object`           |         |
-| `onChange`            | onChhange callback                 | `function`         |         |
-| `disabled`            | disable dropdown                   | `boolean`          | `false` |
-| `selectAllLabel`      | _select all_ label                 | `string`           |         |
-| `disableSearch`       | hide search textbox                | `boolean`          | `false` |
-| `filterOptions`       | custom filter options              | `function`         |         |
+| Prop                  | Description                        | Type               | Default        |
+| --------------------- | ---------------------------------- | ------------------ | -------------- |
+| `labelledBy`          | value for `aria-labelledby`        | `string`           |                |
+| `options`             | options for dropdown               | `[{label, value}]` |                |
+| `value`               | pre-selected rows                  | `[{label, value}]` | `[]`           |
+| `focusSearchOnOpen`   | focus on search input when opening | `boolean`          | `true`         |
+| `hasSelectAll`        | toggle 'Select All' option         | `boolean`          | `true`         |
+| `isLoading`           | show spinner on select             | `boolean`          | `false`        |
+| `shouldToggleOnHover` | toggle dropdown on hover option    | `boolean`          | `false`        |
+| `overrideStrings`     | Override default strings for i18n  | `object`           |                |
+| `onChange`            | onChhange callback                 | `function`         |                |
+| `disabled`            | disable dropdown                   | `boolean`          | `false`        |
+| `selectAllLabel`      | _select all_ label                 | `string`           |                |
+| `disableSearch`       | hide search textbox                | `boolean`          | `false`        |
+| `filterOptions`       | custom filter options              | `function`         |                |
+| `className`           | class name for parent component    | `string`           | `multi-select` |
 
 ## 🌐 Internationalization
 
