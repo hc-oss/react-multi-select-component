@@ -31,6 +31,7 @@ export const toStorybook = () => {
         disabled={boolean("disabled", false)}
         onChange={setSelected}
         labelledBy={text("labelledBy", "Select Fruits")}
+        className={text("className", "multi-select")}
       />
     </div>
   );

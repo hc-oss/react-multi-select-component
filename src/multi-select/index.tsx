@@ -30,6 +30,7 @@ const MultiSelect = ({
   focusSearchOnOpen = true,
   hasSelectAll = true,
   shouldToggleOnHover = false,
+  className = "multi-select",
   options,
   value,
   valueRenderer,
@@ -45,7 +46,7 @@ const MultiSelect = ({
 }: ISelectProps) => {
   const nvalue = value || [];
   return (
-    <div className={`${MultiSelectBox} multi-select`}>
+    <div className={`${MultiSelectBox} ${className}`}>
       <Dropdown
         isLoading={isLoading}
         contentComponent={SelectPanel}
