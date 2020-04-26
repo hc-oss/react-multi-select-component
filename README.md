@@ -66,7 +66,7 @@ export default Example;
 | `isLoading`           | show spinner on select             | `boolean`          | `false`        |
 | `shouldToggleOnHover` | toggle dropdown on hover option    | `boolean`          | `false`        |
 | `overrideStrings`     | Override default strings for i18n  | `object`           |                |
-| `onChange`            | onChhange callback                 | `function`         |                |
+| `onChange`            | onChange callback                 | `function`         |                |
 | `disabled`            | disable dropdown                   | `boolean`          | `false`        |
 | `selectAllLabel`      | _select all_ label                 | `string`           |                |
 | `disableSearch`       | hide search textbox                | `boolean`          | `false`        |
