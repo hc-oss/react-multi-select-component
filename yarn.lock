@@ -3,10 +3,11 @@
 
 
 "@ampproject/filesize@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@ampproject/filesize/-/filesize-4.0.1.tgz#a969318ec06b440e66f3b16df0f25cb826c2cd30"
-  integrity sha512-YDaHU5d4RL6xuJV4W+1Eh3QxXtU0Y8i4hdrtRY7OLyG93wfYOLiabkSFbg5HQmxFWqj+NYko/3pjpBiXnEuhdw==
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@ampproject/filesize/-/filesize-4.1.0.tgz#8d0642b39dbdf8bdacfe5151fadaa28068b35456"
+  integrity sha512-H206vnnu2mb26yI3OdABKsaD/pvcW2jH3TefoG7Q0mZrsO2unq8mKQTGNvooG8qfHJBiwzsiSxN4bLMDkNUtsQ==
   dependencies:
+    "@kristoferbaxter/async" "0.0.7"
     bytes "3.1.0"
     fast-glob "3.2.2"
     kleur "3.0.3"
@@ -1254,6 +1255,11 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
+
+"@kristoferbaxter/async@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@kristoferbaxter/async/-/async-0.0.7.tgz#2fe5877588fc7102445ca7918a5bcc59d3c69061"
+  integrity sha512-3cKFLZEnqJ5yILVbyyYD4Xld8aZ5vUQbkLxTlPz1blpUtCd5PIhf4uKTM9+SIr/q2JK+OSmmU4rdx1kgAPBPCQ==
 
 "@mdx-js/loader@^1.5.1":
   version "1.5.8"
