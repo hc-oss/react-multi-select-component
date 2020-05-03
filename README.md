@@ -66,12 +66,26 @@ export default Example;
 | `isLoading`           | show spinner on select             | `boolean`          | `false`        |
 | `shouldToggleOnHover` | toggle dropdown on hover option    | `boolean`          | `false`        |
 | `overrideStrings`     | Override default strings for i18n  | `object`           |                |
-| `onChange`            | onChange callback                 | `function`         |                |
+| `onChange`            | onChange callback                  | `function`         |                |
 | `disabled`            | disable dropdown                   | `boolean`          | `false`        |
 | `selectAllLabel`      | _select all_ label                 | `string`           |                |
 | `disableSearch`       | hide search textbox                | `boolean`          | `false`        |
-| `filterOptions`       | custom filter options              | `function`         |                |
+| `filterOptions`       | custom filter options              | `function`         | Fuzzy Search   |
 | `className`           | class name for parent component    | `string`           | `multi-select` |
+
+### 🔍 Custom filter logic
+
+By default this component uses fuzzy search algorithm to filter options but also allows you to opt-out and use your own logic if you want to below is the example doing just case insensitive search
+
+```js
+export function filterOptions(options, filter) {
+  if (!filter) {
+    return options;
+  }
+  const re = new RegExp(filter, "i");
+  return options.filter(({ value }) => value && value.match(re));
+}
+```
 
 ## 🌐 Internationalization
 

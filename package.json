@@ -1,6 +1,6 @@
 {
   "name": "react-multi-select-component",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "Harsh Zalavadiya",
   "license": "MIT",
@@ -24,11 +24,11 @@
   },
   "dependencies": {
     "@rooks/use-outside-click": "^3.6.0",
-    "goober": "^1.7.1"
+    "goober": "^1.8.0"
   },
   "devDependencies": {
-    "@ampproject/filesize": "^4.0.1",
-    "@babel/core": "^7.9.0",
+    "@ampproject/filesize": "^4.2.0",
+    "@babel/core": "^7.9.6",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-info": "^5.3.18",
@@ -38,14 +38,14 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
+    "@types/react-dom": "^16.9.7",
     "babel-loader": "^8.1.0",
     "husky": "^4.2.5",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
-    "ts-loader": "^7.0.1",
+    "ts-loader": "^7.0.2",
     "tsdx": "^0.13.2",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"
