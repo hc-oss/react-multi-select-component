@@ -37,6 +37,7 @@ const MultiSelect = ({
   overrideStrings,
   onChange,
   disabled,
+  onClose,
   ItemRenderer,
   selectAllLabel,
   isLoading,
@@ -49,6 +50,7 @@ const MultiSelect = ({
     <div className={`${MultiSelectBox} ${className}`}>
       <Dropdown
         isLoading={isLoading}
+        onClose={onClose}
         contentComponent={SelectPanel}
         shouldToggleOnHover={shouldToggleOnHover}
         contentProps={{

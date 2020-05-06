@@ -24,6 +24,7 @@ export interface ISelectProps {
   ItemRenderer?: Function;
   selectAllLabel?: string;
   isLoading?: boolean;
+  onClose?;
   disabled?: boolean;
   disableSearch?: boolean;
   shouldToggleOnHover?: boolean;

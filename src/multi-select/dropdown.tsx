@@ -5,19 +5,20 @@
  */
 import useOutsideClick from "@rooks/use-outside-click";
 import { css } from "goober";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import Arrow from "./arrow";
 import Loading from "./loading";
 
 interface IDropdownProps {
   children?;
-  contentComponent;
-  contentProps: object;
   isLoading?: boolean;
   disabled?: boolean;
-  shouldToggleOnHover?: boolean;
   labelledBy?: string;
+  contentProps: object;
+  onClose?;
+  contentComponent;
+  shouldToggleOnHover?: boolean;
 }
 
 const PanelContainer = css({
@@ -68,13 +69,14 @@ const DropdownHeading = css({
 });
 
 const Dropdown = ({
+  onClose,
   children,
-  contentComponent: ContentComponent,
-  contentProps,
-  isLoading,
   disabled,
-  shouldToggleOnHover,
+  isLoading,
   labelledBy,
+  contentProps,
+  contentComponent: ContentComponent,
+  shouldToggleOnHover,
 }: IDropdownProps) => {
   const [expanded, setExpanded] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
@@ -82,6 +84,13 @@ const Dropdown = ({
   const wrapper: any = useRef();
 
   useOutsideClick(wrapper, () => setExpanded(false));
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (expanded === false) {
+      onClose();
+    }
+  }, [expanded]);
 
   const handleKeyDown = e => {
     switch (e.which) {
@@ -98,12 +107,15 @@ const Dropdown = ({
     }
     e.preventDefault();
   };
+
   const handleHover = (iexpanded: boolean) => {
     shouldToggleOnHover && setExpanded(iexpanded);
   };
+
   const handleFocus = e => {
     e.target === wrapper && !hasFocus && setHasFocus(true);
   };
+
   const handleBlur = () => hasFocus && setHasFocus(false);
   const handleMouseEnter = () => handleHover(true);
   const handleMouseLeave = () => handleHover(false);

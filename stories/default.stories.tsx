@@ -28,6 +28,7 @@ export const toStorybook = () => {
         shouldToggleOnHover={boolean("shouldToggleOnHover", false)}
         disableSearch={boolean("disableSearch", false)}
         value={selected}
+        onClose={()=>{console.log("Closed")}}
         disabled={boolean("disabled", false)}
         onChange={setSelected}
         labelledBy={text("labelledBy", "Select Fruits")}
