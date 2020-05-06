@@ -32,4 +32,5 @@ export interface ISelectProps {
   overrideStrings?: { [key: string]: string };
   labelledBy: string;
   className?: string;
+  onMenuToggle?;
 }
