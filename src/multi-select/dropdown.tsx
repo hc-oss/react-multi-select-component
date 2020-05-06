@@ -80,14 +80,16 @@ const Dropdown = ({
 }: IDropdownProps) => {
   const [expanded, setExpanded] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
-
+  const [onCloseEnabled, enableOnClose] = useState(false);
   const wrapper: any = useRef();
 
   useOutsideClick(wrapper, () => setExpanded(false));
 
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    if (expanded === false) {
+    if (expanded === true) {
+      enableOnClose(true);
+    } else if (onCloseEnabled && !expanded) {
       onClose();
     }
   }, [expanded]);
