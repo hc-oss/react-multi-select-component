@@ -43,6 +43,7 @@ const MultiSelect = ({
   disableSearch,
   filterOptions,
   labelledBy,
+  onMenuToggle,
 }: ISelectProps) => {
   const nvalue = value || [];
   return (
@@ -66,6 +67,7 @@ const MultiSelect = ({
         }}
         disabled={disabled}
         labelledBy={labelledBy}
+        onMenuToggle={onMenuToggle}
       >
         <DropdownHeader
           value={nvalue}

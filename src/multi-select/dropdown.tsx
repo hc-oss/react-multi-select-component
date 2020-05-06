@@ -5,7 +5,7 @@
  */
 import useOutsideClick from "@rooks/use-outside-click";
 import { css } from "goober";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import Arrow from "./arrow";
 import Loading from "./loading";
@@ -18,6 +18,7 @@ interface IDropdownProps {
   disabled?: boolean;
   shouldToggleOnHover?: boolean;
   labelledBy?: string;
+  onMenuToggle?;
 }
 
 const PanelContainer = css({
@@ -75,6 +76,7 @@ const Dropdown = ({
   disabled,
   shouldToggleOnHover,
   labelledBy,
+  onMenuToggle,
 }: IDropdownProps) => {
   const [expanded, setExpanded] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
@@ -82,6 +84,11 @@ const Dropdown = ({
   const wrapper: any = useRef();
 
   useOutsideClick(wrapper, () => setExpanded(false));
+
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    onMenuToggle && onMenuToggle(expanded);
+  }, [expanded]);
 
   const handleKeyDown = e => {
     switch (e.which) {
