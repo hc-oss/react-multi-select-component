@@ -1,6 +1,6 @@
 /**
- * A generic dropdown component.  It takes the children of the component
- * and hosts it in the component.  When the component is selected, it
+ * A generic dropdown component. It takes the children of the component
+ * and hosts it in the component. When the component is selected, it
  * drops-down the contentComponent and applies the contentProps.
  */
 import useOutsideClick from "@rooks/use-outside-click";
