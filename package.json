@@ -9,7 +9,7 @@
   "module": "dist/react-multi-select-component.esm.js",
   "typings": "dist/index.d.ts",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "tsdx watch",
