@@ -4,7 +4,7 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import getString from "../lib/get-string";
@@ -28,7 +28,7 @@ interface ISelectPanelProps {
 
 enum FocusType {
   SEARCH = -1,
-  NONE,
+  NONE = 0,
 }
 
 const SelectSearchContainer = css({
@@ -62,32 +62,46 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE
   );
 
+  const [selectAllLength, setSelectAllLength] = useState(0);
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
     value: "",
   };
 
-  const selectAll = () => onChange(options);
+  useEffect(() => {
+    setSelectAllLength(selectAllValues(true).length);
+    // eslint-disable-next-line
+  }, [options]);
 
-  const selectNone = () => onChange([]);
+  const selectAllValues = (checked) => {
+    const selectedValues = value.map((o) => o.value);
+    return options.filter(({ disabled, value }) => {
+      if (checked) {
+        return !disabled || selectedValues.includes(value);
+      }
+      return disabled && selectedValues.includes(value);
+    });
+  };
 
-  const selectAllChanged = (checked: boolean) =>
-    checked ? selectAll() : selectNone();
+  const selectAllChanged = (checked: boolean) => {
+    const newOptions = selectAllValues(checked);
+    onChange(newOptions);
+  };
 
-  const handleSearchChange = e => {
+  const handleSearchChange = (e) => {
     setSearchText(e.target.value);
     setFocusIndex(FocusType.SEARCH);
   };
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     switch (e.which) {
       case 38: // Up Arrow
         if (e.altKey) {
           return;
         }
-        updateFocus(FocusType.SEARCH);
+        updateFocus(-1);
         break;
       case 40: // Down Arrow
         if (e.altKey) {
@@ -105,8 +119,6 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   const handleSearchFocus = () => {
     setFocusIndex(FocusType.SEARCH);
   };
-
-  const allAreSelected = () => options.length === value.length;
 
   const filteredOptions = () =>
     customFilterOptions
@@ -131,7 +143,6 @@ export const SelectPanel = (props: ISelectPanelProps) => {
             aria-describedby={getString("search", overrideStrings)}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
-            onBlur={handleSearchFocus}
           />
         </div>
       )}
@@ -139,7 +150,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       {hasSelectAll && (
         <SelectItem
           focused={focusIndex === 0}
-          checked={allAreSelected()}
+          checked={selectAllLength === value.length}
           option={selectAllOption}
           onSelectionChanged={selectAllChanged}
           onClick={() => handleItemClicked(0)}

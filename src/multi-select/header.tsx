@@ -7,7 +7,7 @@ const DropdownHeader = ({ value, options, valueRenderer, overrideStrings }) => {
   const allSelected = value.length === options.length;
   const customText = valueRenderer && valueRenderer(value, options);
 
-  const getSelectedText = () => value.map(s => s.label).join(", ");
+  const getSelectedText = () => value.map((s) => s.label).join(", ");
 
   if (noneSelected) {
     return (

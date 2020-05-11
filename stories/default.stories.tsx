@@ -8,7 +8,7 @@ export default {
   decorators: [withKnobs],
 };
 
-export const toStorybook = () => {
+export const ExampleDefault = () => {
   const options = [
     { label: "Grapes 🍇", value: "grapes" },
     { label: "Mango 🥭", value: "mango" },
@@ -30,7 +30,9 @@ export const toStorybook = () => {
         value={selected}
         disabled={boolean("disabled", false)}
         onChange={setSelected}
-        onMenuToggle={(s)=>{console.log("Select Toggle: ", s)}}
+        onMenuToggle={s => {
+          console.log("Select Toggle: ", s);
+        }}
         labelledBy={text("labelledBy", "Select Fruits")}
         className={text("className", "multi-select")}
       />
@@ -38,6 +40,32 @@ export const toStorybook = () => {
   );
 };
 
-toStorybook.story = {
-  name: "default",
+ExampleDefault.story = {
+  name: "Default",
+};
+
+export const ExampleDisabled = () => {
+  const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango", disabled: true },
+    { label: "Strawberry 🍓", value: "strawberry" },
+  ];
+
+  const [selected, setSelected] = useState([]);
+
+  return (
+    <div>
+      <pre>{JSON.stringify(selected)}</pre>
+      <MultiSelect
+        options={options}
+        value={selected}
+        onChange={setSelected}
+        labelledBy={text("labelledBy", "Select Fruits")}
+      />
+    </div>
+  );
+};
+
+ExampleDisabled.story = {
+  name: "Disabled",
 };

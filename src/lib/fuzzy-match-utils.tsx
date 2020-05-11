@@ -37,7 +37,7 @@ export function filterOptions(
       .filter(({ label, value }) => label != null && value != null)
       // Create a {score, Option} pair for each Option based on its label's
       // similarity to the filter text.
-      .map(option => ({
+      .map((option) => ({
         option: option,
         score: typeaheadSimilarity(
           cleanUpText(option.label, substitutions),
@@ -46,11 +46,11 @@ export function filterOptions(
       }))
       // Only include matches of the entire substring, with a slight
       // affordance for transposition or extra characters.
-      .filter(pair => pair.score >= cleanFilter.length - 2)
+      .filter((pair) => pair.score >= cleanFilter.length - 2)
       // Sort 'em by order of their score.
       .sort((a, b) => b.score - a.score)
       // …and grab the original Options back from their pairs.
-      .map(pair => pair.option)
+      .map((pair) => pair.option)
   );
 }
 

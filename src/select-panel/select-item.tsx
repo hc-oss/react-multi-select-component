@@ -23,7 +23,7 @@ const ItemContainer = css({
   display: "block",
   padding: "var(--rmsc-spacing)",
   outline: "0",
-  "&:hover": {
+  "&:hover,&:focus": {
     background: "var(--rmsc-hover)",
   },
   "&.selected": {
@@ -45,24 +45,24 @@ const SelectItem = ({
   useEffect(() => {
     updateFocus();
     // eslint-disable-next-line
-  }, []);
+  }, [focused]);
 
   const toggleChecked = () => {
     onSelectionChanged(!checked);
   };
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     toggleChecked();
     onClick(e);
   };
 
   const updateFocus = () => {
-    if (focused && itemRef) {
+    if (focused && !disabled && itemRef) {
       itemRef.current.focus();
     }
   };
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     switch (e.which) {
       case 13: // Enter
       case 32: // Space

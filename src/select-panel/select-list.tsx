@@ -53,9 +53,9 @@ const SelectList = ({
           <SelectItem
             focused={focusIndex === i}
             option={o}
-            onSelectionChanged={c => handleSelectionChanged(o, c)}
-            checked={value.find(s => s.value === o.value) ? true : false}
-            onClick={e => onClick(e, i)}
+            onSelectionChanged={(c) => handleSelectionChanged(o, c)}
+            checked={value.find((s) => s.value === o.value) ? true : false}
+            onClick={(e) => onClick(e, i)}
             itemRenderer={ItemRenderer}
             disabled={o.disabled || disabled}
           />

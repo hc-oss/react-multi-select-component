@@ -90,7 +90,7 @@ const Dropdown = ({
     onMenuToggle && onMenuToggle(expanded);
   }, [expanded]);
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     switch (e.which) {
       case 27: // Escape
       case 38: // Up Arrow
@@ -108,7 +108,7 @@ const Dropdown = ({
   const handleHover = (iexpanded: boolean) => {
     shouldToggleOnHover && setExpanded(iexpanded);
   };
-  const handleFocus = e => {
+  const handleFocus = (e) => {
     e.target === wrapper && !hasFocus && setHasFocus(true);
   };
   const handleBlur = () => hasFocus && setHasFocus(false);
