@@ -38,6 +38,7 @@ const MultiSelect = ({
   onChange,
   disabled,
   ItemRenderer,
+  ArrowRenderer,
   selectAllLabel,
   isLoading,
   disableSearch,
@@ -68,6 +69,7 @@ const MultiSelect = ({
         disabled={disabled}
         labelledBy={labelledBy}
         onMenuToggle={onMenuToggle}
+        ArrowRenderer={ArrowRenderer}
       >
         <DropdownHeader
           value={nvalue}
