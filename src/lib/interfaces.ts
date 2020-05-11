@@ -22,6 +22,7 @@ export interface ISelectProps {
   onChange?;
   valueRenderer?: (selected: Option[], options: Option[]) => string;
   ItemRenderer?: Function;
+  ArrowRenderer?: ({ expanded: boolean }) => void;
   selectAllLabel?: string;
   isLoading?: boolean;
   disabled?: boolean;

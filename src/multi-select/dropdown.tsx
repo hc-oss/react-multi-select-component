@@ -19,6 +19,7 @@ interface IDropdownProps {
   shouldToggleOnHover?: boolean;
   labelledBy?: string;
   onMenuToggle?;
+  ArrowRenderer?;
 }
 
 const PanelContainer = css({
@@ -77,9 +78,11 @@ const Dropdown = ({
   shouldToggleOnHover,
   labelledBy,
   onMenuToggle,
+  ArrowRenderer,
 }: IDropdownProps) => {
   const [expanded, setExpanded] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
+  const FinalArrow = ArrowRenderer || Arrow;
 
   const wrapper: any = useRef();
 
@@ -137,7 +140,7 @@ const Dropdown = ({
       >
         <div className="dropdown-heading-value">{children}</div>
         {isLoading && <Loading />}
-        <Arrow expanded={expanded} />
+        <FinalArrow expanded={expanded} />
       </div>
       {expanded && (
         <div className={`${PanelContainer} dropdown-content`}>

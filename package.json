@@ -1,6 +1,6 @@
 {
   "name": "react-multi-select-component",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "Harsh Zalavadiya",
   "license": "MIT",
@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "module": "dist/react-multi-select-component.esm.js",
   "typings": "dist/index.d.ts",
+  "sideEffects": false,
   "engines": {
     "node": ">=12"
   },
@@ -38,8 +39,8 @@
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.7",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
@@ -47,9 +48,9 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
-    "ts-loader": "^7.0.2",
+    "ts-loader": "^7.0.4",
     "tsdx": "^0.13.2",
-    "tslib": "^1.11.1",
+    "tslib": "^1.11.2",
     "typescript": "^3.8.3"
   },
   "husky": {

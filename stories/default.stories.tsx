@@ -8,13 +8,13 @@ export default {
   decorators: [withKnobs],
 };
 
-export const ExampleDefault = () => {
-  const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry" },
-  ];
+const options = [
+  { label: "Grapes 🍇", value: "grapes" },
+  { label: "Mango 🥭", value: "mango" },
+  { label: "Strawberry 🍓", value: "strawberry" },
+];
 
+export const ExampleDefault = () => {
   const [selected, setSelected] = useState([]);
 
   return (
@@ -30,7 +30,7 @@ export const ExampleDefault = () => {
         value={selected}
         disabled={boolean("disabled", false)}
         onChange={setSelected}
-        onMenuToggle={s => {
+        onMenuToggle={(s) => {
           console.log("Select Toggle: ", s);
         }}
         labelledBy={text("labelledBy", "Select Fruits")}
@@ -68,4 +68,27 @@ export const ExampleDisabled = () => {
 
 ExampleDisabled.story = {
   name: "Disabled",
+};
+
+export const ExampleCustomArrow = () => {
+  const [selected, setSelected] = useState([]);
+
+  const ArrowRenderer = ({ expanded }) => (expanded ? "🦉" : "🦚");
+
+  return (
+    <div>
+      <pre>{JSON.stringify(selected)}</pre>
+      <MultiSelect
+        options={options}
+        value={selected}
+        onChange={setSelected}
+        labelledBy={text("labelledBy", "Select Fruits")}
+        ArrowRenderer={ArrowRenderer}
+      />
+    </div>
+  );
+};
+
+ExampleCustomArrow.story = {
+  name: "Arrow",
 };
