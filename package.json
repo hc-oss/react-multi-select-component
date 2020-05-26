@@ -1,6 +1,6 @@
 {
   "name": "react-multi-select-component",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "Harsh Zalavadiya",
   "license": "MIT",
@@ -9,9 +9,6 @@
   "module": "dist/react-multi-select-component.esm.js",
   "typings": "dist/index.d.ts",
   "sideEffects": false,
-  "engines": {
-    "node": ">=12"
-  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build && filesize",
