@@ -147,7 +147,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
         </div>
       )}
 
-      {hasSelectAll && (
+      {hasSelectAll && !searchText && (
         <SelectItem
           focused={focusIndex === 0}
           checked={selectAllLength === value.length}
