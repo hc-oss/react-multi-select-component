@@ -56,26 +56,26 @@ export default Example;
 
 ## 👀 Props
 
-| Prop                  | Description                        | Type                         | Default        |
-| --------------------- | ---------------------------------- | ---------------------------- | -------------- |
-| `labelledBy`          | value for `aria-labelledby`        | `string`                     |                |
-| `options`             | options for dropdown               | `[{label, value, disabled}]` |                |
-| `value`               | pre-selected rows                  | `[{label, value}]`           | `[]`           |
-| `focusSearchOnOpen`   | focus on search input when opening | `boolean`                    | `true`         |
-| `hasSelectAll`        | toggle 'Select All' option         | `boolean`                    | `true`         |
-| `isLoading`           | show spinner on select             | `boolean`                    | `false`        |
-| `shouldToggleOnHover` | toggle dropdown on hover option    | `boolean`                    | `false`        |
-| `overrideStrings`     | Override default strings for i18n  | `object`                     |                |
-| `onChange`            | onChange callback                  | `function`                   |                |
-| `disabled`            | disable dropdown                   | `boolean`                    | `false`        |
-| `selectAllLabel`      | _select all_ label                 | `string`                     |                |
-| `disableSearch`       | hide search textbox                | `boolean`                    | `false`        |
-| `filterOptions`       | custom filter options              | `function`                   | Fuzzy Search   |
-| `className`           | class name for parent component    | `string`                     | `multi-select` |
+| Prop                  | Description                         | Type                         | Default        |
+| --------------------- | ----------------------------------- | ---------------------------- | -------------- |
+| `labelledBy`          | value for `aria-labelledby`         | `string`                     |                |
+| `options`             | options for dropdown                | `[{label, value, disabled}]` |                |
+| `value`               | pre-selected rows                   | `[{label, value}]`           | `[]`           |
+| `focusSearchOnOpen`   | focus on search input when opening  | `boolean`                    | `true`         |
+| `hasSelectAll`        | toggle 'Select All' option          | `boolean`                    | `true`         |
+| `isLoading`           | show spinner on select              | `boolean`                    | `false`        |
+| `shouldToggleOnHover` | toggle dropdown on hover option     | `boolean`                    | `false`        |
+| `overrideStrings`     | i18n [docs](#-internationalization) | `object`                     |                |
+| `onChange`            | onChange callback                   | `function`                   |                |
+| `disabled`            | disable dropdown                    | `boolean`                    | `false`        |
+| `selectAllLabel`      | _select all_ label                  | `string`                     |                |
+| `disableSearch`       | hide search textbox                 | `boolean`                    | `false`        |
+| `filterOptions`       | custom filter options               | `function`                   | Fuzzy Search   |
+| `className`           | class name for parent component     | `string`                     | `multi-select` |
 
 ### 🔍 Custom filter logic
 
-By default this component uses fuzzy search algorithm to filter options but also allows you to opt-out and use your own logic if you want to below is the example doing just case insensitive search
+By default this component uses a fuzzy search algorithm to filter options but also allows you to opt-out and use your custom logic if you want to below is the example doing just case insensitive search
 
 ```js
 export function filterOptions(options, filter) {
@@ -89,7 +89,9 @@ export function filterOptions(options, filter) {
 
 ## 🌐 Internationalization
 
-You can override the strings to be whatever you want, including translations for your languages.
+You can easily Internationalize this component by passing prop `overrideStrings` so that UI strings can be presented in a different language
+
+default values for `overrideStrings` are as below
 
 ```json
 {
@@ -102,7 +104,7 @@ You can override the strings to be whatever you want, including translations for
 
 ## 💅 Themeing
 
-You can override css variables to customize appearance
+You can override CSS variables to customize the appearance
 
 ```css
 .multi-select {
