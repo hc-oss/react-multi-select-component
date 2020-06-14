@@ -12,7 +12,7 @@ interface IDefaultItemRendererProps {
 
 const DefaultRenderer = css({
   "input,span": {
-    verticalAalign: "middle",
+    verticalAlign: "middle",
     margin: 0,
   },
   span: {
