@@ -56,24 +56,26 @@ export default Example;
 
 ## 👀 Props
 
-| Prop                  | Description                         | Type                         | Default        |
-| --------------------- | ----------------------------------- | ---------------------------- | -------------- |
-| `labelledBy`          | value for `aria-labelledby`         | `string`                     |                |
-| `options`             | options for dropdown                | `[{label, value, disabled}]` |                |
-| `value`               | pre-selected rows                   | `[{label, value}]`           | `[]`           |
-| `focusSearchOnOpen`   | focus on search input when opening  | `boolean`                    | `true`         |
-| `hasSelectAll`        | toggle 'Select All' option          | `boolean`                    | `true`         |
-| `isLoading`           | show spinner on select              | `boolean`                    | `false`        |
-| `shouldToggleOnHover` | toggle dropdown on hover option     | `boolean`                    | `false`        |
-| `overrideStrings`     | i18n [docs](#-internationalization) | `object`                     |                |
-| `onChange`            | onChange callback                   | `function`                   |                |
-| `disabled`            | disable dropdown                    | `boolean`                    | `false`        |
-| `selectAllLabel`      | _select all_ label                  | `string`                     |                |
-| `disableSearch`       | hide search textbox                 | `boolean`                    | `false`        |
-| `filterOptions`       | custom filter options               | `function`                   | Fuzzy Search   |
-| `className`           | class name for parent component     | `string`                     | `multi-select` |
+| Prop                  | Description                                            | Type                         | Default        |
+| --------------------- | ------------------------------------------------------ | ---------------------------- | -------------- |
+| `labelledBy`          | value for `aria-labelledby`                            | `string`                     |                |
+| `options`             | options for dropdown                                   | `[{label, value, disabled}]` |                |
+| `value`               | pre-selected rows                                      | `[{label, value}]`           | `[]`           |
+| `focusSearchOnOpen`   | focus on search input when opening                     | `boolean`                    | `true`         |
+| `hasSelectAll`        | toggle 'Select All' option                             | `boolean`                    | `true`         |
+| `isLoading`           | show spinner on select                                 | `boolean`                    | `false`        |
+| `shouldToggleOnHover` | toggle dropdown on hover option                        | `boolean`                    | `false`        |
+| `overrideStrings`     | i18n [docs](#-internationalization)                    | `object`                     |                |
+| `onChange`            | onChange callback                                      | `function`                   |                |
+| `disabled`            | disable dropdown                                       | `boolean`                    | `false`        |
+| `selectAllLabel`      | _select all_ label                                     | `string`                     |                |
+| `disableSearch`       | hide search textbox                                    | `boolean`                    | `false`        |
+| `filterOptions`       | custom filter options                                  | `function`                   | Fuzzy Search   |
+| `className`           | class name for parent component                        | `string`                     | `multi-select` |
+| `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer) | `function`                   |                |
+| `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
 
-### 🔍 Custom filter logic
+## 🔍 Custom filter logic
 
 By default this component uses a fuzzy search algorithm to filter options but also allows you to opt-out and use your custom logic if you want to below is the example doing just case insensitive search
 
@@ -101,6 +103,24 @@ default values for `overrideStrings` are as below
   "search": "Search"
 }
 ```
+
+## 🎛 Custom Value Renderer
+
+Optionally customise value renderer view by passing `valueRenderer` prop
+
+```js
+const customValueRenderer = (selected, _options) => {
+  return selected.length
+    ? selected.map(({ label }) => "✔️ " + label)
+    : "😶 No Items Selected";
+};
+```
+
+## 🎛 Custom Item Renderer
+
+Optionally customise dropdown item by passing `ItemRenderer` prop
+
+[Default Item Renderer](https://github.com/harshzalavadiya/react-multi-select-component/blob/master/src/select-panel/default-item.tsx#L27-L47)
 
 ## 💅 Themeing
 
