@@ -117,7 +117,8 @@ const Dropdown = ({
   const handleBlur = () => hasFocus && setHasFocus(false);
   const handleMouseEnter = () => handleHover(true);
   const handleMouseLeave = () => handleHover(false);
-  const toggleExpanded = () => setExpanded(isLoading ? false : !expanded);
+  const toggleExpanded = () =>
+    setExpanded(isLoading || disabled ? false : !expanded);
 
   return (
     <div
