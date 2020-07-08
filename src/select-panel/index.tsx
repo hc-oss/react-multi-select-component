@@ -62,7 +62,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE
   );
 
-  const [selectAllLength, setSelectAllLength] = useState(0);
+  const [selectAllLength, setSelectAllLength] = useState<number>();
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
     value: "",
