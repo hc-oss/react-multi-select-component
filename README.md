@@ -9,7 +9,7 @@ Simple and lightweight multiple selection dropdown component with `checkboxes`, 
 
 ## ✨ Features
 
-- 🍃 Lightweight (~4KB)
+- 🍃 Lightweight (~3KB)
 - 💅 Themeable
 - ✌ Written w/ TypeScript
 
@@ -33,6 +33,12 @@ const Example: React.FC = () => {
     { label: "Grapes 🍇", value: "grapes" },
     { label: "Mango 🥭", value: "mango" },
     { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+    { label: "Watermelon 🍉", value: "watermelon" },
+    { label: "Pear 🍐", value: "pear" },
+    { label: "Apple 🍎", value: "apple" },
+    { label: "Tangerine 🍊", value: "tangerine" },
+    { label: "Pineapple 🍍", value: "pineapple" },
+    { label: "Peach 🍑", value: "peach" },
   ];
 
   const [selected, setSelected] = useState([]);
@@ -128,15 +134,15 @@ You can override CSS variables to customize the appearance
 
 ```css
 .multi-select {
-  --rmsc-primary: #4285f4;
+  --rmsc-main: #4285f4;
   --rmsc-hover: #f1f3f5;
   --rmsc-selected: #e2e6ea;
   --rmsc-border: #ccc;
   --rmsc-gray: #aaa;
-  --rmsc-background: #fff;
-  --rmsc-spacing: 10px;
-  --rmsc-border-radius: 4px;
-  --rmsc-height: 38px;
+  --rmsc-bg: #fff;
+  --rmsc-p: 10px; /* Spacing */
+  --rmsc-radius: 4px; /* Radius */
+  --rmsc-h: 38px; /* Height */
 }
 ```
 

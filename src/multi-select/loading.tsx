@@ -19,27 +19,24 @@ const Spinner = css({
 
   "@keyframes dash": {
     "0%": {
-      strokeDasharray: "1, 150",
-      strokeDashoffset: "0",
+      strokeDasharray: "1,150",
+      strokeDashoffset: 0,
     },
     "50%": {
-      strokeDasharray: "90, 150",
+      strokeDasharray: "90,150",
       strokeDashoffset: "-35",
     },
     "100%": {
-      strokeDasharray: "90, 150",
+      strokeDasharray: "90,150",
       strokeDashoffset: "-124",
     },
   },
 });
 
-function Loading({ size = 26 }) {
+function Loading({ size = 24 }) {
   return (
-    <div
+    <span
       style={{
-        cursor: "pointer",
-        display: "table-cell",
-        verticalAlign: "middle",
         width: size,
         marginRight: "0.2rem",
       }}
@@ -49,11 +46,11 @@ function Loading({ size = 26 }) {
         height={size}
         className={Spinner}
         viewBox="0 0 50 50"
-        style={{ display: "inline-block", verticalAlign: "middle" }}
+        style={{ display: "inline", verticalAlign: "middle" }}
       >
         <circle cx="25" cy="25" r="20" fill="none" className="path"></circle>
       </svg>
-    </div>
+    </span>
   );
 }
 

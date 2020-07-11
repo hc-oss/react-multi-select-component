@@ -7,15 +7,15 @@ import Dropdown from "./dropdown";
 import DropdownHeader from "./header";
 
 const MultiSelectBox = css({
-  "--rmscPrimary": "#4285f4",
+  "--rmscMain": "#4285f4",
   "--rmscHover": "#f1f3f5",
   "--rmscSelected": "#e2e6ea",
   "--rmscBorder": "#ccc",
   "--rmscGray": "#aaa",
-  "--rmscBackground": "#fff",
-  "--rmscSpacing": "10px",
-  "--rmscBorderRadius": "4px",
-  "--rmscHeight": "38px",
+  "--rmscBg": "#fff",
+  "--rmscP": "10px",
+  "--rmscRadius": "4px",
+  "--rmscH": "38px",
 
   "*": {
     boxSizing: "border-box",
@@ -29,7 +29,7 @@ const MultiSelectBox = css({
 const MultiSelect = ({
   focusSearchOnOpen = true,
   hasSelectAll = true,
-  shouldToggleOnHover = false,
+  shouldToggleOnHover,
   className = "multi-select",
   options,
   value,

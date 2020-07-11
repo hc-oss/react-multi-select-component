@@ -26,6 +26,8 @@ const SelectListUl = css({
   },
 });
 
+const skipIndex = 2;
+
 const SelectList = ({
   value,
   onChange,
@@ -48,19 +50,23 @@ const SelectList = ({
 
   return (
     <ul className={SelectListUl}>
-      {options.map((o: any, i) => (
-        <li key={o.hasOwnProperty("key") ? o.key : i}>
-          <SelectItem
-            focused={focusIndex === i}
-            option={o}
-            onSelectionChanged={(c) => handleSelectionChanged(o, c)}
-            checked={value.find((s) => s.value === o.value) ? true : false}
-            onClick={(e) => onClick(e, i)}
-            itemRenderer={ItemRenderer}
-            disabled={o.disabled || disabled}
-          />
-        </li>
-      ))}
+      {options.map((o: any, i) => {
+        const tabIndex = i + skipIndex;
+        return (
+          <li key={o.hasOwnProperty("key") ? o.key : i}>
+            <SelectItem
+              focused={focusIndex === tabIndex}
+              tabIndex={tabIndex}
+              option={o}
+              onSelectionChanged={(c) => handleSelectionChanged(o, c)}
+              checked={value.find((s) => s.value === o.value) ? true : false}
+              onClick={(e) => onClick(e, tabIndex)}
+              itemRenderer={ItemRenderer}
+              disabled={o.disabled || disabled}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };

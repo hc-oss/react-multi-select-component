@@ -11,7 +11,13 @@ export default {
 const options = [
   { label: "Grapes 🍇", value: "grapes" },
   { label: "Mango 🥭", value: "mango" },
-  { label: "Strawberry 🍓", value: "strawberry" },
+  { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+  { label: "Watermelon 🍉", value: "watermelon" },
+  { label: "Pear 🍐", value: "pear" },
+  { label: "Apple 🍎", value: "apple" },
+  { label: "Tangerine 🍊", value: "tangerine" },
+  { label: "Pineapple 🍍", value: "pineapple" },
+  { label: "Peach 🍑", value: "peach" },
 ];
 
 export const ExampleDefault = () => {

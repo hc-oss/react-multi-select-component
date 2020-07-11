@@ -12,6 +12,7 @@ interface ISelectItemProps {
   option: Option;
   checked: boolean;
   focused?: boolean;
+  tabIndex?: number;
   disabled?: boolean;
   onSelectionChanged: (checked: boolean) => void;
   onClick;
@@ -21,8 +22,8 @@ const ItemContainer = css({
   boxSizing: "border-box",
   cursor: "pointer",
   display: "block",
-  padding: "var(--rmsc-spacing)",
-  outline: "0",
+  padding: "var(--rmsc-p)",
+  outline: 0,
   "&:hover,&:focus": {
     background: "var(--rmsc-hover)",
   },
@@ -36,6 +37,7 @@ const SelectItem = ({
   option,
   checked,
   focused,
+  tabIndex,
   disabled,
   onSelectionChanged,
   onClick,
@@ -79,7 +81,7 @@ const SelectItem = ({
       className={`${ItemContainer} select-item ${checked && "selected"}`}
       role="option"
       aria-selected={checked}
-      tabIndex={-1}
+      tabIndex={tabIndex}
       ref={itemRef}
       onKeyDown={handleKeyDown}
     >

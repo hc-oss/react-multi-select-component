@@ -9,21 +9,16 @@ const DropdownHeader = ({ value, options, valueRenderer, overrideStrings }) => {
 
   const getSelectedText = () => value.map((s) => s.label).join(", ");
 
-  if (noneSelected) {
-    return (
-      <span className="gray">
-        {customText || getString("selectSomeItems", overrideStrings)}
-      </span>
-    );
-  }
-
-  return (
+  return noneSelected ? (
+    <span className="gray">
+      {customText || getString("selectSomeItems", overrideStrings)}
+    </span>
+  ) : (
     <span>
-      {customText
-        ? customText
-        : allSelected
-        ? getString("allItemsAreSelected", overrideStrings)
-        : getSelectedText()}
+      {customText ||
+        (allSelected
+          ? getString("allItemsAreSelected", overrideStrings)
+          : getSelectedText())}
     </span>
   );
 };
