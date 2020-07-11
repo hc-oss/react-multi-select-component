@@ -3,9 +3,8 @@
  * and hosts it in the component.  When the component is selected, it
  * drops-down the contentComponent and applies the contentProps.
  */
-import useOutsideClick from "@rooks/use-outside-click";
 import { css } from "goober";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Arrow from "./arrow";
 import Loading from "./loading";
@@ -31,41 +30,38 @@ const PanelContainer = css({
   ".panel-content": {
     maxHeight: "300px",
     overflowY: "auto",
-    borderRadius: "var(--rmsc-border-radius)",
-    backgroundColor: "var(--rmsc-background)",
-    boxShadow:
-      "0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 11px hsla(0, 0%, 0%, 0.1)",
+    borderRadius: "var(--rmsc-radius)",
+    background: "var(--rmsc-bg)",
+    boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 11px rgba(0, 0, 0, 0.1)",
   },
 });
 
 const DropdownContainer = css({
   position: "relative",
-  outline: "none",
-  backgroundColor: "var(--rmsc-background)",
+  outline: 0,
+  backgroundColor: "var(--rmsc-bg)",
   border: "1px solid var(--rmsc-border)",
-  borderRadius: "var(--rmsc-border-radius)",
+  borderRadius: "var(--rmsc-radius)",
   "&:focus-within": {
-    boxShadow: "var(--rmsc-primary) 0px 0px 0px 1px",
-    borderColor: "var(--rmsc-primary)",
+    boxShadow: "var(--rmsc-main) 0 0 0 1px",
+    borderColor: "var(--rmsc-main)",
   },
 });
 
 const DropdownHeading = css({
   position: "relative",
-  padding: "0 var(--rmsc-spacing)",
+  padding: "0 var(--rmsc-p)",
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
-  overflow: "hidden",
   width: "100%",
-  height: "var(--rmsc-height)",
+  height: "var(--rmsc-h)",
   cursor: "default",
-  outline: "none",
+  outline: 0,
   ".dropdown-heading-value": {
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
-    flex: "1",
+    flex: 1,
   },
 });
 
@@ -86,8 +82,6 @@ const Dropdown = ({
 
   const wrapper: any = useRef();
 
-  useOutsideClick(wrapper, () => setExpanded(false));
-
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     onMenuToggle && onMenuToggle(expanded);
@@ -98,7 +92,9 @@ const Dropdown = ({
       case 27: // Escape
       case 38: // Up Arrow
         setExpanded(false);
+        wrapper?.current?.focus();
         break;
+      case 32: // Space
       case 13: // Enter Key
       case 40: // Down Arrow
         setExpanded(true);
@@ -108,15 +104,24 @@ const Dropdown = ({
     }
     e.preventDefault();
   };
+
   const handleHover = (iexpanded: boolean) => {
     shouldToggleOnHover && setExpanded(iexpanded);
   };
-  const handleFocus = (e) => {
-    e.target === wrapper && !hasFocus && setHasFocus(true);
+
+  const handleFocus = () => !hasFocus && setHasFocus(true);
+
+  const handleBlur = (e) => {
+    if (!e.relatedTarget) {
+      setHasFocus(false);
+      setExpanded(false);
+    }
   };
-  const handleBlur = () => hasFocus && setHasFocus(false);
+
   const handleMouseEnter = () => handleHover(true);
+
   const handleMouseLeave = () => handleHover(false);
+
   const toggleExpanded = () =>
     setExpanded(isLoading || disabled ? false : !expanded);
 
@@ -126,7 +131,7 @@ const Dropdown = ({
       className={`${DropdownContainer} dropdown-container`}
       aria-labelledby={labelledBy}
       aria-expanded={expanded}
-      aria-readonly="true"
+      aria-readonly={true}
       aria-disabled={disabled}
       ref={wrapper}
       onKeyDown={handleKeyDown}

@@ -1468,11 +1468,6 @@
   dependencies:
     estree-walker "^1.0.1"
 
-"@rooks/use-outside-click@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@rooks/use-outside-click/-/use-outside-click-3.6.0.tgz#4189dc16b92f13c25f1c8e161c8aef6945aff486"
-  integrity sha512-DDxdcD9bDDArV2tBmh5okaJNee/7EWaC5DsPrjTxIhhvXPpUatizcn2qYLcvX7y1vYpd64Wyqvkb87E6fsIfEQ==
-
 "@storybook/addon-actions@^5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.3.19.tgz#50548fa6e84bc79ad95233ce23ade4878fc7cfac"

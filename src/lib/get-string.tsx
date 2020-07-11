@@ -5,12 +5,6 @@ const strings = {
   search: "Search",
 };
 
-function getString(key: string, overrideStrings?): string {
-  if (overrideStrings && overrideStrings[key]) {
-    return overrideStrings[key];
-  }
-
-  return strings[key];
+export default function getString(key: string, overrideStrings?): string {
+  return overrideStrings?.[key] || strings[key];
 }
-
-export default getString;

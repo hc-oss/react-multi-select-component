@@ -28,18 +28,18 @@ interface ISelectPanelProps {
 
 enum FocusType {
   SEARCH = -1,
-  NONE = 0,
+  NONE = 1,
 }
 
 const SelectSearchContainer = css({
   width: "100%",
   borderBottom: "1px solid var(--rmsc-border)",
   input: {
-    height: "var(--rmsc-height)",
-    padding: "0 var(--rmsc-spacing)",
+    height: "var(--rmsc-h)",
+    padding: "0 var(--rmsc-p)",
     width: "100%",
-    outline: "none",
-    border: "0",
+    outline: 0,
+    border: 0,
   },
 });
 
@@ -59,7 +59,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   } = props;
   const [searchText, setSearchText] = useState("");
   const [focusIndex, setFocusIndex] = useState(
-    focusSearchOnOpen ? FocusType.SEARCH : FocusType.NONE
+    focusSearchOnOpen && !disableSearch ? FocusType.SEARCH : FocusType.NONE
   );
 
   const [selectAllLength, setSelectAllLength] = useState<number>();
@@ -127,7 +127,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
 
   const updateFocus = (offset: number) => {
     let newFocus = focusIndex + offset;
-    newFocus = Math.max(0, newFocus);
+    newFocus = Math.max(1, newFocus);
     newFocus = Math.min(newFocus, options.length);
     setFocusIndex(newFocus);
   };
@@ -149,7 +149,8 @@ export const SelectPanel = (props: ISelectPanelProps) => {
 
       {hasSelectAll && !searchText && (
         <SelectItem
-          focused={focusIndex === 0}
+          focused={focusIndex === 1}
+          tabIndex={1}
           checked={selectAllLength === value.length}
           option={selectAllOption}
           onSelectionChanged={selectAllChanged}
@@ -162,8 +163,8 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       <SelectList
         {...props}
         options={filteredOptions()}
-        focusIndex={focusIndex - 1}
-        onClick={(_e, index) => handleItemClicked(index + 1)}
+        focusIndex={focusIndex}
+        onClick={(_e, index) => handleItemClicked(index)}
         ItemRenderer={ItemRenderer}
         disabled={disabled}
       />
