@@ -146,6 +146,8 @@ You can override CSS variables to customize the appearance
 }
 ```
 
+> use `!important` if CSS variables are not getting applied
+
 ## 🤠 Credits
 
 - This project gets inspiration and several pieces of logical code from [react-multiple-select](https://github.com/Khan/react-multi-select/)
