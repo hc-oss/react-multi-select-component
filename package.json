@@ -22,7 +22,7 @@
     "react": ">=16"
   },
   "dependencies": {
-    "goober": "^1.8.0"
+    "goober": "^2.0.4"
   },
   "devDependencies": {
     "@ampproject/filesize": "^4.2.0",
