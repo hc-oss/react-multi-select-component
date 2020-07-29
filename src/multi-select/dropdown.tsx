@@ -112,7 +112,7 @@ const Dropdown = ({
   const handleFocus = () => !hasFocus && setHasFocus(true);
 
   const handleBlur = (e) => {
-    if (!e.relatedTarget) {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
       setHasFocus(false);
       setExpanded(false);
     }
