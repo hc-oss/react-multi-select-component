@@ -6103,10 +6103,10 @@ globrex@^0.1.1:
   resolved "https://registry.yarnpkg.com/globrex/-/globrex-0.1.2.tgz#dd5d9ec826232730cd6793a5e33a9302985e6098"
   integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
-goober@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/goober/-/goober-1.8.0.tgz#ed97e40e87300c6d1c8304a9d4b0f1398ff7669a"
-  integrity sha512-9ZFoOkBccexjqIgcwlhq7C/eCSkgTZX0BdNUkOnBFLedrJgo3R8lp9ckd/qqtngtF/JDyXSxJzwMU98kNjZ4Mw==
+goober@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.4.tgz#3e9fda363e0feb23db928a9c64db8b360dcba918"
+  integrity sha512-jatEsdlF0XTCcmJcbjPPodk6DKK9d7tnXcspuTdEnNMg9t3qsf6qc27d1t0FC+Li+W7vhuYZX3BuQX3FscnqNQ==
 
 good-listener@^1.2.2:
   version "1.2.2"
