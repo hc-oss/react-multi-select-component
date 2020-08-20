@@ -24,6 +24,7 @@ interface ISelectPanelProps {
   hasSelectAll: boolean;
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
+  ClearIcon?;
 }
 
 enum FocusType {
@@ -33,6 +34,7 @@ enum FocusType {
 
 const SelectSearchContainer = css({
   width: "100%",
+  position: "relative",
   borderBottom: "1px solid var(--rmsc-border)",
   input: {
     height: "var(--rmsc-h)",
@@ -40,6 +42,28 @@ const SelectSearchContainer = css({
     width: "100%",
     outline: 0,
     border: 0,
+  },
+});
+
+const SearchClearButton = css({
+  position: "absolute",
+  top: "50%",
+  right: "11px",
+  display: "inline-block",
+  width: "12px",
+  height: "12px",
+  marginTop: "-6px",
+  fontSize: "12px",
+  fontStyle: "normal",
+  lineHeight: "1",
+  textAlign: "center",
+  textTransform: "none",
+  background: "#fff",
+  cursor: "pointer",
+  paddingLeft: "5px",
+  "& > *": {
+    maxHeight: "12px",
+    maxWidth: "12px",
   },
 });
 
@@ -56,6 +80,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     focusSearchOnOpen,
     hasSelectAll,
     overrideStrings,
+    ClearIcon,
   } = props;
   const [searchText, setSearchText] = useState("");
   const [focusIndex, setFocusIndex] = useState(
@@ -93,7 +118,15 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(FocusType.SEARCH);
   };
 
+  const handleClear = () => {
+    setSearchText("");
+  };
+
   const handleItemClicked = (index: number) => setFocusIndex(index);
+
+  const FinalClearIcon = React.isValidElement(ClearIcon)
+    ? React.cloneElement(ClearIcon)
+    : null;
 
   const handleKeyDown = (e) => {
     switch (e.which) {
@@ -136,14 +169,23 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
       {!disableSearch && (
         <div className={SelectSearchContainer}>
-          <input
-            autoFocus={focusSearchOnOpen}
-            placeholder={getString("search", overrideStrings)}
-            type="search"
-            aria-describedby={getString("search", overrideStrings)}
-            onChange={handleSearchChange}
-            onFocus={handleSearchFocus}
-          />
+          <span>
+            <input
+              autoFocus={focusSearchOnOpen}
+              placeholder={getString("search", overrideStrings)}
+              type="search"
+              aria-describedby={getString("search", overrideStrings)}
+              onChange={handleSearchChange}
+              onFocus={handleSearchFocus}
+              value={searchText}
+            />
+          </span>
+          <span
+            className={`${SearchClearButton} search-clear-button`}
+            onClick={handleClear}
+          >
+            {FinalClearIcon ? FinalClearIcon : "ⓧ"}
+          </span>
         </div>
       )}
 

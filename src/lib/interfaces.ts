@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface ITheme {
   primary: string;
   hover: string;
@@ -34,4 +36,5 @@ export interface ISelectProps {
   labelledBy: string;
   className?: string;
   onMenuToggle?;
+  ClearIcon?: ReactNode;
 }

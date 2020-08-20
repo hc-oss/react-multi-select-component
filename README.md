@@ -80,6 +80,7 @@ export default Example;
 | `className`           | class name for parent component                        | `string`                     | `multi-select` |
 | `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer) | `function`                   |                |
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
+| `ClearIcon`           | Custom Clear Icon for Search                           | `React Node`                 |`ⓧ`            |
 
 ## 🔍 Custom filter logic
 
