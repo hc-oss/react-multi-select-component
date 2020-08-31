@@ -1814,21 +1814,21 @@
     ts-dedent "^1.1.1"
 
 "@storybook/addon-storysource@^6.0.13":
-  version "6.0.16"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.0.16.tgz#5cd9e659054953da907630c7b5f05d5d19677dbe"
-  integrity sha512-9ZvWc7BLLmmEGkfdmMN5/iu5xXqpm46ucSml9K6m3L6w1y7opvELrhk4dzGd0ggSCrGfljaraJXUBeyAYYG+Pg==
+  version "6.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.0.21.tgz#fce9a6de8b276239dbb49b809f3b5efd9fbcecb4"
+  integrity sha512-h8bu2twPfBRbWlxg8LRtCM5/r2FxWahJa0RC70qDX6eNdzDw6Xv0B8bZsVxKPWqBNQbwYPz5ui44ym53dFDM/Q==
   dependencies:
-    "@storybook/addons" "6.0.16"
-    "@storybook/api" "6.0.16"
-    "@storybook/client-logger" "6.0.16"
-    "@storybook/components" "6.0.16"
-    "@storybook/router" "6.0.16"
-    "@storybook/source-loader" "6.0.16"
-    "@storybook/theming" "6.0.16"
+    "@storybook/addons" "6.0.21"
+    "@storybook/api" "6.0.21"
+    "@storybook/client-logger" "6.0.21"
+    "@storybook/components" "6.0.21"
+    "@storybook/router" "6.0.21"
+    "@storybook/source-loader" "6.0.21"
+    "@storybook/theming" "6.0.21"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     loader-utils "^2.0.0"
-    prettier "^2.0.5"
+    prettier "~2.0.5"
     prop-types "^15.7.2"
     react "^16.9.17"
     react-syntax-highlighter "^12.2.1"
@@ -2434,6 +2434,22 @@
     loader-utils "^2.0.0"
     lodash "^4.17.15"
     prettier "^2.0.5"
+    regenerator-runtime "^0.13.3"
+
+"@storybook/source-loader@6.0.21":
+  version "6.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.0.21.tgz#f4ae0fa3f3d119f9ace1d3364df21f8f7cf65bd7"
+  integrity sha512-Duzpz8udadR7wzH8/4F3GnMRe23oBOxTm4jBZw/T8NA+HqBtd9Y16swWw4BfwsRwfdZS4EVw3PtWgsAfoqF7ow==
+  dependencies:
+    "@storybook/addons" "6.0.21"
+    "@storybook/client-logger" "6.0.21"
+    "@storybook/csf" "0.0.1"
+    core-js "^3.0.1"
+    estraverse "^4.2.0"
+    global "^4.3.2"
+    loader-utils "^2.0.0"
+    lodash "^4.17.15"
+    prettier "~2.0.5"
     regenerator-runtime "^0.13.3"
 
 "@storybook/theming@6.0.16":
@@ -9962,6 +9978,11 @@ prettier@^2.0.5:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.1.1.tgz#d9485dd5e499daa6cb547023b87a6cf51bee37d6"
   integrity sha512-9bY+5ZWCfqj3ghYBLxApy2zf6m+NJo5GzmLTpr9FsApsfjriNnS2dahWReHMi7qNPhhHl9SYHJs2cHZLgexNIw==
+
+prettier@~2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
+  integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
 
 pretty-error@^2.1.1:
   version "2.1.1"
