@@ -80,6 +80,7 @@ export default Example;
 | `className`           | class name for parent component                        | `string`                     | `multi-select` |
 | `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer) | `function`                   |                |
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
+| `ClearIcon`           | Custom Clear Icon for Search                           | `string|function`            |                |
 
 ## 🔍 Custom filter logic
 
@@ -106,7 +107,8 @@ default values for `overrideStrings` are as below
   "selectSomeItems": "Select...",
   "allItemsAreSelected": "All items are selected.",
   "selectAll": "Select All",
-  "search": "Search"
+  "search": "Search",
+  "clearSearch": "Clear Search"
 }
 ```
 

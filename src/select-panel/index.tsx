@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import getString from "../lib/get-string";
 import { Option } from "../lib/interfaces";
+import Cross from "./cross";
 import SelectItem from "./select-item";
 import SelectList from "./select-list";
 
@@ -24,6 +25,7 @@ interface ISelectPanelProps {
   hasSelectAll: boolean;
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
+  ClearIcon?;
 }
 
 enum FocusType {
@@ -33,6 +35,7 @@ enum FocusType {
 
 const SelectSearchContainer = css({
   width: "100%",
+  position: "relative",
   borderBottom: "1px solid var(--rmsc-border)",
   input: {
     height: "var(--rmsc-h)",
@@ -40,6 +43,20 @@ const SelectSearchContainer = css({
     width: "100%",
     outline: 0,
     border: 0,
+  },
+});
+
+const SearchClearButton = css({
+  cursor: "pointer",
+  position: "absolute",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  background: "none",
+  border: 0,
+  padding: "0 calc(var(--rmsc-p)/2)",
+  "[hidden]": {
+    display: "none",
   },
 });
 
@@ -56,6 +73,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     focusSearchOnOpen,
     hasSelectAll,
     overrideStrings,
+    ClearIcon,
   } = props;
   const [searchText, setSearchText] = useState("");
   const [focusIndex, setFocusIndex] = useState(
@@ -92,6 +110,8 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setSearchText(e.target.value);
     setFocusIndex(FocusType.SEARCH);
   };
+
+  const handleClear = () => setSearchText("");
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
 
@@ -139,11 +159,20 @@ export const SelectPanel = (props: ISelectPanelProps) => {
           <input
             autoFocus={focusSearchOnOpen}
             placeholder={getString("search", overrideStrings)}
-            type="search"
+            type="text"
             aria-describedby={getString("search", overrideStrings)}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
+            value={searchText}
           />
+          <button
+            className={`${SearchClearButton} search-clear-button`}
+            hidden={!searchText}
+            onClick={handleClear}
+            aria-label={getString("clearSearch", overrideStrings)}
+          >
+            {ClearIcon || <Cross />}
+          </button>
         </div>
       )}
 
