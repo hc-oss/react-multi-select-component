@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import getString from "../lib/get-string";
 import { Option } from "../lib/interfaces";
+import Cross from "./cross";
 import SelectItem from "./select-item";
 import SelectList from "./select-list";
 
@@ -46,24 +47,16 @@ const SelectSearchContainer = css({
 });
 
 const SearchClearButton = css({
-  position: "absolute",
-  top: "50%",
-  right: "11px",
-  display: "inline-block",
-  width: "12px",
-  height: "12px",
-  marginTop: "-6px",
-  fontSize: "12px",
-  fontStyle: "normal",
-  lineHeight: "1",
-  textAlign: "center",
-  textTransform: "none",
-  background: "#fff",
   cursor: "pointer",
-  paddingLeft: "5px",
-  "& > *": {
-    maxHeight: "12px",
-    maxWidth: "12px",
+  position: "absolute",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  background: "none",
+  border: 0,
+  padding: "0 calc(var(--rmsc-p)/2)",
+  "[hidden]": {
+    display: "none",
   },
 });
 
@@ -118,15 +111,9 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const handleClear = () => {
-    setSearchText("");
-  };
+  const handleClear = () => setSearchText("");
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
-
-  const FinalClearIcon = React.isValidElement(ClearIcon)
-    ? React.cloneElement(ClearIcon)
-    : null;
 
   const handleKeyDown = (e) => {
     switch (e.which) {
@@ -169,23 +156,23 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
       {!disableSearch && (
         <div className={SelectSearchContainer}>
-          <span>
-            <input
-              autoFocus={focusSearchOnOpen}
-              placeholder={getString("search", overrideStrings)}
-              type="search"
-              aria-describedby={getString("search", overrideStrings)}
-              onChange={handleSearchChange}
-              onFocus={handleSearchFocus}
-              value={searchText}
-            />
-          </span>
-          <span
+          <input
+            autoFocus={focusSearchOnOpen}
+            placeholder={getString("search", overrideStrings)}
+            type="text"
+            aria-describedby={getString("search", overrideStrings)}
+            onChange={handleSearchChange}
+            onFocus={handleSearchFocus}
+            value={searchText}
+          />
+          <button
             className={`${SearchClearButton} search-clear-button`}
+            hidden={!searchText}
             onClick={handleClear}
+            aria-label={getString("clearSearch", overrideStrings)}
           >
-            {FinalClearIcon ? FinalClearIcon : "ⓧ"}
-          </span>
+            {ClearIcon || <Cross />}
+          </button>
         </div>
       )}
 
