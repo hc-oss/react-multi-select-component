@@ -4,6 +4,7 @@ const strings = {
   selectAll: "Select All",
   search: "Search",
   clearSearch: "Clear Search",
+  clearSelected: "Clear Selected",
 };
 
 export default function getString(key: string, overrideStrings?): string {

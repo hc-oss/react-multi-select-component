@@ -81,6 +81,7 @@ export default Example;
 | `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer) | `function`                   |                |
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
 | `ClearIcon`           | Custom Clear Icon for Search                           | `string|function`            |                |
+| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                   | `string|function`            |                |
 
 ## 🔍 Custom filter logic
 
