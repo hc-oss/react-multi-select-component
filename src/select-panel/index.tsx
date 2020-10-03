@@ -4,7 +4,7 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import getString from "../lib/get-string";
@@ -80,25 +80,25 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     focusSearchOnOpen && !disableSearch ? FocusType.SEARCH : FocusType.NONE
   );
 
-  const [selectAllLength, setSelectAllLength] = useState<number>();
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
     value: "",
   };
 
-  useEffect(() => {
-    setSelectAllLength(selectAllValues(true).length);
-    // eslint-disable-next-line
-  }, [options]);
-
   const selectAllValues = (checked) => {
-    const selectedValues = value.map((o) => o.value);
-    return options.filter(({ disabled, value }) => {
-      if (checked) {
-        return !disabled || selectedValues.includes(value);
-      }
-      return disabled && selectedValues.includes(value);
-    });
+    const optionsWithFilterApplied = filteredOptions();
+    const newOptions = [...value];
+    optionsWithFilterApplied
+      .filter(({ disabled }) => !disabled)
+      .forEach((o) => {
+        const index = newOptions.findIndex((elem) => elem.value === o.value);
+        if (checked && index === -1) {
+          newOptions.push(o);
+        } else if (!checked && index !== -1) {
+          newOptions.splice(index, 1);
+        }
+      });
+    return newOptions;
   };
 
   const selectAllChanged = (checked: boolean) => {
@@ -140,10 +140,12 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const filteredOptions = () =>
-    customFilterOptions
+  const filteredOptions = () => {
+    const filtered = customFilterOptions
       ? customFilterOptions(options, searchText)
       : filterOptions(options, searchText);
+    return filtered;
+  };
 
   const updateFocus = (offset: number) => {
     let newFocus = focusIndex + offset;
@@ -151,6 +153,14 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     newFocus = Math.min(newFocus, options.length);
     setFocusIndex(newFocus);
   };
+
+  const isAllOptionSelected = Boolean(
+    filteredOptions()
+      .filter(({ disabled }) => !disabled)
+      .every((elem) =>
+        value.find((selected) => selected.value === elem.value) ? true : false
+      ) && value.length
+  );
 
   return (
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
@@ -176,18 +186,19 @@ export const SelectPanel = (props: ISelectPanelProps) => {
         </div>
       )}
 
-      {hasSelectAll && !searchText && (
-        <SelectItem
-          focused={focusIndex === 1}
-          tabIndex={1}
-          checked={selectAllLength === value.length}
-          option={selectAllOption}
-          onSelectionChanged={selectAllChanged}
-          onClick={() => handleItemClicked(0)}
-          itemRenderer={ItemRenderer}
-          disabled={disabled}
-        />
-      )}
+      {hasSelectAll &&
+        filteredOptions().filter(({ disabled }) => !disabled).length > 0 && (
+          <SelectItem
+            focused={focusIndex === 1}
+            tabIndex={1}
+            checked={isAllOptionSelected}
+            option={selectAllOption}
+            onSelectionChanged={selectAllChanged}
+            onClick={() => handleItemClicked(0)}
+            itemRenderer={ItemRenderer}
+            disabled={disabled}
+          />
+        )}
 
       <SelectList
         {...props}
