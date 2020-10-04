@@ -78,7 +78,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     overrideStrings,
     ClearIcon,
     debounceSearch,
-    debounceDuration = 500,
+    debounceDuration,
   } = props;
   const [searchText, setSearchText] = useState("");
   const [searchTextForFilter, setSearchTextForFilter] = useState("");
