@@ -35,6 +35,5 @@ export interface ISelectProps {
   className?: string;
   onMenuToggle?;
   ClearIcon?: string | Function;
-  debounceSearch?: boolean;
   debounceDuration?: number;
 }

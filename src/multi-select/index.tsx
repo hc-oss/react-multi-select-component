@@ -68,7 +68,6 @@ const MultiSelect = ({
           filterOptions,
           overrideStrings,
           ClearIcon,
-          debounceSearch,
           debounceDuration,
         }}
         disabled={disabled}
