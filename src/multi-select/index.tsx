@@ -46,6 +46,8 @@ const MultiSelect = ({
   labelledBy,
   onMenuToggle,
   ClearIcon,
+  debounceSearch,
+  debounceDuration,
 }: ISelectProps) => {
   const nvalue = value || [];
   return (
@@ -67,6 +69,8 @@ const MultiSelect = ({
           filterOptions,
           overrideStrings,
           ClearIcon,
+          debounceSearch,
+          debounceDuration,
         }}
         disabled={disabled}
         labelledBy={labelledBy}

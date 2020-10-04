@@ -81,6 +81,8 @@ export default Example;
 | `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer) | `function`                   |                |
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
 | `ClearIcon`           | Custom Clear Icon for Search                           | `string|function`            |                |
+| `debounceSearch`      | debounce search input                                  | `boolean`                    | `false`        |
+| `debounceDuration`    | debounce duraion for Search                            | `number`                     | `500`          |
 
 ## 🔍 Custom filter logic
 
