@@ -27,7 +27,6 @@ interface ISelectPanelProps {
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
   ClearIcon?;
-  debounceSearch?: boolean;
   debounceDuration?: number;
 }
 
@@ -77,7 +76,6 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     hasSelectAll,
     overrideStrings,
     ClearIcon,
-    debounceSearch,
     debounceDuration,
   } = props;
   const [searchText, setSearchText] = useState("");
@@ -117,11 +115,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   };
 
   const handleSearchChange = (e) => {
-    if (debounceSearch) {
-      debouncedSearch(e.target.value);
-    } else {
-      setSearchTextForFilter(e.target.value);
-    }
+    debouncedSearch(e.target.value);
     setSearchText(e.target.value);
     setFocusIndex(FocusType.SEARCH);
   };
