@@ -141,7 +141,7 @@ const Dropdown = ({
 
   const handleClearSelected = (e) => {
     e.stopPropagation();
-    contentProps["onChange"] && contentProps["onChange"]([]);
+    contentProps["onChange"]([]);
   };
 
   return (
@@ -165,17 +165,19 @@ const Dropdown = ({
       >
         <div className="dropdown-heading-value">{children}</div>
         {isLoading && <Loading />}
-        <button
-          hidden={!contentProps["value"].length}
-          className={`${ClearSelectedButton} clear-selected-button`}
-          onClick={handleClearSelected}
-          aria-label={getString(
-            "clearSelected",
-            contentProps["overrideStrings"]
-          )}
-        >
-          {ClearSelectedIcon || <Cross />}
-        </button>
+        {contentProps["value"].length > 0 && (
+          <button
+            type="button"
+            className={`${ClearSelectedButton} clear-selected-button`}
+            onClick={handleClearSelected}
+            aria-label={getString(
+              "clearSelected",
+              contentProps["overrideStrings"]
+            )}
+          >
+            {ClearSelectedIcon || <Cross />}
+          </button>
+        )}
         <FinalArrow expanded={expanded} />
       </div>
       {expanded && (
