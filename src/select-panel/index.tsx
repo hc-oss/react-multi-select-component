@@ -4,10 +4,10 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
-import { filterOptions } from "../lib/fuzzy-match-utils";
 import { debounce } from "../lib/debounce";
+import { filterOptions } from "../lib/fuzzy-match-utils";
 import getString from "../lib/get-string";
 import { Option } from "../lib/interfaces";
 import Cross from "./cross";
@@ -171,6 +171,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       ),
       filteredOptionsList.length !== 0,
     ];
+    // eslint-disable-next-line
   }, [searchText, value]);
 
   return (
