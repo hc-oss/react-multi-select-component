@@ -35,4 +35,5 @@ export interface ISelectProps {
   className?: string;
   onMenuToggle?;
   ClearIcon?: string | Function;
+  ClearSelectedIcon?: string | Function;
 }

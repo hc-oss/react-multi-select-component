@@ -46,6 +46,7 @@ const MultiSelect = ({
   labelledBy,
   onMenuToggle,
   ClearIcon,
+  ClearSelectedIcon,
 }: ISelectProps) => {
   const nvalue = value || [];
   return (
@@ -72,6 +73,7 @@ const MultiSelect = ({
         labelledBy={labelledBy}
         onMenuToggle={onMenuToggle}
         ArrowRenderer={ArrowRenderer}
+        ClearSelectedIcon={ClearSelectedIcon}
       >
         <DropdownHeader
           value={nvalue}
