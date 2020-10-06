@@ -7,8 +7,8 @@ import { css } from "goober";
 import React, { useEffect, useRef, useState } from "react";
 
 import getString from "../lib/get-string";
-import Arrow from "./arrow";
 import Cross from "../select-panel/cross";
+import Arrow from "./arrow";
 import Loading from "./loading";
 
 interface IDropdownProps {
@@ -73,9 +73,6 @@ const ClearSelectedButton = css({
   background: "none",
   border: 0,
   padding: 0,
-  "[hidden]": {
-    display: "none",
-  },
 });
 
 const Dropdown = ({
