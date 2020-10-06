@@ -6,6 +6,8 @@
 import { css } from "goober";
 import React, { useEffect, useRef, useState } from "react";
 
+import getString from "../lib/get-string";
+import Cross from "../select-panel/cross";
 import Arrow from "./arrow";
 import Loading from "./loading";
 
@@ -19,6 +21,7 @@ interface IDropdownProps {
   labelledBy?: string;
   onMenuToggle?;
   ArrowRenderer?;
+  ClearSelectedIcon?;
 }
 
 const PanelContainer = css({
@@ -65,6 +68,13 @@ const DropdownHeading = css({
   },
 });
 
+const ClearSelectedButton = css({
+  cursor: "pointer",
+  background: "none",
+  border: 0,
+  padding: 0,
+});
+
 const Dropdown = ({
   children,
   contentComponent: ContentComponent,
@@ -75,6 +85,7 @@ const Dropdown = ({
   labelledBy,
   onMenuToggle,
   ArrowRenderer,
+  ClearSelectedIcon,
 }: IDropdownProps) => {
   const [expanded, setExpanded] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
@@ -125,6 +136,11 @@ const Dropdown = ({
   const toggleExpanded = () =>
     setExpanded(isLoading || disabled ? false : !expanded);
 
+  const handleClearSelected = (e) => {
+    e.stopPropagation();
+    contentProps["onChange"]([]);
+  };
+
   return (
     <div
       tabIndex={0}
@@ -146,6 +162,19 @@ const Dropdown = ({
       >
         <div className="dropdown-heading-value">{children}</div>
         {isLoading && <Loading />}
+        {contentProps["value"].length > 0 && (
+          <button
+            type="button"
+            className={`${ClearSelectedButton} clear-selected-button`}
+            onClick={handleClearSelected}
+            aria-label={getString(
+              "clearSelected",
+              contentProps["overrideStrings"]
+            )}
+          >
+            {ClearSelectedIcon || <Cross />}
+          </button>
+        )}
         <FinalArrow expanded={expanded} />
       </div>
       {expanded && (

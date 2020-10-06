@@ -36,4 +36,5 @@ export interface ISelectProps {
   onMenuToggle?;
   ClearIcon?: string | Function;
   debounceDuration?: number;
+  ClearSelectedIcon?: string | Function;
 }

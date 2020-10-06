@@ -4,7 +4,7 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import { debounce } from "../lib/debounce";
@@ -88,25 +88,24 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     []
   );
 
-  const [selectAllLength, setSelectAllLength] = useState<number>();
   const selectAllOption = {
     label: selectAllLabel || getString("selectAll", overrideStrings),
     value: "",
   };
 
-  useEffect(() => {
-    setSelectAllLength(selectAllValues(true).length);
-    // eslint-disable-next-line
-  }, [options]);
-
   const selectAllValues = (checked) => {
-    const selectedValues = value.map((o) => o.value);
-    return options.filter(({ disabled, value }) => {
-      if (checked) {
-        return !disabled || selectedValues.includes(value);
-      }
-      return disabled && selectedValues.includes(value);
-    });
+    const filteredValues = filteredOptions()
+      .filter((o) => !o.disabled)
+      .map((o) => o.value);
+
+    if (checked) {
+      const selectedValues = value.map((o) => o.value);
+      const finalSelectedValues = [...selectedValues, ...filteredValues];
+
+      return options.filter(({ value }) => finalSelectedValues.includes(value));
+    }
+
+    return value.filter((o) => !filteredValues.includes(o.value));
   };
 
   const selectAllChanged = (checked: boolean) => {
@@ -164,6 +163,16 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(newFocus);
   };
 
+  const [isAllOptionSelected, hasSelectableOptions] = useMemo(() => {
+    const filteredOptionsList = filteredOptions().filter((o) => !o.disabled);
+    return [
+      filteredOptionsList.every(
+        (o) => value.findIndex((v) => v.value === o.value) !== -1
+      ),
+      filteredOptionsList.length !== 0,
+    ];
+  }, [searchText, value]);
+
   return (
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
       {!disableSearch && (
@@ -173,6 +182,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
             placeholder={getString("search", overrideStrings)}
             type="text"
             aria-describedby={getString("search", overrideStrings)}
+            onKeyDown={(e) => e.stopPropagation()}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
             value={searchText}
@@ -188,11 +198,11 @@ export const SelectPanel = (props: ISelectPanelProps) => {
         </div>
       )}
 
-      {hasSelectAll && !searchText && (
+      {hasSelectAll && hasSelectableOptions && (
         <SelectItem
           focused={focusIndex === 1}
           tabIndex={1}
-          checked={selectAllLength === value.length}
+          checked={isAllOptionSelected}
           option={selectAllOption}
           onSelectionChanged={selectAllChanged}
           onClick={() => handleItemClicked(0)}

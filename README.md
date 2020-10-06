@@ -82,6 +82,7 @@ export default Example;
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
 | `ClearIcon`           | Custom Clear Icon for Search                           | `string|function`            |                |
 | `debounceDuration`    | debounce duraion for Search                            | `number`                     | `300`          |
+| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                   | `string|function`            |                |
 
 ## 🔍 Custom filter logic
 
