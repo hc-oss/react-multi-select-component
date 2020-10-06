@@ -9,7 +9,7 @@ Simple and lightweight multiple selection dropdown component with `checkboxes`, 
 
 ## ✨ Features
 
-- 🍃 Lightweight (~3KB)
+- 🍃 Lightweight (<5KB)
 - 💅 Themeable
 - ✌ Written w/ TypeScript
 
