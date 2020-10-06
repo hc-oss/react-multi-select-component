@@ -161,6 +161,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
             placeholder={getString("search", overrideStrings)}
             type="text"
             aria-describedby={getString("search", overrideStrings)}
+            onKeyDown={(e) => e.stopPropagation()}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
             value={searchText}
