@@ -151,13 +151,15 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(newFocus);
   };
 
-  const isAllOptionSelected = useMemo(
-    () =>
-      filteredOptions()
-        .filter((o) => !o.disabled)
-        .every((o) => value.findIndex((v) => v.value === o.value) !== -1),
-    [searchText, value]
-  );
+  const [isAllOptionSelected, hasSelectableOptions] = useMemo(() => {
+    const filteredOptionsList = filteredOptions().filter((o) => !o.disabled);
+    return [
+      filteredOptionsList.every(
+        (o) => value.findIndex((v) => v.value === o.value) !== -1
+      ),
+      filteredOptionsList.length !== 0,
+    ];
+  }, [searchText, value]);
 
   return (
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
@@ -183,19 +185,18 @@ export const SelectPanel = (props: ISelectPanelProps) => {
         </div>
       )}
 
-      {hasSelectAll &&
-        filteredOptions().filter(({ disabled }) => !disabled).length > 0 && (
-          <SelectItem
-            focused={focusIndex === 1}
-            tabIndex={1}
-            checked={isAllOptionSelected}
-            option={selectAllOption}
-            onSelectionChanged={selectAllChanged}
-            onClick={() => handleItemClicked(0)}
-            itemRenderer={ItemRenderer}
-            disabled={disabled}
-          />
-        )}
+      {hasSelectAll && hasSelectableOptions && (
+        <SelectItem
+          focused={focusIndex === 1}
+          tabIndex={1}
+          checked={isAllOptionSelected}
+          option={selectAllOption}
+          onSelectionChanged={selectAllChanged}
+          onClick={() => handleItemClicked(0)}
+          itemRenderer={ItemRenderer}
+          disabled={disabled}
+        />
+      )}
 
       <SelectList
         {...props}
