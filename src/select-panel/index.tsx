@@ -4,9 +4,10 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { filterOptions } from "../lib/fuzzy-match-utils";
+import { debounce } from "../lib/debounce";
 import getString from "../lib/get-string";
 import { Option } from "../lib/interfaces";
 import Cross from "./cross";
@@ -26,6 +27,7 @@ interface ISelectPanelProps {
   filterOptions?: (options: Option[], filter: string) => Option[];
   overrideStrings?: { [key: string]: string };
   ClearIcon?;
+  debounceDuration?: number;
 }
 
 enum FocusType {
@@ -74,10 +76,16 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     hasSelectAll,
     overrideStrings,
     ClearIcon,
+    debounceDuration,
   } = props;
   const [searchText, setSearchText] = useState("");
+  const [searchTextForFilter, setSearchTextForFilter] = useState("");
   const [focusIndex, setFocusIndex] = useState(
     focusSearchOnOpen && !disableSearch ? FocusType.SEARCH : FocusType.NONE
+  );
+  const debouncedSearch = useCallback(
+    debounce((query) => setSearchTextForFilter(query), debounceDuration),
+    []
   );
 
   const selectAllOption = {
@@ -106,11 +114,15 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   };
 
   const handleSearchChange = (e) => {
+    debouncedSearch(e.target.value);
     setSearchText(e.target.value);
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const handleClear = () => setSearchText("");
+  const handleClear = () => {
+    setSearchTextForFilter("");
+    setSearchText("");
+  };
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
 
@@ -141,8 +153,8 @@ export const SelectPanel = (props: ISelectPanelProps) => {
 
   const filteredOptions = () =>
     customFilterOptions
-      ? customFilterOptions(options, searchText)
-      : filterOptions(options, searchText);
+      ? customFilterOptions(options, searchTextForFilter)
+      : filterOptions(options, searchTextForFilter);
 
   const updateFocus = (offset: number) => {
     let newFocus = focusIndex + offset;
