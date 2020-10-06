@@ -4,7 +4,7 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import getString from "../lib/get-string";
@@ -86,19 +86,18 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   };
 
   const selectAllValues = (checked) => {
-    const optionsWithFilterApplied = filteredOptions();
-    const newOptions = [...value];
-    optionsWithFilterApplied
-      .filter(({ disabled }) => !disabled)
-      .forEach((o) => {
-        const index = newOptions.findIndex((elem) => elem.value === o.value);
-        if (checked && index === -1) {
-          newOptions.push(o);
-        } else if (!checked && index !== -1) {
-          newOptions.splice(index, 1);
-        }
-      });
-    return newOptions;
+    const filteredValues = filteredOptions()
+      .filter((o) => !o.disabled)
+      .map((o) => o.value);
+
+    if (checked) {
+      const selectedValues = value.map((o) => o.value);
+      const finalSelectedValues = [...selectedValues, ...filteredValues];
+
+      return options.filter(({ value }) => finalSelectedValues.includes(value));
+    }
+
+    return value.filter((o) => !filteredValues.includes(o.value));
   };
 
   const selectAllChanged = (checked: boolean) => {
@@ -140,12 +139,10 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const filteredOptions = () => {
-    const filtered = customFilterOptions
+  const filteredOptions = () =>
+    customFilterOptions
       ? customFilterOptions(options, searchText)
       : filterOptions(options, searchText);
-    return filtered;
-  };
 
   const updateFocus = (offset: number) => {
     let newFocus = focusIndex + offset;
@@ -154,12 +151,12 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(newFocus);
   };
 
-  const isAllOptionSelected = Boolean(
-    filteredOptions()
-      .filter(({ disabled }) => !disabled)
-      .every((elem) =>
-        value.find((selected) => selected.value === elem.value) ? true : false
-      ) && value.length
+  const isAllOptionSelected = useMemo(
+    () =>
+      filteredOptions()
+        .filter((o) => !o.disabled)
+        .every((o) => value.findIndex((v) => v.value === o.value) !== -1),
+    [searchText, value]
   );
 
   return (
