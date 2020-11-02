@@ -119,7 +119,8 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const handleClear = () => {
+  const handleClear = e => {
+    e.preventDefault();
     setSearchTextForFilter("");
     setSearchText("");
   };
