@@ -119,8 +119,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const handleClear = e => {
-    e.preventDefault();
+  const handleClear = () => {
     setSearchTextForFilter("");
     setSearchText("");
   };
@@ -190,6 +189,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
             value={searchText}
           />
           <button
+            type="button"
             className={`${SearchClearButton} search-clear-button`}
             hidden={!searchText}
             onClick={handleClear}
