@@ -189,6 +189,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
             value={searchText}
           />
           <button
+            type="button"
             className={`${SearchClearButton} search-clear-button`}
             hidden={!searchText}
             onClick={handleClear}
