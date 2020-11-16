@@ -48,6 +48,8 @@ const MultiSelect = ({
   ClearIcon,
   debounceDuration = 300,
   ClearSelectedIcon,
+  defaultIsOpen,
+  isOpen,
 }: ISelectProps) => {
   const nvalue = value || [];
   return (
@@ -76,6 +78,8 @@ const MultiSelect = ({
         onMenuToggle={onMenuToggle}
         ArrowRenderer={ArrowRenderer}
         ClearSelectedIcon={ClearSelectedIcon}
+        defaultIsOpen={defaultIsOpen}
+        isOpen={isOpen}
       >
         <DropdownHeader
           value={nvalue}
