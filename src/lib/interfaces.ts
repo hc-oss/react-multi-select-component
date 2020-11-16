@@ -37,4 +37,6 @@ export interface ISelectProps {
   ClearIcon?: string | Function;
   debounceDuration?: number;
   ClearSelectedIcon?: string | Function;
+  defaultIsOpen?: boolean;
+  isOpen?: boolean;
 }
