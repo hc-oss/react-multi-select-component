@@ -159,7 +159,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   const updateFocus = (offset: number) => {
     let newFocus = focusIndex + offset;
     newFocus = Math.max(1, newFocus);
-    newFocus = Math.min(newFocus, options.length);
+    newFocus = Math.min(newFocus, options.length + 1);
     setFocusIndex(newFocus);
   };
 
