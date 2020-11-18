@@ -75,6 +75,7 @@ const ClearSelectedButton = css({
   background: "none",
   border: 0,
   padding: 0,
+  display: "flex",
 });
 
 const Dropdown = ({
@@ -154,6 +155,7 @@ const Dropdown = ({
   const handleClearSelected = (e) => {
     e.stopPropagation();
     contentProps["onChange"]([]);
+    isInternalExpand && setExpanded(false);
   };
 
   return (
