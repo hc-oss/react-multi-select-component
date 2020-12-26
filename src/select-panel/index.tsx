@@ -207,7 +207,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
           checked={isAllOptionSelected}
           option={selectAllOption}
           onSelectionChanged={selectAllChanged}
-          onClick={() => handleItemClicked(0)}
+          onClick={() => handleItemClicked(1)}
           itemRenderer={ItemRenderer}
           disabled={disabled}
         />
