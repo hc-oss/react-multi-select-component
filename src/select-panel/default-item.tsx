@@ -1,6 +1,7 @@
 import { css } from "goober";
 import React from "react";
 
+import { cn } from "../lib/classnames";
 import { Option } from "../lib/interfaces";
 
 interface IDefaultItemRendererProps {
@@ -29,21 +30,17 @@ const DefaultItemRenderer = ({
   option,
   onClick,
   disabled,
-}: IDefaultItemRendererProps) => {
-  return (
-    <div
-      className={`${DefaultRenderer} item-renderer ${disabled && "disabled"}`}
-    >
-      <input
-        type="checkbox"
-        onChange={onClick}
-        checked={checked}
-        tabIndex={-1}
-        disabled={disabled}
-      />
-      <span>{option.label}</span>
-    </div>
-  );
-};
+}: IDefaultItemRendererProps) => (
+  <div className={cn(DefaultRenderer, "item-renderer", disabled && "disabled")}>
+    <input
+      type="checkbox"
+      onChange={onClick}
+      checked={checked}
+      tabIndex={-1}
+      disabled={disabled}
+    />
+    <span>{option.label}</span>
+  </div>
+);
 
 export default DefaultItemRenderer;

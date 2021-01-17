@@ -4,17 +4,14 @@
 import { css } from "goober";
 import React from "react";
 
+import { useMultiSelect } from "../hooks/use-multi-select";
 import { Option } from "../lib/interfaces";
 import SelectItem from "./select-item";
 
 interface ISelectListProps {
   focusIndex: number;
-  ItemRenderer?: Function;
   options: Option[];
-  value: Option[];
-  onChange: (selected: Option[]) => void;
   onClick: Function;
-  disabled?: boolean;
 }
 
 const SelectListUl = css({
@@ -28,15 +25,9 @@ const SelectListUl = css({
 
 const skipIndex = 2;
 
-const SelectList = ({
-  value,
-  onChange,
-  disabled,
-  ItemRenderer,
-  options,
-  focusIndex,
-  onClick,
-}: ISelectListProps) => {
+const SelectList = ({ options, focusIndex, onClick }: ISelectListProps) => {
+  const { disabled, value, onChange, ItemRenderer } = useMultiSelect();
+
   const handleSelectionChanged = (option: Option, checked: boolean) => {
     if (disabled) {
       return;
@@ -52,8 +43,9 @@ const SelectList = ({
     <ul className={SelectListUl}>
       {options.map((o: any, i) => {
         const tabIndex = i + skipIndex;
+
         return (
-          <li key={o.hasOwnProperty("key") ? o.key : i}>
+          <li key={o?.key || i}>
             <SelectItem
               focused={focusIndex === tabIndex}
               tabIndex={tabIndex}

@@ -1,13 +1,3 @@
-export interface ITheme {
-  primary: string;
-  hover: string;
-  border: string;
-  gray: string;
-  background: string;
-  borderRadius: string;
-  height: string;
-}
-
 export interface Option {
   value;
   label: string;
@@ -22,7 +12,7 @@ export interface ISelectProps {
   onChange?;
   valueRenderer?: (selected: Option[], options: Option[]) => string;
   ItemRenderer?: Function;
-  ArrowRenderer?: ({ expanded: boolean }) => void;
+  ArrowRenderer?: ({ expanded }) => JSX.Element;
   selectAllLabel?: string;
   isLoading?: boolean;
   disabled?: boolean;

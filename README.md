@@ -80,11 +80,10 @@ export default Example;
 | `className`           | class name for parent component                        | `string`                     | `multi-select` |
 | `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer) | `function`                   |                |
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)  | `function`                   |                |
-| `ClearIcon`           | Custom Clear Icon for Search                           | `string                      | function`      |
+| `ClearIcon`           | Custom Clear Icon for Search                           | `JSX.element`                |                |
+| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                         | `JSX.element`                |                |
 | `debounceDuration`    | debounce duraion for Search                            | `number`                     | `300`          |
-| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                   | `string                      | function`      |
-| `defaultIsOpen`       | to keep menu open/closed by default                    | `boolean`                    | `false`        |
-| `isOpen`              | controlled version of `defaultIsOpen`                  | `boolean`                    |                |
+| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                   | `JSX.element`                | `function`     |
 
 ## 🔍 Custom filter logic
 

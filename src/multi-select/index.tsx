@@ -1,10 +1,10 @@
 import { css } from "goober";
 import React from "react";
 
+import { MultiSelectProvider } from "../hooks/use-multi-select";
+import { cn } from "../lib/classnames";
 import { ISelectProps } from "../lib/interfaces";
-import SelectPanel from "../select-panel";
 import Dropdown from "./dropdown";
-import DropdownHeader from "./header";
 
 const MultiSelectBox = css({
   "--rmscMain": "#4285f4",
@@ -26,70 +26,12 @@ const MultiSelectBox = css({
   },
 });
 
-const MultiSelect = ({
-  focusSearchOnOpen = true,
-  hasSelectAll = true,
-  shouldToggleOnHover,
-  className = "multi-select",
-  options,
-  value,
-  valueRenderer,
-  overrideStrings,
-  onChange,
-  disabled,
-  ItemRenderer,
-  ArrowRenderer,
-  selectAllLabel,
-  isLoading,
-  disableSearch,
-  filterOptions,
-  labelledBy,
-  onMenuToggle,
-  ClearIcon,
-  debounceDuration = 300,
-  ClearSelectedIcon,
-  defaultIsOpen,
-  isOpen,
-}: ISelectProps) => {
-  const nvalue = value || [];
-  return (
-    <div className={`${MultiSelectBox} ${className}`}>
-      <Dropdown
-        isLoading={isLoading}
-        contentComponent={SelectPanel}
-        shouldToggleOnHover={shouldToggleOnHover}
-        contentProps={{
-          ItemRenderer,
-          options,
-          value: nvalue,
-          hasSelectAll,
-          selectAllLabel,
-          onChange,
-          disabled,
-          disableSearch,
-          focusSearchOnOpen,
-          filterOptions,
-          overrideStrings,
-          ClearIcon,
-          debounceDuration,
-        }}
-        disabled={disabled}
-        labelledBy={labelledBy}
-        onMenuToggle={onMenuToggle}
-        ArrowRenderer={ArrowRenderer}
-        ClearSelectedIcon={ClearSelectedIcon}
-        defaultIsOpen={defaultIsOpen}
-        isOpen={isOpen}
-      >
-        <DropdownHeader
-          value={nvalue}
-          options={options}
-          valueRenderer={valueRenderer}
-          overrideStrings={overrideStrings}
-        />
-      </Dropdown>
+const MultiSelect = (props: ISelectProps) => (
+  <MultiSelectProvider props={props}>
+    <div className={cn(MultiSelectBox, props.className || "multi-select")}>
+      <Dropdown />
     </div>
-  );
-};
+  </MultiSelectProvider>
+);
 
 export default MultiSelect;
