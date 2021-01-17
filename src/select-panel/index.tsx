@@ -6,29 +6,13 @@
 import { css } from "goober";
 import React, { useCallback, useMemo, useState } from "react";
 
+import { useMultiSelect } from "../hooks/use-multi-select";
+import { cn } from "../lib/classnames";
 import { debounce } from "../lib/debounce";
 import { filterOptions } from "../lib/fuzzy-match-utils";
-import getString from "../lib/get-string";
-import { Option } from "../lib/interfaces";
-import Cross from "./cross";
+import { Cross } from "./cross";
 import SelectItem from "./select-item";
 import SelectList from "./select-list";
-
-interface ISelectPanelProps {
-  ItemRenderer?: Function;
-  options: Option[];
-  value: Option[];
-  focusSearchOnOpen: boolean;
-  selectAllLabel?: string;
-  onChange: (selected: Option[]) => void;
-  disabled?: boolean;
-  disableSearch?: boolean;
-  hasSelectAll: boolean;
-  filterOptions?: (options: Option[], filter: string) => Option[];
-  overrideStrings?: { [key: string]: string };
-  ClearIcon?;
-  debounceDuration?: number;
-}
 
 enum FocusType {
   SEARCH = -1,
@@ -62,8 +46,9 @@ const SearchClearButton = css({
   },
 });
 
-export const SelectPanel = (props: ISelectPanelProps) => {
+const SelectPanel = () => {
   const {
+    t,
     onChange,
     options,
     value,
@@ -74,10 +59,10 @@ export const SelectPanel = (props: ISelectPanelProps) => {
     disableSearch,
     focusSearchOnOpen,
     hasSelectAll,
-    overrideStrings,
     ClearIcon,
     debounceDuration,
-  } = props;
+  } = useMultiSelect();
+
   const [searchText, setSearchText] = useState("");
   const [searchTextForFilter, setSearchTextForFilter] = useState("");
   const [focusIndex, setFocusIndex] = useState(
@@ -89,7 +74,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
   );
 
   const selectAllOption = {
-    label: selectAllLabel || getString("selectAll", overrideStrings),
+    label: selectAllLabel || t("selectAll"),
     value: "",
   };
 
@@ -102,7 +87,7 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       const selectedValues = value.map((o) => o.value);
       const finalSelectedValues = [...selectedValues, ...filteredValues];
 
-      return options.filter(({ value }) => finalSelectedValues.includes(value));
+      return options.filter((o) => finalSelectedValues.includes(o.value));
     }
 
     return value.filter((o) => !filteredValues.includes(o.value));
@@ -180,9 +165,9 @@ export const SelectPanel = (props: ISelectPanelProps) => {
         <div className={SelectSearchContainer}>
           <input
             autoFocus={focusSearchOnOpen}
-            placeholder={getString("search", overrideStrings)}
+            placeholder={t("search")}
             type="text"
-            aria-describedby={getString("search", overrideStrings)}
+            aria-describedby={t("search")}
             onKeyDown={(e) => e.stopPropagation()}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
@@ -190,10 +175,10 @@ export const SelectPanel = (props: ISelectPanelProps) => {
           />
           <button
             type="button"
-            className={`${SearchClearButton} search-clear-button`}
+            className={cn(SearchClearButton, "search-clear-button")}
             hidden={!searchText}
             onClick={handleClear}
-            aria-label={getString("clearSearch", overrideStrings)}
+            aria-label={t("clearSearch")}
           >
             {ClearIcon || <Cross />}
           </button>
@@ -214,12 +199,9 @@ export const SelectPanel = (props: ISelectPanelProps) => {
       )}
 
       <SelectList
-        {...props}
         options={filteredOptions()}
         focusIndex={focusIndex}
         onClick={(_e, index) => handleItemClicked(index)}
-        ItemRenderer={ItemRenderer}
-        disabled={disabled}
       />
     </div>
   );

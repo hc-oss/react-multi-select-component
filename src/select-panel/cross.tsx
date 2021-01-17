@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cross = () => (
+export const Cross = () => (
   <svg
     width="24"
     height="24"
@@ -13,5 +13,3 @@ const Cross = () => (
     <line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
 );
-
-export default Cross;

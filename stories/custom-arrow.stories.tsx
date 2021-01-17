@@ -12,7 +12,7 @@ export default {
 export const ExampleCustomArrow = () => {
   const [selected, setSelected] = useState([]);
 
-  const ArrowRenderer = ({ expanded }) => (expanded ? "🦉" : "🦚");
+  const ArrowRenderer = ({ expanded }) => <>{expanded ? "🦉" : "🦚"}</>;
 
   return (
     <div>

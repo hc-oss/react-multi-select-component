@@ -4,6 +4,7 @@
 import { css } from "goober";
 import React, { useEffect, useRef } from "react";
 
+import { cn } from "../lib/classnames";
 import { Option } from "../lib/interfaces";
 import DefaultItemRenderer from "./default-item";
 
@@ -78,7 +79,7 @@ const SelectItem = ({
 
   return (
     <label
-      className={`${ItemContainer} select-item ${checked && "selected"}`}
+      className={cn(ItemContainer, "select-item", checked && "selected")}
       role="option"
       aria-selected={checked}
       tabIndex={tabIndex}

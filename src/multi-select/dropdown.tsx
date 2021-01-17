@@ -6,25 +6,13 @@
 import { css } from "goober";
 import React, { useEffect, useRef, useState } from "react";
 
-import getString from "../lib/get-string";
-import Cross from "../select-panel/cross";
-import Arrow from "./arrow";
-import Loading from "./loading";
-
-interface IDropdownProps {
-  children?;
-  contentComponent;
-  contentProps: object;
-  isLoading?: boolean;
-  disabled?: boolean;
-  shouldToggleOnHover?: boolean;
-  labelledBy?: string;
-  onMenuToggle?;
-  ArrowRenderer?;
-  ClearSelectedIcon?;
-  defaultIsOpen?: boolean;
-  isOpen?: boolean;
-}
+import { useMultiSelect } from "../hooks/use-multi-select";
+import { cn } from "../lib/classnames";
+import SelectPanel from "../select-panel";
+import { Cross } from "../select-panel/cross";
+import { Arrow } from "./arrow";
+import { DropdownHeader } from "./header";
+import { Loading } from "./loading";
 
 const PanelContainer = css({
   position: "absolute",
@@ -78,20 +66,22 @@ const ClearSelectedButton = css({
   display: "flex",
 });
 
-const Dropdown = ({
-  children,
-  contentComponent: ContentComponent,
-  contentProps,
-  isLoading,
-  disabled,
-  shouldToggleOnHover,
-  labelledBy,
-  onMenuToggle,
-  ArrowRenderer,
-  ClearSelectedIcon,
-  defaultIsOpen,
-  isOpen,
-}: IDropdownProps) => {
+const Dropdown = () => {
+  const {
+    t,
+    onMenuToggle,
+    ArrowRenderer,
+    shouldToggleOnHover,
+    isLoading,
+    disabled,
+    onChange,
+    labelledBy,
+    value,
+    isOpen,
+    defaultIsOpen,
+    ClearSelectedIcon,
+  } = useMultiSelect();
+
   const [isInternalExpand, setIsInternalExpand] = useState(true);
   const [expanded, setExpanded] = useState(defaultIsOpen);
   const [hasFocus, setHasFocus] = useState(false);
@@ -154,14 +144,14 @@ const Dropdown = ({
 
   const handleClearSelected = (e) => {
     e.stopPropagation();
-    contentProps["onChange"]([]);
+    onChange([]);
     isInternalExpand && setExpanded(false);
   };
 
   return (
     <div
       tabIndex={0}
-      className={`${DropdownContainer} dropdown-container`}
+      className={cn(DropdownContainer, "dropdown-container")}
       aria-labelledby={labelledBy}
       aria-expanded={expanded}
       aria-readonly={true}
@@ -174,20 +164,19 @@ const Dropdown = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={`${DropdownHeading} dropdown-heading`}
+        className={cn(DropdownHeading, "dropdown-heading")}
         onClick={toggleExpanded}
       >
-        <div className="dropdown-heading-value">{children}</div>
+        <div className="dropdown-heading-value">
+          <DropdownHeader />
+        </div>
         {isLoading && <Loading />}
-        {contentProps["value"].length > 0 && (
+        {value.length > 0 && (
           <button
             type="button"
-            className={`${ClearSelectedButton} clear-selected-button`}
+            className={cn(ClearSelectedButton, "clear-selected-button")}
             onClick={handleClearSelected}
-            aria-label={getString(
-              "clearSelected",
-              contentProps["overrideStrings"]
-            )}
+            aria-label={t("clearSelected")}
           >
             {ClearSelectedIcon || <Cross />}
           </button>
@@ -195,9 +184,9 @@ const Dropdown = ({
         <FinalArrow expanded={expanded} />
       </div>
       {expanded && (
-        <div className={`${PanelContainer} dropdown-content`}>
+        <div className={cn(PanelContainer, "dropdown-content")}>
           <div className="panel-content">
-            <ContentComponent {...contentProps} />
+            <SelectPanel />
           </div>
         </div>
       )}
