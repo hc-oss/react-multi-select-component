@@ -22,10 +22,10 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=17"
   },
   "dependencies": {
-    "goober": "^2.0.21"
+    "goober": "^2.0.27"
   },
   "devDependencies": {
     "@ampproject/filesize": "^4.2.0",
@@ -41,8 +41,8 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "babel-loader": "^8.2.2",
+    "eslint-plugin-prettier": "^3.3.1",
     "husky": "^4.3.8",
-    "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
