@@ -48,7 +48,7 @@ const SelectItem = ({
   useEffect(() => {
     updateFocus();
     // eslint-disable-next-line
-  }, [focused]);
+  }, [checked, focused]);
 
   const toggleChecked = () => {
     onSelectionChanged(!checked);
