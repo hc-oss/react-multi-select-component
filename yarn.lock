@@ -6773,9 +6773,9 @@ globrex@^0.1.2:
   integrity sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==
 
 goober@^2.0.27:
-  version "2.0.27"
-  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.27.tgz#fd6707ed743f2767efc2843c715209f308b4d2de"
-  integrity sha512-QVpmxsiH5elaDtA+aZmcq38V7S3qhgrXILlwLvdObJ23MG4od98BN7uRwh+QDHLGjPOGVeHiERhEPE1R6XUR0Q==
+  version "2.0.28"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.28.tgz#2fc450f363da7dd4f2628529b2cb9209d86e981d"
+  integrity sha512-chb/2a0PiCW0isKEfO2FWa++SON4hrUANY5G/evhkuBk1M4k3ehm3JilctICB5AiPYbRlE+b0qFGzfDJW7z3Jw==
 
 good-listener@^1.2.2:
   version "1.2.2"
