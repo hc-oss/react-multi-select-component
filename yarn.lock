@@ -2492,23 +2492,6 @@
     core-js "^3.6.5"
     find-up "^4.1.0"
 
-"@storybook/source-loader@6.1.15":
-  version "6.1.15"
-  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.1.15.tgz#21b985ede0ec626c1a4916fc92a58cffca9d6c63"
-  integrity sha512-ZFmbuvo4sq0jVeWj7Ur1zDq5SCfTxLYuQcV6mAOqUr89dyP778PX9AO1b1/BmipjsHL3JOHN6uHAn74ksB9ofg==
-  dependencies:
-    "@storybook/addons" "6.1.15"
-    "@storybook/client-logger" "6.1.15"
-    "@storybook/csf" "0.0.1"
-    core-js "^3.0.1"
-    estraverse "^4.2.0"
-    global "^4.3.2"
-    loader-utils "^2.0.0"
-    lodash "^4.17.15"
-    prettier "~2.0.5"
-    regenerator-runtime "^0.13.7"
-    source-map "^0.7.3"
-
 "@storybook/source-loader@6.1.17":
   version "6.1.17"
   resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.1.17.tgz#c4c997b9858cd8f4c2740bd09e71384b4dcf6bf2"
@@ -2926,9 +2909,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.0.tgz#5af3eb7fad2807092f0046a1302b7823e27919b8"
-  integrity sha512-aj/L7RIMsRlWML3YB6KZiXB3fV2t41+5RBGYF8z+tAKU43Px8C3cYUZsDvf1/+Bm4FK21QWBrDutu8ZJ/70qOw==
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.1.tgz#eb1f1407dea8da3bc741879c1192aa703ab9975b"
+  integrity sha512-w8t9f53B2ei4jeOqf/gxtc2Sswnc3LBK5s0DyJcg5xd10tMHXts2N31cKjWfH9IC/JvEPa/YF1U4YeP1t4R6HQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
