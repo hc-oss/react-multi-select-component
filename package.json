@@ -11,10 +11,10 @@
   "sideEffects": false,
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build && filesize",
+    "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build && filesize",
+    "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
@@ -28,7 +28,6 @@
     "goober": "^2.0.30"
   },
   "devDependencies": {
-    "@ampproject/filesize": "^4.3.0",
     "@babel/core": "^7.12.13",
     "@size-limit/preset-small-lib": "^4.9.2",
     "@storybook/addon-essentials": "^6.1.17",
@@ -66,11 +65,6 @@
     "singleQuote": false,
     "trailingComma": "es5",
     "endOfLine": "auto"
-  },
-  "filesize": {
-    "track": [
-      "./dist/*.production.min.js"
-    ]
   },
   "size-limit": [
     {
