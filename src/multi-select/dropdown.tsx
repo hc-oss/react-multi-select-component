@@ -176,6 +176,7 @@ const Dropdown = () => {
             type="button"
             className={cn(ClearSelectedButton, "clear-selected-button")}
             onClick={handleClearSelected}
+            disabled={disabled}
             aria-label={t("clearSelected")}
           >
             {ClearSelectedIcon || <Cross />}
