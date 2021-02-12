@@ -60,6 +60,7 @@ const SelectPanel = () => {
     focusSearchOnOpen,
     hasSelectAll,
     ClearIcon,
+    hideClearIcon,
     debounceDuration,
   } = useMultiSelect();
 
@@ -173,15 +174,17 @@ const SelectPanel = () => {
             onFocus={handleSearchFocus}
             value={searchText}
           />
-          <button
-            type="button"
-            className={cn(SearchClearButton, "search-clear-button")}
-            hidden={!searchText}
-            onClick={handleClear}
-            aria-label={t("clearSearch")}
-          >
-            {ClearIcon || <Cross />}
-          </button>
+          {!hideClearIcon ? (
+            <button
+              type="button"
+              className={cn(SearchClearButton, "search-clear-button")}
+              hidden={!searchText}
+              onClick={handleClear}
+              aria-label={t("clearSearch")}
+            >
+              {ClearIcon || <Cross />}
+            </button>
+          ) : null}
         </div>
       )}
 

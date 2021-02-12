@@ -29,4 +29,5 @@ export interface ISelectProps {
   ClearSelectedIcon?: string | Function;
   defaultIsOpen?: boolean;
   isOpen?: boolean;
+  hideClearIcon?: boolean;
 }
