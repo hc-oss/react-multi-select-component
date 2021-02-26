@@ -107,6 +107,7 @@ const SelectPanel = () => {
   const handleClear = () => {
     setSearchTextForFilter("");
     setSearchText("");
+    setFocusIndex(FocusType.SEARCH);
   };
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
