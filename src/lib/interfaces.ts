@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Option {
   value;
   label: string;
@@ -10,7 +12,7 @@ export interface ISelectProps {
   value: Option[];
   focusSearchOnOpen?: boolean;
   onChange?;
-  valueRenderer?: (selected: Option[], options: Option[]) => string;
+  valueRenderer?: (selected: Option[], options: Option[]) => ReactNode;
   ItemRenderer?: Function;
   ArrowRenderer?: ({ expanded }) => JSX.Element;
   selectAllLabel?: string;
