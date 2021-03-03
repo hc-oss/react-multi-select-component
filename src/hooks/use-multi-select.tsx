@@ -3,12 +3,13 @@ import React from "react";
 import { ISelectProps, Option } from "../lib/interfaces";
 
 const defaultStrings = {
-  selectSomeItems: "Select...",
   allItemsAreSelected: "All items are selected.",
-  selectAll: "Select All",
-  search: "Search",
   clearSearch: "Clear Search",
   clearSelected: "Clear Selected",
+  noOptions: "No options",
+  search: "Search",
+  selectAll: "Select All",
+  selectSomeItems: "Select...",
 };
 
 const defaultProps: Partial<ISelectProps> = {
@@ -16,7 +17,7 @@ const defaultProps: Partial<ISelectProps> = {
   focusSearchOnOpen: true,
   hasSelectAll: true,
   className: "multi-select",
-  debounceDuration: 300,
+  debounceDuration: 200,
   options: [] as Option[],
 };
 
