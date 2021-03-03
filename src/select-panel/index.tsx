@@ -4,7 +4,7 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useMultiSelect } from "../hooks/use-multi-select";
 import { cn } from "../lib/classnames";
@@ -46,6 +46,12 @@ const SearchClearButton = css({
   },
 });
 
+const NoOptions = css({
+  padding: "var(--rmsc-p)",
+  textAlign: "center",
+  color: "var(--rmsc-gray)",
+});
+
 const SelectPanel = () => {
   const {
     t,
@@ -64,6 +70,7 @@ const SelectPanel = () => {
   } = useMultiSelect();
 
   const [searchText, setSearchText] = useState("");
+  const [filteredOptions, setFilteredOptions] = useState(options);
   const [searchTextForFilter, setSearchTextForFilter] = useState("");
   const [focusIndex, setFocusIndex] = useState(
     focusSearchOnOpen && !disableSearch ? FocusType.SEARCH : FocusType.NONE
@@ -79,7 +86,7 @@ const SelectPanel = () => {
   };
 
   const selectAllValues = (checked) => {
-    const filteredValues = filteredOptions()
+    const filteredValues = filteredOptions
       .filter((o) => !o.disabled)
       .map((o) => o.value);
 
@@ -87,7 +94,9 @@ const SelectPanel = () => {
       const selectedValues = value.map((o) => o.value);
       const finalSelectedValues = [...selectedValues, ...filteredValues];
 
-      return options.filter((o) => finalSelectedValues.includes(o.value));
+      return filteredOptions.filter((o) =>
+        finalSelectedValues.includes(o.value)
+      );
     }
 
     return value.filter((o) => !filteredValues.includes(o.value));
@@ -136,9 +145,9 @@ const SelectPanel = () => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const filteredOptions = () =>
+  const getFilteredOptions = async () =>
     customFilterOptions
-      ? customFilterOptions(options, searchTextForFilter)
+      ? await customFilterOptions(options, searchTextForFilter)
       : filterOptions(options, searchTextForFilter);
 
   const updateFocus = (offset: number) => {
@@ -149,7 +158,7 @@ const SelectPanel = () => {
   };
 
   const [isAllOptionSelected, hasSelectableOptions] = useMemo(() => {
-    const filteredOptionsList = filteredOptions().filter((o) => !o.disabled);
+    const filteredOptionsList = filteredOptions.filter((o) => !o.disabled);
     return [
       filteredOptionsList.every(
         (o) => value.findIndex((v) => v.value === o.value) !== -1
@@ -157,7 +166,11 @@ const SelectPanel = () => {
       filteredOptionsList.length !== 0,
     ];
     // eslint-disable-next-line
-  }, [searchText, value]);
+  }, [filteredOptions, value]);
+
+  useEffect(() => {
+    getFilteredOptions().then(setFilteredOptions);
+  }, [searchTextForFilter, options]);
 
   return (
     <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
@@ -198,11 +211,15 @@ const SelectPanel = () => {
         />
       )}
 
-      <SelectList
-        options={filteredOptions()}
-        focusIndex={focusIndex}
-        onClick={(_e, index) => handleItemClicked(index)}
-      />
+      {filteredOptions.length ? (
+        <SelectList
+          options={filteredOptions}
+          focusIndex={focusIndex}
+          onClick={(_e, index) => handleItemClicked(index)}
+        />
+      ) : (
+        <div className={cn(NoOptions, "no-options")}>{t("noOptions")}</div>
+      )}
     </div>
   );
 };

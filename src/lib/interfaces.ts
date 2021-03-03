@@ -21,7 +21,10 @@ export interface ISelectProps {
   disableSearch?: boolean;
   shouldToggleOnHover?: boolean;
   hasSelectAll?: boolean;
-  filterOptions?: (options: Option[], filter: string) => Option[];
+  filterOptions?: (
+    options: Option[],
+    filter: string
+  ) => Promise<Option[]> | Option[];
   overrideStrings?: { [key: string]: string };
   labelledBy: string;
   className?: string;
