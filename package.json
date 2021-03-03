@@ -50,6 +50,11 @@
     "tslib": "^2.1.0",
     "typescript": "^4.1.5"
   },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
