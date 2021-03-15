@@ -6,6 +6,7 @@
 import { css } from "goober";
 import React, { useEffect, useRef, useState } from "react";
 
+import { useDidUpdateEffect } from "../hooks/use-did-update-effect";
 import { useMultiSelect } from "../hooks/use-multi-select";
 import { cn } from "../lib/classnames";
 import SelectPanel from "../select-panel";
@@ -89,8 +90,7 @@ const Dropdown = () => {
 
   const wrapper: any = useRef();
 
-  /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
+  useDidUpdateEffect(() => {
     onMenuToggle && onMenuToggle(expanded);
   }, [expanded]);
 
