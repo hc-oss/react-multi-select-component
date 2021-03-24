@@ -14,6 +14,8 @@ export const ExampleCustomArrow = () => {
 
   const ArrowRenderer = ({ expanded }) => <>{expanded ? "🦉" : "🦚"}</>;
 
+  const CustomClearIcon = () => <div>🤘</div>;
+
   return (
     <div>
       <pre>{JSON.stringify(selected)}</pre>
@@ -24,6 +26,8 @@ export const ExampleCustomArrow = () => {
         labelledBy={text("labelledBy", "Select Fruits")}
         ArrowRenderer={ArrowRenderer}
         onMenuToggle={(isOpen) => console.log("onMenuToggle", isOpen)}
+        ClearIcon={<CustomClearIcon />}
+        ClearSelectedIcon={<CustomClearIcon />}
       />
     </div>
   );
