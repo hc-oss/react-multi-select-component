@@ -4,7 +4,13 @@
  * Select-all item, and the list of options.
  */
 import { css } from "goober";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { useMultiSelect } from "../hooks/use-multi-select";
 import { cn } from "../lib/classnames";
@@ -69,6 +75,7 @@ const SelectPanel = () => {
     debounceDuration,
   } = useMultiSelect();
 
+  const searchInputRef = useRef<any>();
   const [searchText, setSearchText] = useState("");
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [searchTextForFilter, setSearchTextForFilter] = useState("");
@@ -116,6 +123,7 @@ const SelectPanel = () => {
   const handleClear = () => {
     setSearchTextForFilter("");
     setSearchText("");
+    searchInputRef?.current?.focus();
   };
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
@@ -185,6 +193,7 @@ const SelectPanel = () => {
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
             value={searchText}
+            ref={searchInputRef}
           />
           <button
             type="button"

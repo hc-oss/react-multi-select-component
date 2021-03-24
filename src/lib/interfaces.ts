@@ -29,9 +29,9 @@ export interface ISelectProps {
   labelledBy: string;
   className?: string;
   onMenuToggle?;
-  ClearIcon?: string | Function;
+  ClearIcon?: ReactNode;
   debounceDuration?: number;
-  ClearSelectedIcon?: string | Function;
+  ClearSelectedIcon?: ReactNode;
   defaultIsOpen?: boolean;
   isOpen?: boolean;
 }
