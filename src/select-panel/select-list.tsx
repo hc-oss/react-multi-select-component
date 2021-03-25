@@ -9,9 +9,9 @@ import { Option } from "../lib/interfaces";
 import SelectItem from "./select-item";
 
 interface ISelectListProps {
-  focusIndex: number;
   options: Option[];
   onClick: Function;
+  skipIndex: number;
 }
 
 const SelectListUl = css({
@@ -23,15 +23,12 @@ const SelectListUl = css({
   },
 });
 
-const skipIndex = 2;
-
-const SelectList = ({ options, focusIndex, onClick }: ISelectListProps) => {
+const SelectList = ({ options, onClick, skipIndex }: ISelectListProps) => {
   const { disabled, value, onChange, ItemRenderer } = useMultiSelect();
 
   const handleSelectionChanged = (option: Option, checked: boolean) => {
-    if (disabled) {
-      return;
-    }
+    if (disabled) return;
+
     onChange(
       checked
         ? [...value, option]
@@ -47,11 +44,10 @@ const SelectList = ({ options, focusIndex, onClick }: ISelectListProps) => {
         return (
           <li key={o?.key || i}>
             <SelectItem
-              focused={focusIndex === tabIndex}
               tabIndex={tabIndex}
               option={o}
               onSelectionChanged={(c) => handleSelectionChanged(o, c)}
-              checked={value.find((s) => s.value === o.value) ? true : false}
+              checked={!!value.find((s) => s.value === o.value)}
               onClick={(e) => onClick(e, tabIndex)}
               itemRenderer={ItemRenderer}
               disabled={o.disabled || disabled}

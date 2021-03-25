@@ -7,8 +7,10 @@ import { css } from "goober";
 import React, { useEffect, useRef, useState } from "react";
 
 import { useDidUpdateEffect } from "../hooks/use-did-update-effect";
+import { useKey } from "../hooks/use-key";
 import { useMultiSelect } from "../hooks/use-multi-select";
 import { cn } from "../lib/classnames";
+import { KEY } from "../lib/constants";
 import SelectPanel from "../select-panel";
 import { Cross } from "../select-panel/cross";
 import { Arrow } from "./arrow";
@@ -103,23 +105,19 @@ const Dropdown = () => {
 
   const handleKeyDown = (e) => {
     if (isInternalExpand) {
-      switch (e.which) {
-        case 27: // Escape
-        case 38: // Up Arrow
-          setExpanded(false);
-          wrapper?.current?.focus();
-          break;
-        case 32: // Space
-        case 13: // Enter Key
-        case 40: // Down Arrow
-          setExpanded(true);
-          break;
-        default:
-          return;
+      if (e.code === KEY.ESCAPE) {
+        setExpanded(false);
+        wrapper?.current?.focus();
+      } else {
+        setExpanded(true);
       }
     }
     e.preventDefault();
   };
+
+  useKey([KEY.ENTER, KEY.ARROW_DOWN, KEY.SPACE, KEY.ESCAPE], handleKeyDown, {
+    target: wrapper,
+  });
 
   const handleHover = (iexpanded: boolean) => {
     isInternalExpand && shouldToggleOnHover && setExpanded(iexpanded);
@@ -157,7 +155,6 @@ const Dropdown = () => {
       aria-readonly={true}
       aria-disabled={disabled}
       ref={wrapper}
-      onKeyDown={handleKeyDown}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}

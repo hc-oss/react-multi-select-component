@@ -12,8 +12,10 @@ import React, {
   useState,
 } from "react";
 
+import { useKey } from "../hooks/use-key";
 import { useMultiSelect } from "../hooks/use-multi-select";
 import { cn } from "../lib/classnames";
+import { KEY } from "../lib/constants";
 import { debounce } from "../lib/debounce";
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import { Cross } from "./cross";
@@ -21,8 +23,8 @@ import SelectItem from "./select-item";
 import SelectList from "./select-list";
 
 enum FocusType {
-  SEARCH = -1,
-  NONE = 1,
+  SEARCH = 0,
+  NONE = -1,
 }
 
 const SelectSearchContainer = css({
@@ -69,23 +71,30 @@ const SelectPanel = () => {
     ItemRenderer,
     disabled,
     disableSearch,
-    focusSearchOnOpen,
     hasSelectAll,
     ClearIcon,
     debounceDuration,
   } = useMultiSelect();
 
+  const listRef = useRef<any>();
   const searchInputRef = useRef<any>();
   const [searchText, setSearchText] = useState("");
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [searchTextForFilter, setSearchTextForFilter] = useState("");
-  const [focusIndex, setFocusIndex] = useState(
-    focusSearchOnOpen && !disableSearch ? FocusType.SEARCH : FocusType.NONE
-  );
+  const [focusIndex, setFocusIndex] = useState(0);
   const debouncedSearch = useCallback(
     debounce((query) => setSearchTextForFilter(query), debounceDuration),
     []
   );
+
+  const skipIndex = useMemo(() => {
+    let start = 0;
+
+    if (!disableSearch) start += 1; // if search is enabled then +1 to skipIndex
+    if (hasSelectAll) start += 1; // if select-all is enabled then +1 to skipIndex
+
+    return start;
+  }, [disableSearch, hasSelectAll]);
 
   const selectAllOption = {
     label: selectAllLabel || t("selectAll"),
@@ -128,18 +137,13 @@ const SelectPanel = () => {
 
   const handleItemClicked = (index: number) => setFocusIndex(index);
 
+  // Arrow Key Navigation
   const handleKeyDown = (e) => {
-    switch (e.which) {
-      case 38: // Up Arrow
-        if (e.altKey) {
-          return;
-        }
+    switch (e.code) {
+      case KEY.ARROW_UP:
         updateFocus(-1);
         break;
-      case 40: // Down Arrow
-        if (e.altKey) {
-          return;
-        }
+      case KEY.ARROW_DOWN:
         updateFocus(1);
         break;
       default:
@@ -148,6 +152,10 @@ const SelectPanel = () => {
     e.stopPropagation();
     e.preventDefault();
   };
+
+  useKey([KEY.ARROW_DOWN, KEY.ARROW_UP], handleKeyDown, {
+    target: listRef,
+  });
 
   const handleSearchFocus = () => {
     setFocusIndex(FocusType.SEARCH);
@@ -160,10 +168,14 @@ const SelectPanel = () => {
 
   const updateFocus = (offset: number) => {
     let newFocus = focusIndex + offset;
-    newFocus = Math.max(1, newFocus);
-    newFocus = Math.min(newFocus, options.length + 1);
+    newFocus = Math.max(0, newFocus);
+    newFocus = Math.min(newFocus, options.length + Math.max(skipIndex - 1, 0));
     setFocusIndex(newFocus);
   };
+
+  useEffect(() => {
+    listRef?.current?.querySelector(`[tabIndex='${focusIndex}']`)?.focus();
+  }, [focusIndex]);
 
   const [isAllOptionSelected, hasSelectableOptions] = useMemo(() => {
     const filteredOptionsList = filteredOptions.filter((o) => !o.disabled);
@@ -181,19 +193,18 @@ const SelectPanel = () => {
   }, [searchTextForFilter, options]);
 
   return (
-    <div className="select-panel" role="listbox" onKeyDown={handleKeyDown}>
+    <div className="select-panel" role="listbox" ref={listRef}>
       {!disableSearch && (
         <div className={SelectSearchContainer}>
           <input
-            autoFocus={focusSearchOnOpen}
             placeholder={t("search")}
             type="text"
             aria-describedby={t("search")}
-            onKeyDown={(e) => e.stopPropagation()}
             onChange={handleSearchChange}
             onFocus={handleSearchFocus}
             value={searchText}
             ref={searchInputRef}
+            tabIndex={0}
           />
           <button
             type="button"
@@ -209,8 +220,7 @@ const SelectPanel = () => {
 
       {hasSelectAll && hasSelectableOptions && (
         <SelectItem
-          focused={focusIndex === 1}
-          tabIndex={1}
+          tabIndex={skipIndex === 1 ? 0 : 1}
           checked={isAllOptionSelected}
           option={selectAllOption}
           onSelectionChanged={selectAllChanged}
@@ -222,8 +232,8 @@ const SelectPanel = () => {
 
       {filteredOptions.length ? (
         <SelectList
+          skipIndex={skipIndex}
           options={filteredOptions}
-          focusIndex={focusIndex}
           onClick={(_e, index) => handleItemClicked(index)}
         />
       ) : (

@@ -2,8 +2,9 @@
  * This component represents an individual item in the multi-select drop-down
  */
 import { css } from "goober";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
+import { useKey } from "../hooks/use-key";
 import { cn } from "../lib/classnames";
 import { Option } from "../lib/interfaces";
 import DefaultItemRenderer from "./default-item";
@@ -11,8 +12,7 @@ import DefaultItemRenderer from "./default-item";
 interface ISelectItemProps {
   itemRenderer;
   option: Option;
-  checked: boolean;
-  focused?: boolean;
+  checked?: boolean;
   tabIndex?: number;
   disabled?: boolean;
   onSelectionChanged: (checked: boolean) => void;
@@ -37,7 +37,6 @@ const SelectItem = ({
   itemRenderer: ItemRenderer = DefaultItemRenderer,
   option,
   checked,
-  focused,
   tabIndex,
   disabled,
   onSelectionChanged,
@@ -45,13 +44,15 @@ const SelectItem = ({
 }: ISelectItemProps) => {
   const itemRef: any = useRef();
 
-  useEffect(() => {
-    updateFocus();
-    // eslint-disable-next-line
-  }, [checked, focused]);
+  const onOptionCheck = (e) => {
+    toggleChecked();
+    e.preventDefault();
+  };
 
   const toggleChecked = () => {
-    onSelectionChanged(!checked);
+    if (!disabled) {
+      onSelectionChanged(!checked);
+    }
   };
 
   const handleClick = (e) => {
@@ -59,23 +60,7 @@ const SelectItem = ({
     onClick(e);
   };
 
-  const updateFocus = () => {
-    if (focused && !disabled && itemRef) {
-      itemRef.current.focus();
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    switch (e.which) {
-      case 13: // Enter
-      case 32: // Space
-        toggleChecked();
-        break;
-      default:
-        return;
-    }
-    e.preventDefault();
-  };
+  useKey(["Enter", "Space"], onOptionCheck, { target: itemRef });
 
   return (
     <label
@@ -84,7 +69,6 @@ const SelectItem = ({
       aria-selected={checked}
       tabIndex={tabIndex}
       ref={itemRef}
-      onKeyDown={handleKeyDown}
     >
       <ItemRenderer
         option={option}

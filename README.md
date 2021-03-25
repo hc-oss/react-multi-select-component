@@ -67,7 +67,6 @@ export default Example;
 | `labelledBy`          | value for `aria-labelledby`                                           | `string`                     |                |
 | `options`             | options for dropdown                                                  | `[{label, value, disabled}]` |                |
 | `value`               | pre-selected rows                                                     | `[{label, value}]`           | `[]`           |
-| `focusSearchOnOpen`   | focus on search input when opening                                    | `boolean`                    | `true`         |
 | `hasSelectAll`        | toggle 'Select All' option                                            | `boolean`                    | `true`         |
 | `isLoading`           | show spinner on select                                                | `boolean`                    | `false`        |
 | `shouldToggleOnHover` | toggle dropdown on hover option                                       | `boolean`                    | `false`        |

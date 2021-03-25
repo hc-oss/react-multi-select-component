@@ -14,7 +14,6 @@ const defaultStrings = {
 
 const defaultProps: Partial<ISelectProps> = {
   value: [],
-  focusSearchOnOpen: true,
   hasSelectAll: true,
   className: "multi-select",
   debounceDuration: 200,
