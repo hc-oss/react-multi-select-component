@@ -27,7 +27,7 @@ const SelectList = ({ options, onClick, skipIndex }: ISelectListProps) => {
   };
 
   return (
-    <ul className="options">
+    <>
       {options.map((o: any, i) => {
         const tabIndex = i + skipIndex;
 
@@ -45,7 +45,7 @@ const SelectList = ({ options, onClick, skipIndex }: ISelectListProps) => {
           </li>
         );
       })}
-    </ul>
+    </>
   );
 };
 

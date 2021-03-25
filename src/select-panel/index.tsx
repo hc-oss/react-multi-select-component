@@ -183,27 +183,29 @@ const SelectPanel = () => {
         </div>
       )}
 
-      {hasSelectAll && hasSelectableOptions && (
-        <SelectItem
-          tabIndex={skipIndex === 1 ? 0 : 1}
-          checked={isAllOptionSelected}
-          option={selectAllOption}
-          onSelectionChanged={selectAllChanged}
-          onClick={() => handleItemClicked(1)}
-          itemRenderer={ItemRenderer}
-          disabled={disabled}
-        />
-      )}
+      <ul className="options">
+        {hasSelectAll && hasSelectableOptions && (
+          <SelectItem
+            tabIndex={skipIndex === 1 ? 0 : 1}
+            checked={isAllOptionSelected}
+            option={selectAllOption}
+            onSelectionChanged={selectAllChanged}
+            onClick={() => handleItemClicked(1)}
+            itemRenderer={ItemRenderer}
+            disabled={disabled}
+          />
+        )}
 
-      {filteredOptions.length ? (
-        <SelectList
-          skipIndex={skipIndex}
-          options={filteredOptions}
-          onClick={(_e, index) => handleItemClicked(index)}
-        />
-      ) : (
-        <div className="no-options">{t("noOptions")}</div>
-      )}
+        {filteredOptions.length ? (
+          <SelectList
+            skipIndex={skipIndex}
+            options={filteredOptions}
+            onClick={(_e, index) => handleItemClicked(index)}
+          />
+        ) : (
+          <li className="no-options">{t("noOptions")}</li>
+        )}
+      </ul>
     </div>
   );
 };
