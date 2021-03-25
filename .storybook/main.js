@@ -1,10 +1,11 @@
+const path = require("path");
+
 module.exports = {
   stories: ["../stories/**/*.stories.@(ts|tsx|js|jsx)"],
   addons: [
     "@storybook/addon-essentials",
-    "@storybook/addon-links",
     "@storybook/addon-knobs",
-    "@storybook/addon-storysource",
+    "@storybook/addon-links",
   ],
   // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
   typescript: {

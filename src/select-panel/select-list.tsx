@@ -1,7 +1,6 @@
 /**
  * This component represents an unadorned list of SelectItem (s).
  */
-import { css } from "goober";
 import React from "react";
 
 import { useMultiSelect } from "../hooks/use-multi-select";
@@ -13,15 +12,6 @@ interface ISelectListProps {
   onClick: Function;
   skipIndex: number;
 }
-
-const SelectListUl = css({
-  margin: 0,
-  paddingLeft: 0,
-  li: {
-    listStyle: "none",
-    margin: 0,
-  },
-});
 
 const SelectList = ({ options, onClick, skipIndex }: ISelectListProps) => {
   const { disabled, value, onChange, ItemRenderer } = useMultiSelect();
@@ -37,7 +27,7 @@ const SelectList = ({ options, onClick, skipIndex }: ISelectListProps) => {
   };
 
   return (
-    <ul className={SelectListUl}>
+    <ul className="options">
       {options.map((o: any, i) => {
         const tabIndex = i + skipIndex;
 

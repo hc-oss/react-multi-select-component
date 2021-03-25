@@ -1,11 +1,10 @@
 /**
  * This component represents an individual item in the multi-select drop-down
  */
-import { css } from "goober";
 import React, { useRef } from "react";
 
 import { useKey } from "../hooks/use-key";
-import { cn } from "../lib/classnames";
+import { KEY } from "../lib/constants";
 import { Option } from "../lib/interfaces";
 import DefaultItemRenderer from "./default-item";
 
@@ -18,20 +17,6 @@ interface ISelectItemProps {
   onSelectionChanged: (checked: boolean) => void;
   onClick;
 }
-
-const ItemContainer = css({
-  boxSizing: "border-box",
-  cursor: "pointer",
-  display: "block",
-  padding: "var(--rmsc-p)",
-  outline: 0,
-  "&:hover,&:focus": {
-    background: "var(--rmsc-hover)",
-  },
-  "&.selected": {
-    background: "var(--rmsc-selected)",
-  },
-});
 
 const SelectItem = ({
   itemRenderer: ItemRenderer = DefaultItemRenderer,
@@ -60,11 +45,11 @@ const SelectItem = ({
     onClick(e);
   };
 
-  useKey(["Enter", "Space"], onOptionCheck, { target: itemRef });
+  useKey([KEY.ENTER, KEY.SPACE], onOptionCheck, { target: itemRef });
 
   return (
     <label
-      className={cn(ItemContainer, "select-item", checked && "selected")}
+      className={`select-item ${checked && "selected"}`}
       role="option"
       aria-selected={checked}
       tabIndex={tabIndex}

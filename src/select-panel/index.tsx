@@ -3,7 +3,6 @@
  * user selects the component.  It encapsulates the search filter, the
  * Select-all item, and the list of options.
  */
-import { css } from "goober";
 import React, {
   useCallback,
   useEffect,
@@ -14,7 +13,6 @@ import React, {
 
 import { useKey } from "../hooks/use-key";
 import { useMultiSelect } from "../hooks/use-multi-select";
-import { cn } from "../lib/classnames";
 import { KEY } from "../lib/constants";
 import { debounce } from "../lib/debounce";
 import { filterOptions } from "../lib/fuzzy-match-utils";
@@ -26,39 +24,6 @@ enum FocusType {
   SEARCH = 0,
   NONE = -1,
 }
-
-const SelectSearchContainer = css({
-  width: "100%",
-  position: "relative",
-  borderBottom: "1px solid var(--rmsc-border)",
-  input: {
-    height: "var(--rmsc-h)",
-    padding: "0 var(--rmsc-p)",
-    width: "100%",
-    outline: 0,
-    border: 0,
-  },
-});
-
-const SearchClearButton = css({
-  cursor: "pointer",
-  position: "absolute",
-  top: 0,
-  right: 0,
-  bottom: 0,
-  background: "none",
-  border: 0,
-  padding: "0 calc(var(--rmsc-p)/2)",
-  "[hidden]": {
-    display: "none",
-  },
-});
-
-const NoOptions = css({
-  padding: "var(--rmsc-p)",
-  textAlign: "center",
-  color: "var(--rmsc-gray)",
-});
 
 const SelectPanel = () => {
   const {
@@ -195,7 +160,7 @@ const SelectPanel = () => {
   return (
     <div className="select-panel" role="listbox" ref={listRef}>
       {!disableSearch && (
-        <div className={SelectSearchContainer}>
+        <div className="search">
           <input
             placeholder={t("search")}
             type="text"
@@ -208,7 +173,7 @@ const SelectPanel = () => {
           />
           <button
             type="button"
-            className={cn(SearchClearButton, "search-clear-button")}
+            className="search-clear-button"
             hidden={!searchText}
             onClick={handleClear}
             aria-label={t("clearSearch")}
@@ -237,7 +202,7 @@ const SelectPanel = () => {
           onClick={(_e, index) => handleItemClicked(index)}
         />
       ) : (
-        <div className={cn(NoOptions, "no-options")}>{t("noOptions")}</div>
+        <div className="no-options">{t("noOptions")}</div>
       )}
     </div>
   );
