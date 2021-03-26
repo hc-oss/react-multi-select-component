@@ -9,6 +9,7 @@ Simple and lightweight multiple selection dropdown component with `checkboxes`, 
 
 ## ✨ Features
 
+- 🕶 Zero Dependency
 - 🍃 Lightweight (<5KB)
 - 💅 Themeable
 - ✌ Written w/ TypeScript
@@ -28,7 +29,7 @@ yarn add react-multi-select-component # yarn
 import React, { useState } from "react";
 import MultiSelect from "react-multi-select-component";
 
-const Example: React.FC = () => {
+const Example = () => {
   const options = [
     { label: "Grapes 🍇", value: "grapes" },
     { label: "Mango 🥭", value: "mango" },
@@ -51,7 +52,7 @@ const Example: React.FC = () => {
         options={options}
         value={selected}
         onChange={setSelected}
-        labelledBy={"Select"}
+        labelledBy="Select"
       />
     </div>
   );
@@ -67,7 +68,6 @@ export default Example;
 | `labelledBy`          | value for `aria-labelledby`                                           | `string`                     |                |
 | `options`             | options for dropdown                                                  | `[{label, value, disabled}]` |                |
 | `value`               | pre-selected rows                                                     | `[{label, value}]`           | `[]`           |
-| `focusSearchOnOpen`   | focus on search input when opening                                    | `boolean`                    | `true`         |
 | `hasSelectAll`        | toggle 'Select All' option                                            | `boolean`                    | `true`         |
 | `isLoading`           | show spinner on select                                                | `boolean`                    | `false`        |
 | `shouldToggleOnHover` | toggle dropdown on hover option                                       | `boolean`                    | `false`        |
@@ -80,10 +80,10 @@ export default Example;
 | `className`           | class name for parent component                                       | `string`                     | `multi-select` |
 | `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer)                | `function`                   |                |
 | `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)                 | `function`                   |                |
-| `ClearIcon`           | Custom Clear Icon for Search                                          | `JSX.element`                |                |
-| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                                        | `JSX.element`                |                |
+| `ClearIcon`           | Custom Clear Icon for Search                                          | `ReactNode`                  |                |
+| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                                        | `ReactNode`                  |                |
 | `debounceDuration`    | debounce duraion for Search                                           | `number`                     | `300`          |
-| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                  | `JSX.element`                | `function`     |
+| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                  | `ReactNode`                  |                |
 
 ## 🔍 Custom filter logic
 
@@ -159,7 +159,6 @@ You can override CSS variables to customize the appearance
 - This project gets inspiration and several pieces of logical code from [react-multiple-select](https://github.com/Khan/react-multi-select/)
 - [TypeScript](https://github.com/microsoft/typescript)
 - [TSDX](https://github.com/jaredpalmer/tsdx)
-- [Goober](https://github.com/cristianbote/goober)
 
 ## 📜 License
 

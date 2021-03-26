@@ -1,30 +1,10 @@
+import "./custom-element-story.css";
+
 import { boolean, text, withKnobs } from "@storybook/addon-knobs";
 import React, { useState } from "react";
 
-import { css } from "goober";
-import { cn } from "../src/lib/classnames";
-
 import MultiSelect from "../src/multi-select";
 import { options } from "./constants";
-
-const MultiSelectOverrides = css({
-  ".dropdown-container": {
-    border: 0,
-    display: "inline-block",
-    width: "100%",
-    "&:focus-within": {
-      boxShadow: "none",
-      borderColor: "transparent",
-    },
-  },
-  ".dropdown-heading": {
-    padding: 0,
-    height: "auto",
-  },
-  ".dropdown-heading-dropdown-arrow": {
-    display: "none",
-  },
-});
 
 export default {
   title: "Custom Element",
@@ -34,22 +14,21 @@ export default {
 export const ExampleWithStrings = () => {
   const [selected, setSelected] = useState<typeof options>([]);
 
-  const valueRenderer = ( selected: typeof options ) => {
-    if ( !selected.length ) {
+  const valueRenderer = (selected: typeof options) => {
+    if (!selected.length) {
       return "No Item Selected";
     }
 
     return selected.length === 1
-    ? `${selected[0].label} 😶`
-    : selected.map(({ label }) => "✔️ " + label)
-  }
+      ? `${selected[0].label} 😶`
+      : selected.map(({ label }) => "✔️ " + label);
+  };
 
   return (
     <div>
       <pre>{JSON.stringify(selected)}</pre>
       <MultiSelect
         options={options}
-        focusSearchOnOpen={boolean("focusSearchOnOpen", true)}
         hasSelectAll={boolean("hasSelectAll", true)}
         isLoading={boolean("isLoading", false)}
         shouldToggleOnHover={boolean("shouldToggleOnHover", false)}
@@ -72,24 +51,23 @@ ExampleWithStrings.story = {
 export const ExampleWithReactNode = () => {
   const [selected, setSelected] = useState<typeof options>([]);
 
-  const valueRenderer = ( selected: typeof options ) => {
-    if ( !selected.length ) {
-      return (
-        <button>Toggle Dropdown!</button>
-      );
+  const valueRenderer = (selected: typeof options) => {
+    if (!selected.length) {
+      return <button>Toggle Dropdown!</button>;
     }
 
-    return selected.length === 1
-    ? ( <button>{selected[0].label} 😶</button> )
-    : selected.map(({ label }) => ( <button key={label}>✔️ {label}</button>))
-  }
+    return selected.length === 1 ? (
+      <button>{selected[0].label} 😶</button>
+    ) : (
+      selected.map(({ label }) => <button key={label}>✔️ {label}</button>)
+    );
+  };
 
   return (
     <div>
       <pre>{JSON.stringify(selected)}</pre>
       <MultiSelect
         options={options}
-        focusSearchOnOpen={boolean("focusSearchOnOpen", true)}
         hasSelectAll={boolean("hasSelectAll", true)}
         isLoading={boolean("isLoading", false)}
         shouldToggleOnHover={boolean("shouldToggleOnHover", false)}
@@ -99,7 +77,7 @@ export const ExampleWithReactNode = () => {
         onChange={setSelected}
         valueRenderer={valueRenderer}
         labelledBy={text("labelledBy", "Select Fruits")}
-        className={cn( text("className", "multi-select"), MultiSelectOverrides )}
+        className={text("className", "multi-select mso")}
       />
     </div>
   );

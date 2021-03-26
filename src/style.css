@@ -1,0 +1,184 @@
+.rmsc {
+  --rmsc-main: #4285f4;
+  --rmsc-hover: #f1f3f5;
+  --rmsc-selected: #e2e6ea;
+  --rmsc-border: #ccc;
+  --rmsc-gray: #aaa;
+  --rmsc-bg: #fff;
+  --rmsc-p: 10px;
+  --rmsc-radius: 4px;
+  --rmsc-h: 38px;
+}
+
+.rmsc * {
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.rmsc .gray {
+  color: var(--rmsc-gray);
+}
+
+.rmsc .dropdown-content {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.rmsc .dropdown-content .panel-content {
+  overflow: hidden;
+  border-radius: var(--rmsc-radius);
+  background: var(--rmsc-bg);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 11px rgba(0, 0, 0, 0.1);
+}
+
+.rmsc .dropdown-container {
+  position: relative;
+  outline: 0;
+  background-color: var(--rmsc-bg);
+  border: 1px solid var(--rmsc-border);
+  border-radius: var(--rmsc-radius);
+}
+
+.rmsc .dropdown-container:focus-within {
+  box-shadow: var(--rmsc-main) 0 0 0 1px;
+  border-color: var(--rmsc-main);
+}
+
+.rmsc .dropdown-heading {
+  position: relative;
+  padding: 0 var(--rmsc-p);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--rmsc-h);
+  cursor: default;
+  outline: 0;
+}
+
+.rmsc .dropdown-heading .dropdown-heading-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.rmsc .clear-selected-button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  display: flex;
+}
+
+.rmsc .options {
+  max-height: 260px;
+  overflow-y: auto;
+  margin: 0;
+  padding-left: 0;
+}
+
+.rmsc .options li {
+  list-style: none;
+  margin: 0;
+}
+
+.rmsc .select-item {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  padding: var(--rmsc-p);
+  outline: 0;
+}
+
+.rmsc .select-item:hover,
+.rmsc .select-item:focus {
+  background: var(--rmsc-hover);
+}
+
+.rmsc .select-item.selected {
+  background: var(--rmsc-selected);
+}
+
+.rmsc .no-options {
+  padding: var(--rmsc-p);
+  text-align: center;
+  color: var(--rmsc-gray);
+}
+
+.rmsc .search {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid var(--rmsc-border);
+}
+
+.rmsc .search input {
+  height: var(--rmsc-h);
+  padding: 0 var(--rmsc-p);
+  width: 100%;
+  outline: 0;
+  border: 0;
+}
+
+.rmsc .search-clear-button {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: none;
+  border: 0;
+  padding: 0 calc(var(--rmsc-p) / 2);
+}
+
+.rmsc .search-clear-button [hidden] {
+  display: none;
+}
+
+.rmsc .item-renderer {
+  display: flex;
+  align-items: baseline;
+}
+
+.rmsc .item-renderer input {
+  margin: 0;
+  margin-right: 5px;
+}
+
+.rmsc .item-renderer.disabled {
+  opacity: 0.5;
+}
+
+.rmsc .spinner {
+  animation: rotate 2s linear infinite;
+}
+
+.rmsc .spinner .path {
+  stroke: var(--rmsc-border);
+  stroke-width: 4px;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

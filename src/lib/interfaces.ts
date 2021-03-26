@@ -10,7 +10,6 @@ export interface Option {
 export interface ISelectProps {
   options: Option[];
   value: Option[];
-  focusSearchOnOpen?: boolean;
   onChange?;
   valueRenderer?: (selected: Option[], options: Option[]) => ReactNode;
   ItemRenderer?: Function;
