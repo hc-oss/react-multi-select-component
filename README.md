@@ -139,7 +139,7 @@ Optionally customise dropdown item by passing `ItemRenderer` prop
 You can override CSS variables to customize the appearance
 
 ```css
-.multi-select {
+.rmsc {
   --rmsc-main: #4285f4;
   --rmsc-hover: #f1f3f5;
   --rmsc-selected: #e2e6ea;
@@ -153,6 +153,10 @@ You can override CSS variables to customize the appearance
 ```
 
 > use `!important` if CSS variables are not getting applied
+
+## Changelog
+
+For every major or minor release changelog/migration-guide will be available in [releases](https://github.com/harshzalavadiya/react-multi-select-component/releases)
 
 ## 🤠 Credits
 
