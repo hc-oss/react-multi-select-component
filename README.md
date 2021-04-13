@@ -154,7 +154,7 @@ You can override CSS variables to customize the appearance
 
 > use `!important` if CSS variables are not getting applied
 
-## Changelog
+## 📝 Changelog
 
 For every major or minor release changelog/migration-guide will be available in [releases](https://github.com/harshzalavadiya/react-multi-select-component/releases)
 

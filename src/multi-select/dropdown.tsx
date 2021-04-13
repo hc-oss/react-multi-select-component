@@ -50,6 +50,11 @@ const Dropdown = () => {
   }, [isOpen]);
 
   const handleKeyDown = (e) => {
+    // allows space when focused on input
+    if (e.target.type === "text" && e.code === KEY.SPACE) {
+      return;
+    }
+
     if (isInternalExpand) {
       if (e.code === KEY.ESCAPE) {
         setExpanded(false);
