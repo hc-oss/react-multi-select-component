@@ -50,8 +50,11 @@ const Dropdown = () => {
   }, [isOpen]);
 
   const handleKeyDown = (e) => {
-    // allows space when focused on input
-    if (e.target.type === "text" && e.code === KEY.SPACE) {
+    // allows space and enter when focused on input/button
+    if (
+      ["text", "button"].includes(e.target.type) &&
+      [KEY.SPACE, KEY.ENTER].includes(e.code)
+    ) {
       return;
     }
 
