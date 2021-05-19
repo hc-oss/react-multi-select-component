@@ -1,6 +1,7 @@
 {
   "include": ["src", "types", "stories"],
   "compilerOptions": {
+    "skipLibCheck": true,
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
