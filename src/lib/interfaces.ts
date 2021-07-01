@@ -33,4 +33,6 @@ export interface ISelectProps {
   ClearSelectedIcon?: ReactNode;
   defaultIsOpen?: boolean;
   isOpen?: boolean;
+  enableNewFields?: boolean;
+  onNewField?: Function;
 }

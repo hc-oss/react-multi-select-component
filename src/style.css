@@ -137,6 +137,15 @@
   display: none;
 }
 
+.rmsc .search-new-field-button {
+  cursor: pointer;
+}
+
+.rmsc .search-new-field-button > span {
+  float: left;
+  line-height: 24px;
+}
+
 .rmsc .item-renderer {
   display: flex;
   align-items: baseline;

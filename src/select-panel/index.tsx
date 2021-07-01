@@ -17,6 +17,7 @@ import { KEY } from "../lib/constants";
 import { debounce } from "../lib/debounce";
 import { filterOptions } from "../lib/fuzzy-match-utils";
 import { Cross } from "./cross";
+import { Add } from "./add";
 import SelectItem from "./select-item";
 import SelectList from "./select-list";
 
@@ -39,6 +40,8 @@ const SelectPanel = () => {
     hasSelectAll,
     ClearIcon,
     debounceDuration,
+    enableNewFields,
+    onNewField=()=>{}
   } = useMultiSelect();
 
   const listRef = useRef<any>();
@@ -126,6 +129,10 @@ const SelectPanel = () => {
     setFocusIndex(FocusType.SEARCH);
   };
 
+  const handleNewField = () => {
+    onNewField(searchText)
+  };
+
   const getFilteredOptions = async () =>
     customFilterOptions
       ? await customFilterOptions(options, searchTextForFilter)
@@ -203,7 +210,21 @@ const SelectPanel = () => {
             onClick={(_e, index) => handleItemClicked(index)}
           />
         ) : (
-          <li className="no-options">{t("noOptions")}</li>
+          enableNewFields ? (
+            <li className="no-options">
+              <button
+                type="button"
+                className="search-new-field-button"
+                hidden={!searchText}
+                onClick={handleNewField}
+              >
+                <span>{searchText}</span> <Add />
+              </button>
+            </li>
+          ) : (
+            <li className="no-options">{t("noOptions")}</li>
+          )
+          
         )}
       </ul>
     </div>
