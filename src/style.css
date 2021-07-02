@@ -137,13 +137,13 @@
   display: none;
 }
 
-.rmsc .search-new-field-button {
-  cursor: pointer;
+.rmsc .add-option {
+  padding: var(--rmsc-p);
+  text-align: left;
 }
 
-.rmsc .search-new-field-button > span {
-  float: left;
-  line-height: 24px;
+.rmsc .add-option:hover {
+  background: var(--rmsc-hover);
 }
 
 .rmsc .item-renderer {

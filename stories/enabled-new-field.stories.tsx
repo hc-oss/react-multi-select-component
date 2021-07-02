@@ -31,8 +31,8 @@ export const ExampleNewField = () => {
         value={selected}
         onChange={setSelected}
         labelledBy={text("labelledBy", "Select Fruits")}
-        enableNewFields
-        onNewField={handleNewField}
+        isCreatable
+        onCreate={handleNewField}
       />
     </div>
   );
