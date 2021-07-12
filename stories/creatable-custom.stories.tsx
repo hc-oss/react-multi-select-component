@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import MultiSelect from "../src/multi-select";
 
 export default {
-  title: "Multiselect",
+  title: "Creatable",
   decorators: [withKnobs],
 };
 
@@ -14,30 +14,33 @@ const INITIAL_OPTIONS = [
   { label: "Strawberry 🍓", value: "strawberry" },
 ];
 
-export const ExampleNewField = () => {
-  
-  function handleNewField(newVal) {
-    setOptions([...options, {label: newVal, value: newVal.toLowerCase()}]);
-  }
+export const CreatableCustom = () => {
+  /**
+   * overrides default `onCreateOption` allows you to modify newly added option
+   */
+  const handleNewField = (value) => ({
+    label: value,
+    value: value.toUpperCase(),
+  });
 
-  const [options, setOptions] = useState(INITIAL_OPTIONS);
   const [selected, setSelected] = useState([]);
 
   return (
     <div>
       <pre>{JSON.stringify(selected)}</pre>
+
       <MultiSelect
-        options={options}
+        options={INITIAL_OPTIONS}
         value={selected}
         onChange={setSelected}
         labelledBy={text("labelledBy", "Select Fruits")}
-        isCreatable
-        onCreate={handleNewField}
+        isCreatable={true}
+        onCreateOption={handleNewField} // <--
       />
     </div>
   );
 };
 
-ExampleNewField.story = {
-  name: "New field",
+CreatableCustom.story = {
+  name: "Creatable Custom onCreateOption",
 };

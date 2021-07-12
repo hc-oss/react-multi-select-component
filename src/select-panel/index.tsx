@@ -30,6 +30,7 @@ const SelectPanel = () => {
     t,
     onChange,
     options,
+    setOptions,
     value,
     filterOptions: customFilterOptions,
     selectAllLabel,
@@ -40,7 +41,7 @@ const SelectPanel = () => {
     ClearIcon,
     debounceDuration,
     isCreatable,
-    onCreate=()=>{}
+    onCreateOption,
   } = useMultiSelect();
 
   const listRef = useRef<any>();
@@ -128,9 +129,19 @@ const SelectPanel = () => {
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const handleNewField = () => {
-    onCreate(searchText);
-    onChange([...value, {label: searchText, value: searchText.toLowerCase()}]);
+  const handleOnCreateOption = async () => {
+    let newOption = { label: searchText, value: searchText, __isNew__: true };
+
+    // if custom `onCreateOption` is given then this will call this
+    if (onCreateOption) {
+      newOption = await onCreateOption(searchText);
+    }
+
+    // adds created value to existing options
+    setOptions([newOption, ...options]);
+    handleClear();
+
+    onChange([...value, newOption]);
   };
 
   const getFilteredOptions = async () =>
@@ -209,12 +220,12 @@ const SelectPanel = () => {
             options={filteredOptions}
             onClick={(_e, index) => handleItemClicked(index)}
           />
+        ) : isCreatable ? (
+          <li onClick={handleOnCreateOption} className="select-item creatable">
+            {t("create")} "{searchText}"
+          </li>
         ) : (
-          isCreatable ? (
-            <li onClick={handleNewField} className="add-option">{t("create")} "{searchText}"</li>
-          ) : (
-            <li className="no-options">{t("noOptions")}</li>
-          )
+          <li className="no-options">{t("noOptions")}</li>
         )}
       </ul>
     </div>

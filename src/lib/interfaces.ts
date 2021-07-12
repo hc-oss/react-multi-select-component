@@ -34,5 +34,5 @@ export interface ISelectProps {
   defaultIsOpen?: boolean;
   isOpen?: boolean;
   isCreatable?: boolean;
-  onCreate?: Function;
+  onCreateOption?: Function;
 }
