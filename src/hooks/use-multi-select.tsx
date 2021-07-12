@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { ISelectProps, Option } from "../lib/interfaces";
 
@@ -10,6 +10,7 @@ const defaultStrings = {
   search: "Search",
   selectAll: "Select All",
   selectSomeItems: "Select...",
+  create: "Create",
 };
 
 const defaultProps: Partial<ISelectProps> = {
@@ -22,6 +23,7 @@ const defaultProps: Partial<ISelectProps> = {
 
 interface MultiSelectContextProps extends ISelectProps {
   t: (key: string) => string;
+  setOptions?;
 }
 
 interface MultiSelectProviderProps {
@@ -37,10 +39,13 @@ export const MultiSelectProvider = ({
   props,
   children,
 }: MultiSelectProviderProps) => {
+  const [options, setOptions] = useState(props.options);
   const t = (key) => props.overrideStrings?.[key] || defaultStrings[key];
 
   return (
-    <MultiSelectContext.Provider value={{ t, ...defaultProps, ...props }}>
+    <MultiSelectContext.Provider
+      value={{ t, ...defaultProps, ...props, options, setOptions }}
+    >
       {children}
     </MultiSelectContext.Provider>
   );

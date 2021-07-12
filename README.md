@@ -63,27 +63,29 @@ export default Example;
 
 ## 👀 Props
 
-| Prop                  | Description                                                           | Type                         | Default        |
-| --------------------- | --------------------------------------------------------------------- | ---------------------------- | -------------- |
-| `labelledBy`          | value for `aria-labelledby`                                           | `string`                     |                |
-| `options`             | options for dropdown                                                  | `[{label, value, disabled}]` |                |
-| `value`               | pre-selected rows                                                     | `[{label, value}]`           | `[]`           |
-| `hasSelectAll`        | toggle 'Select All' option                                            | `boolean`                    | `true`         |
-| `isLoading`           | show spinner on select                                                | `boolean`                    | `false`        |
-| `shouldToggleOnHover` | toggle dropdown on hover option                                       | `boolean`                    | `false`        |
-| `overrideStrings`     | i18n [docs](#-internationalization)                                   | `object`                     |                |
-| `onChange`            | onChange callback                                                     | `function`                   |                |
-| `disabled`            | disable dropdown                                                      | `boolean`                    | `false`        |
-| `selectAllLabel`      | _select all_ label                                                    | `string`                     |                |
-| `disableSearch`       | hide search textbox                                                   | `boolean`                    | `false`        |
-| `filterOptions`       | custom filter options (async supported) [docs](#-custom-filter-logic) | `function`                   | Fuzzy Search   |
-| `className`           | class name for parent component                                       | `string`                     | `multi-select` |
-| `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer)                | `function`                   |                |
-| `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)                 | `function`                   |                |
-| `ClearIcon`           | Custom Clear Icon for Search                                          | `ReactNode`                  |                |
-| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                                        | `ReactNode`                  |                |
-| `debounceDuration`    | debounce duraion for Search                                           | `number`                     | `300`          |
-| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                  | `ReactNode`                  |                |
+| Prop                  | Description                                                                   | Type                         | Default        |
+| --------------------- | ----------------------------------------------------------------------------- | ---------------------------- | -------------- |
+| `labelledBy`          | value for `aria-labelledby`                                                   | `string`                     |                |
+| `options`             | options for dropdown                                                          | `[{label, value, disabled}]` |                |
+| `value`               | pre-selected rows                                                             | `[{label, value}]`           | `[]`           |
+| `hasSelectAll`        | toggle 'Select All' option                                                    | `boolean`                    | `true`         |
+| `isLoading`           | show spinner on select                                                        | `boolean`                    | `false`        |
+| `shouldToggleOnHover` | toggle dropdown on hover option                                               | `boolean`                    | `false`        |
+| `overrideStrings`     | i18n [docs](#-internationalization)                                           | `object`                     |                |
+| `onChange`            | onChange callback                                                             | `function`                   |                |
+| `disabled`            | disable dropdown                                                              | `boolean`                    | `false`        |
+| `selectAllLabel`      | _select all_ label                                                            | `string`                     |                |
+| `disableSearch`       | hide search textbox                                                           | `boolean`                    | `false`        |
+| `filterOptions`       | custom filter options (async supported) [docs](#-custom-filter-logic)         | `function`                   | Fuzzy Search   |
+| `className`           | class name for parent component                                               | `string`                     | `multi-select` |
+| `valueRenderer`       | custom dropdown header [docs](#-custom-value-renderer)                        | `function`                   |                |
+| `ItemRenderer`        | custom dropdown option [docs](#-custom-item-renderer)                         | `function`                   |                |
+| `ClearIcon`           | Custom Clear Icon for Search                                                  | `ReactNode`                  |                |
+| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                                                | `ReactNode`                  |                |
+| `debounceDuration`    | debounce duraion for Search                                                   | `number`                     | `300`          |
+| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                          | `ReactNode`                  |                |
+| `isCreatable`         | Allows user to create unavailable option(s) [example](https://bit.ly/3e8xSYB) | `boolean`                    | `false`        |
+| `onCreateOption`      | allows to override newly created option [example](https://bit.ly/3r3BD6B)     | `function`                   |                |
 
 ## 🔍 Custom filter logic
 
