@@ -39,6 +39,8 @@ const SelectPanel = () => {
     hasSelectAll,
     ClearIcon,
     debounceDuration,
+    isCreatable,
+    onCreate=()=>{}
   } = useMultiSelect();
 
   const listRef = useRef<any>();
@@ -126,6 +128,11 @@ const SelectPanel = () => {
     setFocusIndex(FocusType.SEARCH);
   };
 
+  const handleNewField = () => {
+    onCreate(searchText);
+    onChange([...value, {label: searchText, value: searchText.toLowerCase()}]);
+  };
+
   const getFilteredOptions = async () =>
     customFilterOptions
       ? await customFilterOptions(options, searchTextForFilter)
@@ -203,7 +210,11 @@ const SelectPanel = () => {
             onClick={(_e, index) => handleItemClicked(index)}
           />
         ) : (
-          <li className="no-options">{t("noOptions")}</li>
+          isCreatable ? (
+            <li onClick={handleNewField} className="add-option">{t("create")} "{searchText}"</li>
+          ) : (
+            <li className="no-options">{t("noOptions")}</li>
+          )
         )}
       </ul>
     </div>

@@ -137,6 +137,15 @@
   display: none;
 }
 
+.rmsc .add-option {
+  padding: var(--rmsc-p);
+  text-align: left;
+}
+
+.rmsc .add-option:hover {
+  background: var(--rmsc-hover);
+}
+
 .rmsc .item-renderer {
   display: flex;
   align-items: baseline;

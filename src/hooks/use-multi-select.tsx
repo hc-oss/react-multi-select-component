@@ -10,6 +10,7 @@ const defaultStrings = {
   search: "Search",
   selectAll: "Select All",
   selectSomeItems: "Select...",
+  create: "Create",
 };
 
 const defaultProps: Partial<ISelectProps> = {
