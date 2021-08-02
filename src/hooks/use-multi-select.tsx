@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ISelectProps, Option } from "../lib/interfaces";
 
@@ -41,6 +41,10 @@ export const MultiSelectProvider = ({
 }: MultiSelectProviderProps) => {
   const [options, setOptions] = useState(props.options);
   const t = (key) => props.overrideStrings?.[key] || defaultStrings[key];
+
+  useEffect(() => {
+    setOptions(props.options);
+  }, [props.options]);
 
   return (
     <MultiSelectContext.Provider
