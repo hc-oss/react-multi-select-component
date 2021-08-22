@@ -1,8 +1,9 @@
 {
-  "include": ["src", "types", "stories"],
+  "include": ["src", "types", "stories", "node_modules/microbundle/index.d.ts"],
   "compilerOptions": {
     "skipLibCheck": true,
-    "module": "esnext",
+    "module": "ESNext",
+    "target": "ESNext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "declaration": true,

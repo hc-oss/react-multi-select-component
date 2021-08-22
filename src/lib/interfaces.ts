@@ -12,7 +12,7 @@ export interface ISelectProps {
   value: Option[];
   onChange?;
   valueRenderer?: (selected: Option[], options: Option[]) => ReactNode;
-  ItemRenderer?: Function;
+  ItemRenderer?;
   ArrowRenderer?: ({ expanded }) => JSX.Element;
   selectAllLabel?: string;
   isLoading?: boolean;
@@ -34,5 +34,5 @@ export interface ISelectProps {
   defaultIsOpen?: boolean;
   isOpen?: boolean;
   isCreatable?: boolean;
-  onCreateOption?: Function;
+  onCreateOption?;
 }
