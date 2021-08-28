@@ -1,10 +1,10 @@
 {
   "name": "react-multi-select-component",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "harshzalavadiya",
   "license": "MIT",
-  "repository": "harshzalavadiya/react-multi-select-component",
+  "repository": "github.com/hc-oss/react-multi-select-component",
   "type": "module",
   "source": "src/index.tsx",
   "exports": "./dist/react-multi-select-component.modern.js",

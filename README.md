@@ -3,7 +3,7 @@
 Simple and lightweight multiple selection dropdown component with `checkboxes`, `search` and `select-all`
 
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://react-multi-select-component.pages.dev/)
-[![GitHub Actions Status](https://github.com/harshzalavadiya/react-multi-select-component/workflows/NodeJS/badge.svg)](https://github.com/harshzalavadiya/react-multi-select-component/actions)
+[![GitHub Actions Status](https://github.com/hc-oss/react-multi-select-component/workflows/NodeJS/badge.svg)](https://github.com/hc-oss/react-multi-select-component/actions)
 [![NPM](https://img.shields.io/npm/v/react-multi-select-component.svg)](https://npm.im/react-multi-select-component)
 [![gzip](https://badgen.net/bundlephobia/minzip/react-multi-select-component@latest)](https://bundlephobia.com/result?p=react-multi-select-component@latest)
 
@@ -85,7 +85,7 @@ More examples can be found [here ↗](./docs/recipes)
 
 ## 📝 Changelog
 
-For every release changelog/migration-guide will be available in [releases](https://github.com/harshzalavadiya/react-multi-select-component/releases)
+For every release changelog/migration-guide will be available in [releases](https://github.com/hc-oss/react-multi-select-component/releases)
 
 ## 🤠 Credits
 
