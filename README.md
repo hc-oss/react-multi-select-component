@@ -2,7 +2,7 @@
 
 Simple and lightweight multiple selection dropdown component with `checkboxes`, `search` and `select-all`
 
-[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://rmsc.vercel.app/)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://react-multi-select-component.pages.dev/)
 [![GitHub Actions Status](https://github.com/harshzalavadiya/react-multi-select-component/workflows/NodeJS/badge.svg)](https://github.com/harshzalavadiya/react-multi-select-component/actions)
 [![NPM](https://img.shields.io/npm/v/react-multi-select-component.svg)](https://npm.im/react-multi-select-component)
 [![gzip](https://badgen.net/bundlephobia/minzip/react-multi-select-component@latest)](https://bundlephobia.com/result?p=react-multi-select-component@latest)
@@ -59,29 +59,29 @@ More examples can be found [here ↗](./docs/recipes)
 
 ## 👀 Props
 
-| Prop                  | Description                                                                                                                | Type                         | Default        |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
-| `labelledBy`          | value for `aria-labelledby`                                                                                                | `string`                     |                |
-| `options`             | options for dropdown                                                                                                       | `[{label, value, disabled}]` |                |
-| `value`               | pre-selected rows                                                                                                          | `[{label, value}]`           | `[]`           |
-| `hasSelectAll`        | toggle 'Select All' option                                                                                                 | `boolean`                    | `true`         |
-| `isLoading`           | show spinner on select                                                                                                     | `boolean`                    | `false`        |
-| `shouldToggleOnHover` | toggle dropdown on hover option                                                                                            | `boolean`                    | `false`        |
-| `overrideStrings`     | [localization ↗](docs/recipes/localization.md)                                                                             | `object`                     |                |
-| `onChange`            | onChange callback                                                                                                          | `function`                   |                |
-| `disabled`            | disable dropdown                                                                                                           | `boolean`                    | `false`        |
-| `selectAllLabel`      | _select all_ label                                                                                                         | `string`                     |                |
-| `disableSearch`       | hide search textbox                                                                                                        | `boolean`                    | `false`        |
-| `filterOptions`       | [custom filter options (async supported) ↗](docs/recipes/custom-filter.md)                                                 | `function`                   | Fuzzy Search   |
-| `className`           | class name for parent component                                                                                            | `string`                     | `multi-select` |
-| `valueRenderer`       | [custom dropdown header ↗](docs/recipes/custom-value.md)                                                                   | `function`                   |                |
-| `ItemRenderer`        | [custom dropdown option ↗](docs/recipes/custom-item.md)                                                                    | `function`                   |                |
-| `ClearIcon`           | Custom Clear Icon for Search                                                                                               | `ReactNode`                  |                |
-| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                                                                                             | `ReactNode`                  |                |
-| `debounceDuration`    | debounce duraion for Search                                                                                                | `number`                     | `300`          |
-| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                                                                       | `ReactNode`                  |                |
-| `isCreatable`         | Allows user to create unavailable option(s) [example ↗](https://rmsc.vercel.app/?path=/story/creatable--creatable-default) | `boolean`                    | `false`        |
-| `onCreateOption`      | allows to override newly created option [example ↗](https://rmsc.vercel.app/?path=/story/creatable--creatable-custom)      | `function`                   |                |
+| Prop                  | Description                                                                                                                                       | Type                         | Default        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
+| `labelledBy`          | value for `aria-labelledby`                                                                                                                       | `string`                     |                |
+| `options`             | options for dropdown                                                                                                                              | `[{label, value, disabled}]` |                |
+| `value`               | pre-selected rows                                                                                                                                 | `[{label, value}]`           | `[]`           |
+| `hasSelectAll`        | toggle 'Select All' option                                                                                                                        | `boolean`                    | `true`         |
+| `isLoading`           | show spinner on select                                                                                                                            | `boolean`                    | `false`        |
+| `shouldToggleOnHover` | toggle dropdown on hover option                                                                                                                   | `boolean`                    | `false`        |
+| `overrideStrings`     | [localization ↗](docs/recipes/localization.md)                                                                                                    | `object`                     |                |
+| `onChange`            | onChange callback                                                                                                                                 | `function`                   |                |
+| `disabled`            | disable dropdown                                                                                                                                  | `boolean`                    | `false`        |
+| `selectAllLabel`      | _select all_ label                                                                                                                                | `string`                     |                |
+| `disableSearch`       | hide search textbox                                                                                                                               | `boolean`                    | `false`        |
+| `filterOptions`       | [custom filter options (async supported) ↗](docs/recipes/custom-filter.md)                                                                        | `function`                   | Fuzzy Search   |
+| `className`           | class name for parent component                                                                                                                   | `string`                     | `multi-select` |
+| `valueRenderer`       | [custom dropdown header ↗](docs/recipes/custom-value.md)                                                                                          | `function`                   |                |
+| `ItemRenderer`        | [custom dropdown option ↗](docs/recipes/custom-item.md)                                                                                           | `function`                   |                |
+| `ClearIcon`           | Custom Clear Icon for Search                                                                                                                      | `ReactNode`                  |                |
+| `ArrowRenderer`       | Custom Arrow Icon for Dropdown                                                                                                                    | `ReactNode`                  |                |
+| `debounceDuration`    | debounce duraion for Search                                                                                                                       | `number`                     | `300`          |
+| `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                                                                                              | `ReactNode`                  |                |
+| `isCreatable`         | Allows user to create unavailable option(s) [example ↗](https://react-multi-select-component.pages.dev/?path=/story/creatable--creatable-default) | `boolean`                    | `false`        |
+| `onCreateOption`      | allows to override newly created option [example ↗](https://react-multi-select-component.pages.dev/?path=/story/creatable--creatable-custom)      | `function`                   |                |
 
 ## 📝 Changelog
 
