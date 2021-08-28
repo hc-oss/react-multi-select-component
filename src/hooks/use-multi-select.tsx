@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { injectStyles } from "../lib/inject-style";
 import { ISelectProps, Option } from "../lib/interfaces";
 
 const defaultStrings = {
@@ -45,6 +46,10 @@ export const MultiSelectProvider = ({
   useEffect(() => {
     setOptions(props.options);
   }, [props.options]);
+
+  useEffect(() => {
+    injectStyles();
+  }, []);
 
   return (
     <MultiSelectContext.Provider

@@ -222,7 +222,7 @@ const SelectPanel = () => {
           />
         ) : isCreatable ? (
           <li onClick={handleOnCreateOption} className="select-item creatable">
-            {t("create")} "{searchText}"
+            {`${t("create")} "${searchText}"`}
           </li>
         ) : (
           <li className="no-options">{t("noOptions")}</li>

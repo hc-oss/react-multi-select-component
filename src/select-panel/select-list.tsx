@@ -9,7 +9,7 @@ import SelectItem from "./select-item";
 
 interface ISelectListProps {
   options: Option[];
-  onClick: Function;
+  onClick;
   skipIndex: number;
 }
 

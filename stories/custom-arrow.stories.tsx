@@ -25,7 +25,7 @@ export const ExampleCustomArrow = () => {
         onChange={setSelected}
         labelledBy={text("labelledBy", "Select Fruits")}
         ArrowRenderer={ArrowRenderer}
-        onMenuToggle={(isOpen) => console.log("onMenuToggle", isOpen)}
+        onMenuToggle={(isOpen) => console.debug("onMenuToggle", isOpen)}
         ClearIcon={<CustomClearIcon />}
         ClearSelectedIcon={<CustomClearIcon />}
       />

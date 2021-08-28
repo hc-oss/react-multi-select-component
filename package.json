@@ -1,24 +1,24 @@
 {
   "name": "react-multi-select-component",
-  "version": "4.0.6",
+  "version": "4.1.0",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "harshzalavadiya",
   "license": "MIT",
   "repository": "harshzalavadiya/react-multi-select-component",
-  "main": "dist/index.js",
-  "module": "dist/react-multi-select-component.esm.js",
-  "typings": "dist/index.d.ts",
+  "type": "module",
+  "source": "src/index.tsx",
+  "exports": "./dist/react-multi-select-component.modern.js",
+  "main": "./dist/react-multi-select-component.cjs",
+  "module": "./dist/react-multi-select-component.module.js",
+  "unpkg": "./dist/react-multi-select-component.umd.js",
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
     "analyze": "size-limit --why",
-    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "microbundle --css inline --sourcemap false --jsx React.createElement",
     "format": "prettier --write src/**/*",
-    "build-storybook": "build-storybook"
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "size": "size-limit",
+    "storybook": "start-storybook -p 6006"
   },
   "peerDependencies": {
     "react": ">=17"
@@ -26,29 +26,27 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@size-limit/preset-small-lib": "^5.0.2",
-    "@storybook/addon-essentials": "^6.3.6",
-    "@storybook/addon-info": "^5.3.21",
+    "@size-limit/preset-small-lib": "^5.0.3",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
     "@storybook/addon-knobs": "^6.3.0",
-    "@storybook/addon-links": "^6.3.6",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/addons": "^6.3.6",
-    "@storybook/react": "^6.3.6",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/react": "^6.3.7",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
     "babel-loader": "^8.2.2",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.1",
-    "postcss": "^8.3.6",
+    "microbundle": "^0.13.3",
+    "prettier": "^2.3.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.2",
-    "react-is": "^17.0.2",
-    "rollup-plugin-postcss": "^4.0.0",
-    "size-limit": "^5.0.2",
-    "style-loader": "^3.2.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.3.0",
-    "typescript": "^4.3.5"
+    "react-dom": "^17.0.2"
   },
   "browserslist": [
     "defaults",
@@ -59,20 +57,9 @@
     "dist",
     "src"
   ],
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": false,
-    "trailingComma": "es5",
-    "endOfLine": "auto"
-  },
   "size-limit": [
     {
-      "path": "dist/react-multi-select-component.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/react-multi-select-component.esm.js",
+      "path": "dist/react-multi-select-component.cjs",
       "limit": "10 KB"
     }
   ],

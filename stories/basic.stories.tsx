@@ -25,7 +25,7 @@ export const ExampleDefault = () => {
         disabled={boolean("disabled", false)}
         onChange={setSelected}
         onMenuToggle={(s) => {
-          console.log("Select Toggle: ", s);
+          console.debug("Select Toggle: ", s);
         }}
         labelledBy={text("labelledBy", "Select Fruits")}
         className={text("className", "multi-select")}

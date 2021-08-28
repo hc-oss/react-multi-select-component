@@ -1,8 +1,7 @@
 /*
  * copied from https://github.com/imbhargav5/rooks/blob/master/packages/shared/useKeyRef.ts
  */
-
-import { Ref, useEffect, useCallback, useRef, useMemo } from "react";
+import { Ref, useCallback, useEffect, useMemo, useRef } from "react";
 
 interface Options {
   /**
@@ -46,7 +45,7 @@ function useKey(
   const options = Object.assign({}, defaultOptions, opts);
   const { when, eventTypes } = options;
   const callbackRef = useRef<(e: KeyboardEvent) => any>(callback);
-  let { target } = options;
+  const { target } = options;
 
   useEffect(() => {
     callbackRef.current = callback;

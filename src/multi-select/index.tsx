@@ -1,5 +1,3 @@
-import "../style.css";
-
 import React from "react";
 
 import { MultiSelectProvider } from "../hooks/use-multi-select";
