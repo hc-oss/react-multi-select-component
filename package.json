@@ -1,6 +1,6 @@
 {
   "name": "react-multi-select-component",
-  "version": "4.1.6",
+  "version": "4.1.7",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "harshzalavadiya",
   "license": "MIT",
@@ -11,7 +11,7 @@
   "main": "./dist/react-multi-select-component.cjs",
   "module": "./dist/react-multi-select-component.module.js",
   "unpkg": "./dist/react-multi-select-component.umd.js",
-  "typings": "./dist/src/index.d.ts",
+  "typings": "./dist/src/src/index.d.ts",
   "scripts": {
     "analyze": "size-limit --why",
     "build-storybook": "build-storybook",
