@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types", "stories", "node_modules/microbundle/index.d.ts"],
+  "include": ["src", "typings.d.ts"],
   "compilerOptions": {
     "skipLibCheck": true,
     "module": "ESNext",
@@ -8,7 +8,7 @@
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
@@ -21,7 +21,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "jsx": "react",
     "esModuleInterop": true
   }
