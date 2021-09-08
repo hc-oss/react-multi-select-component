@@ -11,7 +11,7 @@ default values for `overrideStrings` are as below
   "noOptions": "No options",
   "search": "Search",
   "selectAll": "Select All",
-  selectAllFiltered: "Select All (Filtered)",
+  "selectAllFiltered": "Select All (Filtered)",
   "selectSomeItems": "Select..."
 }
 ```
