@@ -33,7 +33,6 @@ const SelectPanel = () => {
     setOptions,
     value,
     filterOptions: customFilterOptions,
-    selectAllLabel,
     ItemRenderer,
     disabled,
     disableSearch,
@@ -65,7 +64,7 @@ const SelectPanel = () => {
   }, [disableSearch, hasSelectAll]);
 
   const selectAllOption = {
-    label: selectAllLabel || t("selectAll"),
+    label: searchText ? t("selectAllFiltered") : t("selectAll"),
     value: "",
   };
 
@@ -78,9 +77,7 @@ const SelectPanel = () => {
       const selectedValues = value.map((o) => o.value);
       const finalSelectedValues = [...selectedValues, ...filteredValues];
 
-      return filteredOptions.filter((o) =>
-        finalSelectedValues.includes(o.value)
-      );
+      return options.filter((o) => finalSelectedValues.includes(o.value));
     }
 
     return value.filter((o) => !filteredValues.includes(o.value));

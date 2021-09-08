@@ -14,7 +14,6 @@ export interface ISelectProps {
   valueRenderer?: (selected: Option[], options: Option[]) => ReactNode;
   ItemRenderer?;
   ArrowRenderer?: ({ expanded }) => JSX.Element;
-  selectAllLabel?: string;
   isLoading?: boolean;
   disabled?: boolean;
   disableSearch?: boolean;
