@@ -10,6 +10,7 @@ const defaultStrings = {
   noOptions: "No options",
   search: "Search",
   selectAll: "Select All",
+  selectAllFiltered: "Select All (Filtered)",
   selectSomeItems: "Select...",
   create: "Create",
 };
