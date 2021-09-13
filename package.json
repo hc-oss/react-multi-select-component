@@ -1,21 +1,28 @@
 {
   "name": "react-multi-select-component",
-  "version": "4.1.10",
+  "version": "4.1.11",
   "description": "Simple and lightweight multiple selection dropdown component with checkboxes, search and select-all",
   "author": "harshzalavadiya",
   "license": "MIT",
   "repository": "https://github.com/hc-oss/react-multi-select-component",
-  "type": "module",
-  "source": "src/index.tsx",
-  "exports": "./dist/react-multi-select-component.modern.js",
-  "main": "./dist/react-multi-select-component.cjs",
-  "module": "./dist/react-multi-select-component.module.js",
-  "unpkg": "./dist/react-multi-select-component.umd.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
   "scripts": {
     "analyze": "size-limit --why",
     "build-storybook": "build-storybook",
-    "build": "microbundle --css inline --sourcemap false --jsx React.createElement",
+    "prebuild": "rimraf dist",
+    "build": "concurrently yarn:build:*",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "format": "prettier --write src/**/*",
     "lint": "eslint src/**/*.{ts,tsx}",
     "size": "size-limit",
@@ -26,7 +33,10 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.15.4",
     "@babel/core": "^7.15.5",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
     "@size-limit/preset-small-lib": "^5.0.3",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
@@ -35,19 +45,22 @@
     "@storybook/react": "^6.3.8",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-css-import-to-string": "^0.0.2",
+    "concurrently": "^6.2.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.2",
-    "microbundle": "^0.13.3",
-    "prettier": "^2.3.2",
+    "prettier": "^2.4.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "typescript": "^4.4.3"
   },
   "browserslist": [
     "defaults",
@@ -55,12 +68,11 @@
     "maintained node versions"
   ],
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "size-limit": [
     {
-      "path": "dist/react-multi-select-component.cjs",
+      "path": "dist/cjs/index.js",
       "limit": "10 KB"
     }
   ],

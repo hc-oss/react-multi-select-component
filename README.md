@@ -90,7 +90,6 @@ For every release changelog/migration-guide will be available in [releases](http
 
 - This project gets inspiration and several pieces of logical code from [react-multiple-select](https://github.com/Khan/react-multi-select/)
 - [TypeScript](https://github.com/microsoft/typescript)
-- [microbundle](https://github.com/developit/microbundle)
 
 ## 📜 License
 

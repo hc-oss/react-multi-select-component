@@ -3,7 +3,7 @@
   "compilerOptions": {
     "skipLibCheck": true,
     "module": "ESNext",
-    "target": "ESNext",
+    "target": "es5",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "declaration": true,
