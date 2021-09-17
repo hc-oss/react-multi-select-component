@@ -29,7 +29,8 @@
     "storybook": "start-storybook -p 6006"
   },
   "peerDependencies": {
-    "react": ">=17"
+    "react": "^16 || ^17",
+    "react-dom": "^16 || ^17"
   },
   "dependencies": {},
   "devDependencies": {
