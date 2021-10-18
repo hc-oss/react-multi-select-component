@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
-import { injectStyles } from "../lib/inject-style";
+import { injectStyles, MultiSelectStyleContext } from "../lib/inject-style";
 import { ISelectProps, Option } from "../lib/interfaces";
 
 const defaultStrings = {
@@ -44,7 +44,8 @@ export const MultiSelectProvider = ({
   const [options, setOptions] = useState(props.options);
   const t = (key) => props.overrideStrings?.[key] || defaultStrings[key];
 
-  useMemo(() => injectStyles(), []);
+  const styleContext = useContext(MultiSelectStyleContext);
+  useMemo(() => injectStyles(styleContext), [styleContext]);
 
   useEffect(() => {
     setOptions(props.options);
