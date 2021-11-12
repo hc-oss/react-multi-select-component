@@ -6,14 +6,14 @@ default values for `overrideStrings` are as below
 
 ```json
 {
-  allItemsAreSelected: "All items are selected.",
-  clearSearch: "Clear Search",
-  clearSelected: "Clear Selected",
-  noOptions: "No options",
-  search: "Search",
-  selectAll: "Select All",
-  selectAllFiltered: "Select All (Filtered)",
-  selectSomeItems: "Select...",
-  create: "Create",
+  "allItemsAreSelected": "All items are selected.",
+  "clearSearch": "Clear Search",
+  "clearSelected": "Clear Selected",
+  "noOptions": "No options",
+  "search": "Search",
+  "selectAll": "Select All",
+  "selectAllFiltered": "Select All (Filtered)",
+  "selectSomeItems": "Select...",
+  "create": "Create",
 }
 ```
