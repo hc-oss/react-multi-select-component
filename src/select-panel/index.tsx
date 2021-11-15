@@ -77,7 +77,7 @@ const SelectPanel = () => {
       const selectedValues = value.map((o) => o.value);
       const finalSelectedValues = [...selectedValues, ...filteredValues];
 
-      return options.filter((o) => finalSelectedValues.includes(o.value));
+      return (customFilterOptions ? filteredOptions : options).filter((o) => finalSelectedValues.includes(o.value));
     }
 
     return value.filter((o) => !filteredValues.includes(o.value));
