@@ -120,6 +120,7 @@
 }
 
 .rmsc .search input {
+  background: none;
   height: var(--rmsc-h);
   padding: 0 var(--rmsc-p);
   width: 100%;
