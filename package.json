@@ -38,7 +38,7 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
-    "@size-limit/preset-small-lib": "^6.0.4",
+    "@size-limit/preset-small-lib": "^7.0.3",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-knobs": "^6.3.1",
