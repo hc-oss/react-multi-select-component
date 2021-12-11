@@ -46,7 +46,7 @@ export function filterOptions(
       }))
       // Only include matches of the entire substring, with a slight
       // affordance for transposition or extra characters.
-      .filter((pair) => pair.score >= cleanFilter.length - 2)
+      .filter((pair) => pair.score >= Math.max(cleanFilter.length - 2, cleanFilter.length) /** Filter text might have length less than 2 */)
       // Sort 'em by order of their score.
       .sort((a, b) => b.score - a.score)
       // …and grab the original Options back from their pairs.
