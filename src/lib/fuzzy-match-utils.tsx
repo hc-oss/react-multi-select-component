@@ -46,7 +46,7 @@ export function filterOptions(
       }))
       // Only include matches of the entire substring, with a slight
       // affordance for transposition or extra characters.
-      .filter((pair) => pair.score >= cleanFilter.length - 2)
+      .filter((pair) => pair.score >= Math.max(cleanFilter.length - 2, cleanFilter.length) /** Filter text might have length less than 2 */)
       // Sort 'em by order of their score.
       .sort((a, b) => b.score - a.score)
       // …and grab the original Options back from their pairs.
@@ -69,8 +69,8 @@ export function filterOptions(
  *           closer matches.
  */
 export function typeaheadSimilarity(a: string, b: string): number {
-  const aLength = a.length;
-  const bLength = b.length;
+  let aLength = a.length;
+  let bLength = b.length;
   const table: any[] = [];
 
   if (!aLength || !bLength) {
@@ -80,6 +80,8 @@ export function typeaheadSimilarity(a: string, b: string): number {
   // Ensure `a` isn't shorter than `b`.
   if (aLength < bLength) {
     [a, b] = [b, a];
+    // Swap the length of these strings.
+    [aLength, bLength] = [bLength, aLength];
   }
 
   // Early exit if `a` includes `b`; these will be scored higher than any
