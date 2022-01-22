@@ -1,28 +1,35 @@
 {
-  "include": ["src", "typings.d.ts"],
   "compilerOptions": {
-    "skipLibCheck": true,
-    "module": "ESNext",
-    "target": "es5",
-    "lib": ["dom", "esnext"],
-    "importHelpers": true,
+    "composite": false,
     "declaration": true,
-    "sourceMap": true,
-    "rootDir": "./src",
-    "strict": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": [
+      "ES2021",
+      "dom"
+    ],
+    "module": "ESNext",
     "moduleResolution": "node",
-    "baseUrl": "./src",
-    "jsx": "react",
-    "esModuleInterop": true
-  }
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES5",
+    "noImplicitAny": false,
+    "noImplicitReturns": false
+  },
+  "exclude": [
+    "_old",
+    "build",
+    "dist",
+    "node_modules"
+  ],
+  "include": [
+    "."
+  ]
 }
