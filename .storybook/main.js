@@ -1,19 +1,18 @@
 module.exports = {
-  stories: ["../stories/**/*.stories.@(ts|tsx|js|jsx)"],
+  stories: [
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-knobs",
     "@storybook/addon-links",
+    "@storybook/addon-essentials",
     {
-      name: "storybook-addon-turbo-build",
+      name: '@storybook/addon-docs',
       options: {
-        optimizationLevel: 2,
+        configureJSX: true,
+        transcludeMarkdown: true,
       },
     },
   ],
-  // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
-  typescript: {
-    check: true, // type-check stories during Storybook build
-    reactDocgen: "none",
-  },
+  framework: "@storybook/react",
 };

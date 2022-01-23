@@ -23,7 +23,7 @@ yarn add react-multi-select-component # yarn
 
 ## 📦 Example
 
-![Example](docs/images/preview.gif)
+![Example](https://user-images.githubusercontent.com/5774849/150685427-6025d7d3-ddfc-4787-a856-241c4cc100cb.gif)
 
 ```tsx
 import React, { useState } from "react";
@@ -55,7 +55,7 @@ const Example = () => {
 export default Example;
 ```
 
-More examples can be found [here ↗](./docs/recipes)
+More examples can be found [here ↗](https://react-multi-select-component.pages.dev/)
 
 ## 👀 Props
 
