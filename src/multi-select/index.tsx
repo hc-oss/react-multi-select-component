@@ -1,6 +1,6 @@
 import "../style.css";
 
-import * as React from "react";
+import React from "react";
 
 import { MultiSelectProvider } from "../hooks/use-multi-select";
 import { ISelectProps } from "../lib/interfaces";
