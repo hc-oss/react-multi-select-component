@@ -29,7 +29,14 @@ const Dropdown = () => {
     isOpen,
     defaultIsOpen,
     ClearSelectedIcon,
+    closeOnChangedValue
   } = useMultiSelect();
+
+  useEffect(() => {
+    if (closeOnChangedValue) {
+      setExpanded(false)
+    }
+  }, [value])
 
   const [isInternalExpand, setIsInternalExpand] = useState(true);
   const [expanded, setExpanded] = useState(defaultIsOpen);
