@@ -81,6 +81,7 @@ More examples can be found [here ↗](https://react-multi-select-component.pages
 | `ClearSelectedIcon`   | Custom Clear Icon for Selected Items                                                                                                              | `ReactNode`                  |                |
 | `isCreatable`         | Allows user to create unavailable option(s) [example ↗](https://react-multi-select-component.pages.dev/?path=/story/creatable--creatable-default) | `boolean`                    | `false`        |
 | `onCreateOption`      | allows to override newly created option [example ↗](https://react-multi-select-component.pages.dev/?path=/story/creatable--creatable-custom)      | `function`                   |                |
+| `closeOnChangedValue` | automatically closes dropdown when its value is changed                                                                                           | `boolean`                    | `false`        |
 
 ## 📝 Changelog
 
