@@ -29,14 +29,14 @@ const Dropdown = () => {
     isOpen,
     defaultIsOpen,
     ClearSelectedIcon,
-    closeOnChangedValue
+    closeOnChangedValue,
   } = useMultiSelect();
 
   useEffect(() => {
     if (closeOnChangedValue) {
-      setExpanded(false)
+      setExpanded(false);
     }
-  }, [value])
+  }, [value]);
 
   const [isInternalExpand, setIsInternalExpand] = useState(true);
   const [expanded, setExpanded] = useState(defaultIsOpen);
@@ -126,7 +126,7 @@ const Dropdown = () => {
           <DropdownHeader />
         </div>
         {isLoading && <Loading />}
-        {value.length > 0 && (
+        {value.length > 0 && ClearSelectedIcon !== null && (
           <button
             type="button"
             className="clear-selected-button"
