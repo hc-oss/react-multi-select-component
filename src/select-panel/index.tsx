@@ -15,7 +15,7 @@ import { useKey } from "../hooks/use-key";
 import { useMultiSelect } from "../hooks/use-multi-select";
 import { KEY } from "../lib/constants";
 import { debounce } from "../lib/debounce";
-import { filterOptions } from "../lib/fuzzy-match-utils";
+import { filterOptions } from "../lib/simple-match-utils";
 import { Cross } from "./cross";
 import SelectItem from "./select-item";
 import SelectList from "./select-list";
