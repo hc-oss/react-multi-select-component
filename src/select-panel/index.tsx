@@ -174,6 +174,9 @@ const SelectPanel = () => {
     getFilteredOptions().then(setFilteredOptions);
   }, [searchTextForFilter, options]);
 
+  const creationRef: any = useRef()
+  useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
+
   return (
     <div className="select-panel" role="listbox" ref={listRef}>
       {!disableSearch && (
@@ -220,7 +223,7 @@ const SelectPanel = () => {
             onClick={(_e, index) => handleItemClicked(index)}
           />
         ) : isCreatable ? (
-          <li onClick={handleOnCreateOption} className="select-item creatable">
+          <li onClick={handleOnCreateOption} className="select-item creatable" tabIndex={skipIndex === 1 ? 0 : 1} ref={creationRef}>
             {`${t("create")} "${searchText}"`}
           </li>
         ) : (
