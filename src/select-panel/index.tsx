@@ -178,7 +178,7 @@ const SelectPanel = () => {
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
 
   const canCreatableAppear =
-    searchText && !filteredOptions.some((e) => e.value === searchText);
+    searchText && !filteredOptions.some((e) => e.value + "" === searchText);
 
   return (
     <div className="select-panel" role="listbox" ref={listRef}>
