@@ -178,7 +178,9 @@ const SelectPanel = () => {
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
 
   const canCreatableAppear =
-    searchText && !filteredOptions.some((e) => e.value + "" === searchText);
+    isCreatable &&
+    searchText &&
+    !filteredOptions.some((e) => e.value + "" === searchText);
 
   return (
     <div className="select-panel" role="listbox" ref={listRef}>
@@ -207,16 +209,6 @@ const SelectPanel = () => {
       )}
 
       <ul className="options">
-        {isCreatable && canCreatableAppear ? (
-          <li
-            onClick={handleOnCreateOption}
-            className="select-item creatable"
-            tabIndex={skipIndex === 1 ? 0 : 1}
-            ref={creationRef}
-          >
-            {`${t("create")} "${searchText}"`}
-          </li>
-        ) : null}
         {hasSelectAll && hasSelectableOptions && (
           <SelectItem
             tabIndex={skipIndex === 1 ? 0 : 1}
@@ -228,14 +220,26 @@ const SelectPanel = () => {
             disabled={disabled}
           />
         )}
+
         {filteredOptions.length ? (
           <SelectList
             skipIndex={skipIndex}
             options={filteredOptions}
             onClick={(_e, index) => handleItemClicked(index)}
           />
-        ) : isCreatable && canCreatableAppear ? null : (
+        ) : canCreatableAppear ? null : (
           <li className="no-options">{t("noOptions")}</li>
+        )}
+
+        {canCreatableAppear && (
+          <li
+            onClick={handleOnCreateOption}
+            className="select-item creatable"
+            tabIndex={skipIndex === 1 ? 0 : 1}
+            ref={creationRef}
+          >
+            {`${t("create")} "${searchText}"`}
+          </li>
         )}
       </ul>
     </div>
