@@ -174,8 +174,13 @@ const SelectPanel = () => {
     getFilteredOptions().then(setFilteredOptions);
   }, [searchTextForFilter, options]);
 
-  const creationRef: any = useRef()
+  const creationRef: any = useRef();
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
+
+  const canCreatableAppear =
+    isCreatable &&
+    searchText &&
+    !filteredOptions.some((e) => e.value + "" === searchText);
 
   return (
     <div className="select-panel" role="listbox" ref={listRef}>
@@ -222,12 +227,19 @@ const SelectPanel = () => {
             options={filteredOptions}
             onClick={(_e, index) => handleItemClicked(index)}
           />
-        ) : isCreatable ? (
-          <li onClick={handleOnCreateOption} className="select-item creatable" tabIndex={skipIndex === 1 ? 0 : 1} ref={creationRef}>
+        ) : canCreatableAppear ? null : (
+          <li className="no-options">{t("noOptions")}</li>
+        )}
+
+        {canCreatableAppear && (
+          <li
+            onClick={handleOnCreateOption}
+            className="select-item creatable"
+            tabIndex={skipIndex === 1 ? 0 : 1}
+            ref={creationRef}
+          >
             {`${t("create")} "${searchText}"`}
           </li>
-        ) : (
-          <li className="no-options">{t("noOptions")}</li>
         )}
       </ul>
     </div>
