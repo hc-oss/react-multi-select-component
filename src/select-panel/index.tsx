@@ -3,7 +3,7 @@
  * user selects the component.  It encapsulates the search filter, the
  * Select-all item, and the list of options.
  */
-import React, {
+ import React, {
   useCallback,
   useEffect,
   useMemo,
@@ -177,10 +177,10 @@ const SelectPanel = () => {
   const creationRef: any = useRef();
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
 
-  const canCreatableAppear =
+  const showCratable =
     isCreatable &&
     searchText &&
-    !filteredOptions.some((e) => e.value + "" === searchText);
+    !filteredOptions.some((e) => e?.value === searchText);
 
   return (
     <div className="select-panel" role="listbox" ref={listRef}>
@@ -227,11 +227,7 @@ const SelectPanel = () => {
             options={filteredOptions}
             onClick={(_e, index) => handleItemClicked(index)}
           />
-        ) : canCreatableAppear ? null : (
-          <li className="no-options">{t("noOptions")}</li>
-        )}
-
-        {canCreatableAppear && (
+        ) : showCratable ? (
           <li
             onClick={handleOnCreateOption}
             className="select-item creatable"
@@ -240,6 +236,8 @@ const SelectPanel = () => {
           >
             {`${t("create")} "${searchText}"`}
           </li>
+        ) : (
+          <li className="no-options">{t("noOptions")}</li>
         )}
       </ul>
     </div>
