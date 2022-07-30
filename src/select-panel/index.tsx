@@ -177,7 +177,7 @@ const SelectPanel = () => {
   const creationRef: any = useRef();
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
 
-  const showCratable =
+  const showCreatable =
     isCreatable &&
     searchText &&
     !filteredOptions.some((e) => e?.value === searchText);
@@ -227,11 +227,11 @@ const SelectPanel = () => {
             options={filteredOptions}
             onClick={(_e, index) => handleItemClicked(index)}
           />
-        ) : showCratable ? (
+        ) : showCreatable ? (
           <li
             onClick={handleOnCreateOption}
             className="select-item creatable"
-            tabIndex={skipIndex === 1 ? 0 : 1}
+            tabIndex={1}
             ref={creationRef}
           >
             {`${t("create")} "${searchText}"`}
