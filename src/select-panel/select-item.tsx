@@ -49,7 +49,7 @@ const SelectItem = ({
 
   return (
     <label
-      className={`select-item ${checked && "selected"}`}
+      className={`select-item ${checked ? "selected" : ""}`}
       role="option"
       aria-selected={checked}
       tabIndex={tabIndex}

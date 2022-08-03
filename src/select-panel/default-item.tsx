@@ -15,7 +15,7 @@ const DefaultItemRenderer = ({
   onClick,
   disabled,
 }: IDefaultItemRendererProps) => (
-  <div className={`item-renderer ${disabled && "disabled"}`}>
+  <div className={`item-renderer ${disabled ? "disabled" : ""}`}>
     <input
       type="checkbox"
       onChange={onClick}
