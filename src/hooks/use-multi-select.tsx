@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { ISelectProps, Option } from "../lib/interfaces";
+import { Option, SelectProps } from "../lib/interfaces";
 
 const defaultStrings = {
   allItemsAreSelected: "All items are selected.",
@@ -14,7 +14,7 @@ const defaultStrings = {
   create: "Create",
 };
 
-const defaultProps: Partial<ISelectProps> = {
+const defaultProps: Partial<SelectProps> = {
   value: [],
   hasSelectAll: true,
   className: "multi-select",
@@ -22,13 +22,13 @@ const defaultProps: Partial<ISelectProps> = {
   options: [] as Option[],
 };
 
-interface MultiSelectContextProps extends ISelectProps {
+interface MultiSelectContextProps extends SelectProps {
   t: (key: string) => string;
   setOptions?;
 }
 
 interface MultiSelectProviderProps {
-  props: ISelectProps;
+  props: SelectProps;
   children;
 }
 
