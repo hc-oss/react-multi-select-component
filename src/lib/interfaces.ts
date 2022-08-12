@@ -7,7 +7,7 @@ export interface Option {
   disabled?: boolean;
 }
 
-export interface ISelectProps {
+export interface SelectProps {
   options: Option[];
   value: Option[];
   onChange?;

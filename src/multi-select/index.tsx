@@ -3,10 +3,10 @@ import "../style.css";
 import React from "react";
 
 import { MultiSelectProvider } from "../hooks/use-multi-select";
-import { ISelectProps } from "../lib/interfaces";
+import { SelectProps } from "../lib/interfaces";
 import Dropdown from "./dropdown";
 
-const MultiSelect = (props: ISelectProps) => (
+const MultiSelect = (props: SelectProps) => (
   <MultiSelectProvider props={props}>
     <div className={`rmsc ${props.className || "multi-select"}`}>
       <Dropdown />
