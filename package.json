@@ -22,7 +22,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^7.0.8",
+    "@size-limit/preset-small-lib": "^8.0.1",
     "@storybook/addon-actions": "^6.5.9",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-knobs": "^6.4.0",
@@ -41,7 +41,7 @@
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "size-limit": "^7.0.8",
+    "size-limit": "^8.0.1",
     "storybook-addon-turbo-build": "^1.1.0",
     "tsup": "^6.1.3",
     "typescript": "^4.7.4"
