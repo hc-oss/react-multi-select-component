@@ -37,7 +37,7 @@ const SelectList = ({ options, onClick, skipIndex }: ISelectListProps) => {
               tabIndex={tabIndex}
               option={o}
               onSelectionChanged={(c) => handleSelectionChanged(o, c)}
-              checked={!!value.find((s) => s.value === o.value)}
+              checked={value.includes(o)}
               onClick={(e) => onClick(e, tabIndex)}
               itemRenderer={ItemRenderer}
               disabled={o.disabled || disabled}
