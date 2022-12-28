@@ -173,6 +173,18 @@
   animation: dash 1.5s ease-in-out infinite;
 }
 
+.rmsc__arrow-svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.rmsc__cross-svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);

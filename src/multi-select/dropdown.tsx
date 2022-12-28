@@ -3,7 +3,7 @@
  * and hosts it in the component.  When the component is selected, it
  * drops-down the contentComponent and applies the contentProps.
  */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { useDidUpdateEffect } from "../hooks/use-did-update-effect";
 import { useKey } from "../hooks/use-key";
@@ -43,7 +43,7 @@ const Dropdown = () => {
   const [hasFocus, setHasFocus] = useState(false);
   const FinalArrow = ArrowRenderer || Arrow;
 
-  const wrapper: any = useRef();
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useDidUpdateEffect(() => {
     onMenuToggle && onMenuToggle(expanded);
@@ -54,7 +54,7 @@ const Dropdown = () => {
       setIsInternalExpand(false);
       setExpanded(isOpen);
     }
-  }, [isOpen]);
+  }, [isOpen, defaultIsOpen]);
 
   const handleKeyDown = (e) => {
     // allows space and enter when focused on input/button
@@ -68,7 +68,7 @@ const Dropdown = () => {
     if (isInternalExpand) {
       if (e.code === KEY.ESCAPE) {
         setExpanded(false);
-        wrapper?.current?.focus();
+        wrapperRef?.current?.focus();
       } else {
         setExpanded(true);
       }
@@ -77,11 +77,11 @@ const Dropdown = () => {
   };
 
   useKey([KEY.ENTER, KEY.ARROW_DOWN, KEY.SPACE, KEY.ESCAPE], handleKeyDown, {
-    target: wrapper,
+    target: wrapperRef,
   });
 
-  const handleHover = (iexpanded: boolean) => {
-    isInternalExpand && shouldToggleOnHover && setExpanded(iexpanded);
+  const handleHover = (isExpanded: boolean) => {
+    isInternalExpand && shouldToggleOnHover && setExpanded(isExpanded);
   };
 
   const handleFocus = () => !hasFocus && setHasFocus(true);
@@ -101,11 +101,14 @@ const Dropdown = () => {
     isInternalExpand && setExpanded(isLoading || disabled ? false : !expanded);
   };
 
-  const handleClearSelected = (e) => {
-    e.stopPropagation();
-    onChange([]);
-    isInternalExpand && setExpanded(false);
-  };
+  const handleClearSelected = useCallback(
+    (e) => {
+      e.stopPropagation();
+      onChange([]);
+      isInternalExpand && setExpanded(false);
+    },
+    [onChange, isInternalExpand]
+  );
 
   return (
     <div
@@ -115,7 +118,7 @@ const Dropdown = () => {
       aria-expanded={expanded}
       aria-readonly={true}
       aria-disabled={disabled}
-      ref={wrapper}
+      ref={wrapperRef}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}

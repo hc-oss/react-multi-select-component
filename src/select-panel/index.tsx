@@ -3,7 +3,7 @@
  * user selects the component.  It encapsulates the search filter, the
  * Select-all item, and the list of options.
  */
- import React, {
+import React, {
   useCallback,
   useEffect,
   useMemo,
@@ -43,14 +43,17 @@ const SelectPanel = () => {
     onCreateOption,
   } = useMultiSelect();
 
-  const listRef = useRef<any>();
-  const searchInputRef = useRef<any>();
+  const listRef = useRef<any>(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [searchText, setSearchText] = useState("");
   const [filteredOptions, setFilteredOptions] = useState(options);
   const [searchTextForFilter, setSearchTextForFilter] = useState("");
   const [focusIndex, setFocusIndex] = useState(0);
   const debouncedSearch = useCallback(
-    debounce((query) => setSearchTextForFilter(query), debounceDuration),
+    debounce(
+      (query: string) => setSearchTextForFilter(query),
+      debounceDuration
+    ),
     []
   );
 
@@ -68,7 +71,7 @@ const SelectPanel = () => {
     value: "",
   };
 
-  const selectAllValues = (checked) => {
+  const selectAllValues = (checked: boolean) => {
     const filteredValues = filteredOptions
       .filter((o) => !o.disabled)
       .map((o) => o.value);
@@ -90,13 +93,13 @@ const SelectPanel = () => {
     onChange(newOptions);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     debouncedSearch(e.target.value);
     setSearchText(e.target.value);
     setFocusIndex(FocusType.SEARCH);
   };
 
-  const handleClear = () => {
+  const handleClear = (): void => {
     setSearchTextForFilter("");
     setSearchText("");
     searchInputRef?.current?.focus();
@@ -105,7 +108,7 @@ const SelectPanel = () => {
   const handleItemClicked = (index: number) => setFocusIndex(index);
 
   // Arrow Key Navigation
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     switch (e.code) {
       case KEY.ARROW_UP:
         updateFocus(-1);
@@ -174,7 +177,7 @@ const SelectPanel = () => {
     getFilteredOptions().then(setFilteredOptions);
   }, [searchTextForFilter, options]);
 
-  const creationRef: any = useRef();
+  const creationRef: any = useRef(null);
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
 
   const showCreatable =

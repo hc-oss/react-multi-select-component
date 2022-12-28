@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { Option, SelectProps } from "../lib/interfaces";
 
@@ -29,7 +29,7 @@ interface MultiSelectContextProps extends SelectProps {
 
 interface MultiSelectProviderProps {
   props: SelectProps;
-  children;
+  children: React.ReactNode;
 }
 
 const MultiSelectContext = React.createContext<MultiSelectContextProps>(
@@ -41,7 +41,10 @@ export const MultiSelectProvider = ({
   children,
 }: MultiSelectProviderProps) => {
   const [options, setOptions] = useState(props.options);
-  const t = (key) => props.overrideStrings?.[key] || defaultStrings[key];
+  const t = useMemo(
+    () => (key) => props.overrideStrings?.[key] || defaultStrings[key],
+    [props.overrideStrings]
+  );
 
   useEffect(() => {
     setOptions(props.options);
