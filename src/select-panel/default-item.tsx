@@ -6,7 +6,7 @@ interface IDefaultItemRendererProps {
   checked: boolean;
   option: Option;
   disabled?: boolean;
-  onClick;
+  onClick: () => void;
 }
 
 const DefaultItemRenderer = ({
@@ -15,8 +15,12 @@ const DefaultItemRenderer = ({
   onClick,
   disabled,
 }: IDefaultItemRendererProps) => (
-  <div className={`item-renderer ${disabled ? "disabled" : ""}`}>
+  <label
+    className={`item-renderer ${disabled ? "disabled" : ""}`}
+    htmlFor={option.value}
+  >
     <input
+      id={option.value}
       type="checkbox"
       onChange={onClick}
       checked={checked}
@@ -24,7 +28,7 @@ const DefaultItemRenderer = ({
       disabled={disabled}
     />
     <span>{option.label}</span>
-  </div>
+  </label>
 );
 
 export default DefaultItemRenderer;
