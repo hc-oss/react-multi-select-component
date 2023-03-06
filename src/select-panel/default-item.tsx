@@ -18,6 +18,7 @@ const DefaultItemRenderer = ({
   <div className={`item-renderer ${disabled ? "disabled" : ""}`}>
     <input
       type="checkbox"
+      className={check-box-input}
       onChange={onClick}
       checked={checked}
       tabIndex={-1}
