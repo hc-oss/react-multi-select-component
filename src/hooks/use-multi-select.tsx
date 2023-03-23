@@ -12,12 +12,14 @@ const defaultStrings = {
   selectAllFiltered: "Select All (Filtered)",
   selectSomeItems: "Select...",
   create: "Create",
+  listBox: "listbox",
 };
 
 const defaultProps: Partial<SelectProps> = {
   value: [],
   hasSelectAll: true,
   className: "multi-select",
+  role: defaultStrings.listBox ,
   debounceDuration: 200,
   options: [] as Option[],
 };
