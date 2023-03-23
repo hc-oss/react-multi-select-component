@@ -26,6 +26,7 @@ export interface SelectProps {
   overrideStrings?: { [key: string]: string };
   labelledBy: string;
   className?: string;
+  role?: string;
   onMenuToggle?;
   ClearIcon?: ReactNode;
   debounceDuration?: number;

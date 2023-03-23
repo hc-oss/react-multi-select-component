@@ -25,6 +25,7 @@ const Dropdown = () => {
     disabled,
     onChange,
     labelledBy,
+    role,
     value,
     isOpen,
     defaultIsOpen,
@@ -112,6 +113,7 @@ const Dropdown = () => {
       tabIndex={0}
       className="dropdown-container"
       aria-labelledby={labelledBy}
+      role={role}
       aria-expanded={expanded}
       aria-readonly={true}
       aria-disabled={disabled}
