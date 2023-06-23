@@ -24,6 +24,7 @@ const Dropdown = () => {
     isLoading,
     disabled,
     onChange,
+    onBlur,
     labelledBy,
     value,
     isOpen,
@@ -90,6 +91,7 @@ const Dropdown = () => {
     if (!e.currentTarget.contains(e.relatedTarget) && isInternalExpand) {
       setHasFocus(false);
       setExpanded(false);
+      onBlur?.(e);
     }
   };
 
