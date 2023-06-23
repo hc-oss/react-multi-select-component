@@ -24,6 +24,9 @@ export const ExampleDefault = () => {
         value={selected}
         disabled={boolean("disabled", false)}
         onChange={setSelected}
+        onBlur={() => {
+          console.debug("input blurred");
+        }}
         onMenuToggle={(s) => {
           console.debug("Select Toggle: ", s);
         }}
