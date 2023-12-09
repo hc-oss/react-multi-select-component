@@ -28,6 +28,9 @@ yarn add react-multi-select-component # yarn
 ```tsx
 import React, { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
+// or without style injection (in the presence of Content Security Policy issues)
+// import { MultiSelect } from "react-multi-select-component/no-inject-style";
+// import  "react-multi-select-component/no-inject-style/index.css";
 
 const options = [
   { label: "Grapes 🍇", value: "grapes" },
