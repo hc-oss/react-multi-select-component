@@ -9,7 +9,9 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.tsx --inject-style --legacy-output --minify --format esm,cjs --dts --external react",
+    "build:no-inject-style": "tsup src/index.tsx --outDir dist/no-inject-style --legacy-output --minify --format esm,cjs --dts --external react",
+    "build:inject-style": "tsup src/index.tsx --inject-style --legacy-output --minify --format esm,cjs --dts --external react",
+    "build": "yarn run build:inject-style && yarn run build:no-inject-style",
     "dev": "tsup src/index.tsx --inject-style --legacy-output --format esm,cjs --watch --dts --external react",
     "lint": "eslint src --fix",
     "size": "size-limit",
