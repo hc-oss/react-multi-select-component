@@ -1,0 +1,19 @@
+.mso .dropdown-container {
+  border: 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.mso .dropdown-container:focus-within {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.mso .dropdown-heading {
+  padding: 0;
+  height: auto;
+}
+
+.mso .dropdown-heading-dropdown-arrow {
+  display: none;
+}

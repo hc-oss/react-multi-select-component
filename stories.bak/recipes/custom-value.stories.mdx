@@ -1,0 +1,17 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="recipes/Custom Value Renderer" />
+
+# 🎛 Custom Value Renderer
+
+Optionally customise value renderer view by passing `valueRenderer` prop
+
+```js
+const customValueRenderer = (selected, _options) => {
+  return selected.length
+    ? selected.map(({ label }) => "✔️ " + label)
+    : "😶 No Items Selected";
+};
+```
+
+![Custom Value Renderer](https://user-images.githubusercontent.com/5774849/150685369-dd5426c5-1e91-441f-b461-9fd88844f8d0.gif)
