@@ -35,4 +35,5 @@ export interface SelectProps {
   isCreatable?: boolean;
   onCreateOption?;
   closeOnChangedValue?: boolean;
+  placeholder?: string;
 }

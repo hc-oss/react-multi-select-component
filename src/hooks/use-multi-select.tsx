@@ -41,7 +41,10 @@ export const MultiSelectProvider = ({
   children,
 }: MultiSelectProviderProps) => {
   const [options, setOptions] = useState(props.options);
-  const t = (key) => props.overrideStrings?.[key] || defaultStrings[key];
+  const t = (key) =>
+    props.overrideStrings?.[key] ||
+    (key === "selectSomeItems" && props.placeholder) ||
+    defaultStrings[key];  
 
   useEffect(() => {
     setOptions(props.options);

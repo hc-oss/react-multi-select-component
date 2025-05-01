@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * A generic dropdown component.  It takes the children of the component
  * and hosts it in the component.  When the component is selected, it

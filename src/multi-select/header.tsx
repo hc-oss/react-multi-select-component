@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useMultiSelect } from "../hooks/use-multi-select";
 
 export const DropdownHeader = () => {
@@ -12,7 +11,7 @@ export const DropdownHeader = () => {
   const getSelectedText = () => value.map((s) => s.label).join(", ");
 
   return noneSelected ? (
-    <span className="gray">{customText || t("selectSomeItems")}</span>
+    <span className="placeholder">{customText || t("selectSomeItems")}</span>
   ) : (
     <span>
       {customText ||
