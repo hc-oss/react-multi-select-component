@@ -178,6 +178,7 @@ const SelectPanel = () => {
   useKey([KEY.ENTER], handleOnCreateOption, { target: creationRef });
 
   const showCreatable =
+    !disabled &&
     isCreatable &&
     searchText &&
     !filteredOptions.some((e) => e?.value === searchText);
